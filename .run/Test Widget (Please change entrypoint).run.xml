@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test Widget (Please change entrypoint)" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="buildFlavor" value="widget" />
+    <option name="filePath" value="$PROJECT_DIR$/lib/src/test_widget.dart" />
+    <method v="2" />
+  </configuration>
+</component>

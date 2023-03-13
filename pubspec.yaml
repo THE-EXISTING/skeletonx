@@ -1,0 +1,52 @@
+name: skeletonx
+description: A SkeletonX project.
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  falconx:
+    path: ./packages/falconx
+
+  flutter_native_splash: ^2.2.19
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^9.1.1
+  flutter_launcher_icons: ^0.12.0
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    # Add assets from the images directory to the application.
+    - assets/images/
+
+    # Icons
+    - assets/icons/
+
+  fonts:
+    - family: Anuphan
+      fonts:
+        - asset: assets/fonts/anuphan_regular.otf
+          weight: 400
+        - asset: assets/fonts/anuphan_medium.otf
+          weight: 500
+        - asset: assets/fonts/anuphan_semibold.otf
+          weight: 600
+        - asset: assets/fonts/anuphan_bold.otf
+          weight: 700

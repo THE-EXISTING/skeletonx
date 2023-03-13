@@ -1,0 +1,56 @@
+name: falconx
+description: A new Flutter package project.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  falmodel:
+    path: ../falmodel
+  faltool:
+    path: ../faltool
+  falconnect:
+    path: ../falconnect
+  falstore:
+    path: ../falstore
+
+  flutter_lints: ^2.0.1
+  webview_flutter: ^4.0.6
+  flutter_cache_manager: ^3.3.0
+  flutter_local_notifications: ^13.0.0
+  provider: ^6.0.5
+
+  #=======  UI ========#
+  shimmer_animation: ^2.1.0+1
+  badges: ^3.0.2
+  wechat_assets_picker: ^8.4.0
+  fluttertoast: ^8.2.1
+  progressive_image: ^2.0.1
+  flutter_svg: ^2.0.3
+  mask_text_input_formatter: ^2.4.0
+  pin_code_fields: ^7.4.0
+
+  #=======  Utils ========#
+  flutter_bloc: ^8.1.2
+  share_plus: ^6.3.1
+  device_info_plus: ^8.1.0
+  package_info_plus: ^3.0.3
+  flutter_keyboard_visibility: ^5.4.0
+  tap_debouncer: ^2.0.2
+  permission_handler: ^10.2.0
+  equatable: ^2.0.5
+#  catcher: any #conflict with device_info_plus and conflict with dio
+  url_launcher: ^6.1.10
+  cached_network_image: ^3.2.3
+  http_parser: ^4.0.2
+  path_provider: ^2.0.13
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
