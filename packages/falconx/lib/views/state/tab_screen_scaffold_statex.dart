@@ -2,11 +2,12 @@ import 'package:falconx/falconx.dart';
 
 abstract class TabScreenScaffoldStateX<T extends StatefulWidgetX>
     extends StateX<T> {
+
   @protected
   @override
   @Deprecated('Please use [buildDefault] instead')
   Widget build(BuildContext context) {
-    List<Widget> tabScreenList = buildTabScreen();
+    List<Widget> tabScreenList = buildTabView();
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: WillPopScope(
@@ -29,7 +30,7 @@ abstract class TabScreenScaffoldStateX<T extends StatefulWidgetX>
 
   Color get backGroundColor => Colors.white;
 
-  List<Widget> buildTabScreen();
+  List<Widget> buildTabView();
 
   Widget buildBody(BuildContext context, TabBarView tabView);
 

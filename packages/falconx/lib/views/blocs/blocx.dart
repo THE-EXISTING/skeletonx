@@ -21,19 +21,19 @@ abstract class BlocX<Event, State> extends Bloc<Event, State> {
   @override
   Stream<State> get stream => _subject.stream;
 
-  void emitState(State newState) {
+  void emitState(State newValue) {
     if (_subject.isClosed) return;
-    _subject.add(newState);
-    _state = newState;
+    _subject.add(newValue);
+    _state = newValue;
   }
 
   void addInitEvent(Event event) => add(event);
 
   void addAppEvent(Event event) => add(event);
 
-  void addUserTabEvent(Event event) => add(event);
+  void addClickEvent(Event event) => add(event);
 
-  void addUserTypingEvent(Event event) => add(event);
+  void addTypingEvent(Event event) => add(event);
 
   void fetch<T extends Resource>({
     required Object key,

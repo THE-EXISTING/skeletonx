@@ -29,18 +29,19 @@ abstract class BehaviorBlocX<E, Event extends BlocEvent<E>, State>
     add(ObjectEvent(event, data: data) as Event);
   }
 
-  void addUserTabEvent<T>(E event, {T? data}) {
+  void addClickEvent<T>(E event, {T? data}) {
     add(ClickEvent(event, data: data) as Event);
   }
 
-  void addUserTypingEvent<T>(E event, {required T data}) {
+  void addTypingEvent<T>(E event, {required T data}) {
     add(TypingEvent(event, data: data) as Event);
   }
 
-  void emitState(State newState) {
+  @override
+  void emitState(State newValue) {
     if (_subject.isClosed) return;
-    _subject.add(newState);
-    _state = newState;
+    _subject.add(newValue);
+    _state = newValue;
   }
 
   @override

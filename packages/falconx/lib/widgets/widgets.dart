@@ -1,3 +1,4 @@
+export 'package:falconx/widgets/applicationx.dart';
 export 'package:falconx/widgets/space.dart';
 export 'package:falconx/widgets/skeletonx.dart';
 export 'package:falconx/widgets/network_imagex.dart';

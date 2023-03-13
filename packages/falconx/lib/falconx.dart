@@ -1,11 +1,9 @@
 library falconx;
 
-import 'dart:async';
-import 'package:flutter/foundation.dart';
-import 'package:falconx/falconx.dart';
 
 export 'package:falmodel/falmodel.dart';
 export 'package:faltool/faltool.dart';
+export 'package:falstore/falstore.dart';
 
 export 'dart:async';
 export 'dart:convert';
@@ -40,11 +38,10 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'package:http_parser/http_parser.dart';
 export 'package:path_provider/path_provider.dart';
 
+export 'config/build_config.dart';
 export 'extensions/extensions.dart';
 export 'animates/animates.dart';
 export 'notifications/notifications.dart';
 export 'styles/styles.dart';
 export 'views/views.dart';
 export 'widgets/widgets.dart';
-
-part 'config/build_config.dart';

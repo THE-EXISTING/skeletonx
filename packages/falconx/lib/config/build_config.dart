@@ -1,5 +1,5 @@
-part of falconx;
-
+import 'package:falconx/falconx.dart';
+import 'package:flutter/foundation.dart';
 
 enum BuildMode { debug, release }
 

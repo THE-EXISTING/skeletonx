@@ -13,7 +13,6 @@ abstract class PublishBlocX<T, Event extends BlocEvent<T>, State extends Resourc
   @override
   Stream<State> get stream => _subject.stream;
 
-
   Future<void> onListenEvent(BlocEvent<T> event);
 
   void emitState(State newValue) => _subject.add(newValue);

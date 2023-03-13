@@ -9,8 +9,9 @@ abstract class ReplayBlocX<T, Event extends BlocEvent<T>, State extends Resource
   }
 
   final _subject = ReplaySubject<State>();
-  Stream<State> get stream => _subject.stream;
 
+  @override
+  Stream<State> get stream => _subject.stream;
 
   Future<void> onListenEvent(BlocEvent<T> event);
 
