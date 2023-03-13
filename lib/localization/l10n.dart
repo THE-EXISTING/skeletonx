@@ -1,4 +1,4 @@
-import 'package:falconx/falconx.dart';
+import 'package:skeletonx/core/core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 

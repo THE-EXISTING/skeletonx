@@ -1,4 +1,4 @@
-import 'package:falconx/falconx.dart';
+import 'package:skeletonx/core/core.dart';
 import 'src/app.dart';
 import 'src/features/settings/setting_model.dart';
 import 'src/features/settings/settings_controller.dart';

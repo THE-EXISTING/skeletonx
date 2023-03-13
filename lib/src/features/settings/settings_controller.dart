@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:skeletonx/src/features/settings/setting_local_database.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
 
-/// A class that many Widgets can interact with to read user settings, update
-/// user settings, or listen to user settings changes.
-///
-/// Controllers glue Data Services to Flutter Widgets. The SettingsController
-/// uses the SettingsService to store and retrieve user settings.
 class SettingsController with ChangeNotifier {
   factory SettingsController() => instance;
 

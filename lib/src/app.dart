@@ -1,4 +1,3 @@
-import 'package:falconx/falconx.dart';
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/localization/l10n.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
@@ -33,6 +32,7 @@ class _MyApplication extends LocaleStateX<MyApplication> {
     return AnimatedBuilder(
       animation: widget.settingsController,
       builder: (BuildContext context, Widget? child) {
+
         return MaterialApp(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
@@ -46,7 +46,7 @@ class _MyApplication extends LocaleStateX<MyApplication> {
           localeResolutionCallback: L10n.localeResolutionCallback,
 
           onGenerateTitle: (BuildContext context) =>
-              getStrings(context).appTitle,
+              AppEnvironment.instance.appName,
 
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
@@ -71,6 +71,30 @@ class _MyApplication extends LocaleStateX<MyApplication> {
               },
             );
           },
+
+          builder: (context, child) => ResponsiveWrapper.builder(
+              BouncingScrollWrapper.builder(context, child!),
+              maxWidth: AppBreakpoint.contentMax,
+              minWidth: AppBreakpoint.contentMin,
+              breakpoints: [
+                const ResponsiveBreakpoint.resize(
+                  AppBreakpoint.mobileMax,
+                  name: MOBILE,
+                ),
+                const ResponsiveBreakpoint.autoScale(
+                  AppBreakpoint.tabletMax,
+                  name: TABLET,
+                ),
+                const ResponsiveBreakpoint.resize(
+                  AppBreakpoint.desktopMax,
+                  name: DESKTOP,
+                ),
+                const ResponsiveBreakpoint.resize(
+                  AppBreakpoint.desktopLgMax,
+                  name: '4K',
+                ),
+              ],
+              background: Container(color: AppColors.surface.light)),
         );
       },
     );

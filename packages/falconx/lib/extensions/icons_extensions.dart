@@ -6,19 +6,14 @@ extension SvgIcons on String {
     double height = 24,
     double width = 24,
     Color? color,
+    String? label,
   }) =>
       SvgPicture.asset(
         this,
         height: height,
         width: width,
-        color: color,
-      );
-
-  Widget toSvgIcon({Key? key, double size = 24, Color? color}) => //
-      SvgPicture.asset(
-        this,
-        height: size,
-        width: size,
-        color: color,
+        colorFilter:
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+        semanticsLabel: label,
       );
 }

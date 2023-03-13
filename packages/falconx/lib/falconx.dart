@@ -11,7 +11,7 @@ export 'package:flutter/material.dart' hide Notification, Badge;
 export 'package:flutter/cupertino.dart' hide RefreshCallback, Notification;
 export 'package:provider/provider.dart';
 export 'package:flutter_cache_manager/flutter_cache_manager.dart';
-export 'dart:io';
+export 'package:universal_io/io.dart';
 
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -23,6 +23,7 @@ export 'package:progressive_image/progressive_image.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
+export 'package:responsive_framework/responsive_framework.dart';
 
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:share_plus/share_plus.dart';

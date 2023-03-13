@@ -3,10 +3,6 @@
   },
   "@_APP": {
   },
-  "appTitle": "SkeletonX",
-  "@appTitle": {
-    "description": "The title of the application"
-  },
 
   "@----------------------------------------FEATURE1-------------------------------------------------": {
   },

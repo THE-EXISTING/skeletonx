@@ -1,4 +1,3 @@
-import 'package:falconx/falconx.dart';
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/localization/l10n.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';

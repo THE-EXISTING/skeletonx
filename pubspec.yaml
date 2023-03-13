@@ -38,6 +38,7 @@ flutter:
 
     # Icons
     - assets/icons/
+    - assets/icons/24/
 
   fonts:
     - family: Anuphan

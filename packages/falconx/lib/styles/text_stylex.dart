@@ -17,29 +17,25 @@ abstract class TextColorStyleX {
   final double? letterSpacing;
   final double? lineHeight;
 
-  TextStyle get secondaryLight;
-
   TextStyle get primary;
 
   TextStyle get secondary;
 
-  TextStyle get normal;
+  TextStyle get lightWeaker;
 
-  TextStyle get blackActive;
+  TextStyle get lightWeak;
 
-  TextStyle get blackInactive;
+  TextStyle get light;
 
-  TextStyle get blackDisabled;
+  TextStyle get lightStrong;
 
-  TextStyle get blackDivider;
+  TextStyle get darkWeaker;
 
-  TextStyle get whiteActive;
+  TextStyle get darkWeak;
 
-  TextStyle get whiteInactive;
+  TextStyle get dark;
 
-  TextStyle get whiteDisabled;
-
-  TextStyle get whiteDivider;
+  TextStyle get darkStrong;
 
   TextStyle custom({
     required Color color,

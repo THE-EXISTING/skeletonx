@@ -1,6 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="main.dart (uat:debug)" type="FlutterRunConfigurationType" factoryName="Flutter">
     <option name="additionalArgs" value="--debug" />
+    <option name="attachArgs" value="--stacktrace --dart-define=ENVIRONMENT=UAT" />
     <option name="buildFlavor" value="uat" />
     <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
     <method v="2" />
