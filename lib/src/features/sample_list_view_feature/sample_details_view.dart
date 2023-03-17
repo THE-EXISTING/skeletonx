@@ -1,17 +1,17 @@
 import 'package:falconx/falconx.dart';
 
-import 'sample_list_view.dart';
+import 'sample_item.dart';
 
-class DetailView extends StatefulWidget {
-  final Item item;
+class SampleDetailsView extends StatefulWidget {
+  final SampleItem item;
 
-  const DetailView({super.key, required this.item});
+  const SampleDetailsView({super.key, required this.item});
 
   @override
-  State<DetailView> createState() => _DetailViewState();
+  State<SampleDetailsView> createState() => _SampleDetailsViewState();
 }
 
-class _DetailViewState extends State<DetailView> {
+class _SampleDetailsViewState extends State<SampleDetailsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +39,7 @@ class _DetailViewState extends State<DetailView> {
               SizedBox(height: 50),
               const Text('Instructions'),
               SizedBox(height: 20),
-              Text(widget.item.description.toString()),
+              Text(widget.item.instructions.toString()),
             ],
           ),
         ),

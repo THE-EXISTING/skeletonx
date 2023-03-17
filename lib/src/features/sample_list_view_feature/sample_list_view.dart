@@ -1,7 +1,9 @@
 import 'package:skeletonx/core/core.dart';
-import 'package:skeletonx/src/features/sample_list_view_feature/details_view.dart';
+import 'package:skeletonx/src/features/sample_list_view_feature/sample_details_view.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+
+import 'sample_item.dart';
 
 class SampleListView extends StatefulWidget {
   const SampleListView({Key? key}) : super(key: key);
@@ -29,7 +31,7 @@ class _SampleListViewState extends State<SampleListView> {
     return Scaffold(
       appBar: AppBar(title: const Text('Cocktail')),
       body: Container(
-        color: Colors.blueGrey,
+        color: Colors.blueGrey[500],
         child: items.isEmptyOrNull
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -51,7 +53,7 @@ class _SampleListViewState extends State<SampleListView> {
     );
   }
 
-  Widget _buildItem(BuildContext context, Item item) {
+  Widget _buildItem(BuildContext context, SampleItem item) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
@@ -65,7 +67,7 @@ class _SampleListViewState extends State<SampleListView> {
             IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DetailView(item: item),
+                  builder: (context) => SampleDetailsView(item: item),
                 ));
               },
               icon: const Icon(Icons.pageview),
@@ -77,15 +79,15 @@ class _SampleListViewState extends State<SampleListView> {
     );
   }
 
-  Future<List<Item>> getDataFromInternet() async {
+  Future<List<SampleItem>> getDataFromInternet() async {
     await Future.delayed(const Duration(seconds: 1));
 
-    final List<Item> items = [];
+    final List<SampleItem> items = [];
 
     final url = Uri.https(
       'www.thecocktaildb.com',
       'api/json/v1/1/search.php',
-      {'s': 'margarita'},
+      {'s': 'martini'},
     );
 
     final response = await http.get(url);
@@ -95,9 +97,9 @@ class _SampleListViewState extends State<SampleListView> {
       final drinks = jsonResponse['drinks'];
 
       for (var drink in drinks) {
-        final item = Item()
+        final item = SampleItem()
           ..name = drink['strDrink']
-          ..description = drink['strInstructions']
+          ..instructions = drink['strInstructions']
           ..imageUrl = drink['strDrinkThumb'];
 
         items.add(item);
@@ -105,16 +107,5 @@ class _SampleListViewState extends State<SampleListView> {
     }
 
     return items;
-  }
-}
-
-class Item {
-  String? name;
-  String? description;
-  String? imageUrl;
-
-  @override
-  String toString() {
-    return '$name - $description -$imageUrl';
   }
 }
