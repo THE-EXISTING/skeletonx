@@ -32,12 +32,15 @@ class _SampleListViewState extends State<SampleListView> {
       appBar: AppBar(title: const Text('Cocktail')),
       body: Container(
         color: Colors.blueGrey[500],
-        child: items.isEmptyOrNull
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : _buildListView(context),
+        child:
+            items.isEmptyOrNull ? _buildProgressBar() : _buildListView(context),
       ),
+    );
+  }
+
+  Center _buildProgressBar() {
+    return const Center(
+      child: CircularProgressIndicator(),
     );
   }
 
