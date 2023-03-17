@@ -46,7 +46,7 @@ class _SampleDetailsViewState extends State<SampleDetailsView> {
   }
 
   Widget _buildImage() {
-    return Container(
+    return SizedBox(
       width: 200,
       height: 200,
       child: Image.network(widget.item.imageUrl.toString()),
