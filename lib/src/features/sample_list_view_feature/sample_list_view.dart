@@ -38,7 +38,7 @@ class _SampleListViewState extends State<SampleListView> {
     );
   }
 
-  Center _buildProgressBar() {
+  Widget _buildProgressBar() {
     return const Center(
       child: CircularProgressIndicator(),
     );
