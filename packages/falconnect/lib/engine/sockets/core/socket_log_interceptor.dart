@@ -49,7 +49,7 @@ class SocketLogInterceptor extends SocketInterceptor {
   }
 
   @override
-  void onResponse(SocketResponse response) async {
+  void onResponse(SocketResponseX response) async {
     if (!kReleaseMode) {
       logPrint(_title('*** Socket Response ↙️ ***'));
       _printResponse(response);
@@ -72,7 +72,7 @@ class SocketLogInterceptor extends SocketInterceptor {
     }
   }
 
-  void _printResponse(SocketResponse response) {
+  void _printResponse(SocketResponseX response) {
     if (!kReleaseMode) {
       _printKV('URL', response.requestOptions.uri);
       _printKV('Protocol', response.requestOptions.protocol);

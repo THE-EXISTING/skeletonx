@@ -28,7 +28,7 @@ abstract class SocketInterceptor {
 
   void onRequest(SocketOptions options);
 
-  void onResponse(SocketResponse response);
+  void onResponse(SocketResponseX response);
 
   void onError(SocketException err, SocketOptions options);
 }

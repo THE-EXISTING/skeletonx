@@ -1,39 +1,17 @@
 import 'package:falconx/falconx.dart';
 
-abstract class BlocX<Event, State> extends Bloc<Event, State> {
+abstract class BlocX<State> extends Bloc<Object, State> {
   BlocX(State initialState)
-      : _state = initialState,
-        super(initialState) {
-    on<Event>((event, emitter) async {
-      await onListenEvent(event);
-    });
-  }
+      : _fetcher = FetcherList(),
+        super(initialState);
 
-  final FetcherList _fetcher = FetcherList();
-  State _state;
-  final _subject = BehaviorSubject<State>();
-
-  Future<void> onListenEvent(Event event);
+  final FetcherList _fetcher;
+  final screenEventCubit = ScreenEventCubit();
+  final StreamController<State> _controller =
+      StreamController<State>.broadcast();
 
   @override
-  State get state => _state;
-
-  @override
-  Stream<State> get stream => _subject.stream;
-
-  void emitState(State newValue) {
-    if (_subject.isClosed) return;
-    _subject.add(newValue);
-    _state = newValue;
-  }
-
-  void addInitEvent(Event event) => add(event);
-
-  void addAppEvent(Event event) => add(event);
-
-  void addClickEvent(Event event) => add(event);
-
-  void addTypingEvent(Event event) => add(event);
+  Stream<State> get stream => _controller.stream;
 
   void fetch<T extends Resource>({
     required Object key,
@@ -41,12 +19,26 @@ abstract class BlocX<Event, State> extends Bloc<Event, State> {
     required Function(T resource) onResource,
     Function? onLoading,
   }) =>
-      _fetcher.fetch(key: key, call: call, onResource: onResource);
+      _fetcher.fetch(
+          key: key, call: call, onResource: onResource);
 
   @override
   Future<void> close() {
-    _subject.close();
     _fetcher.close();
+    screenEventCubit.close();
     return super.close();
+  }
+
+  void emitState(State newValue) => _controller.add(newValue);
+
+  void emitResourceSuccessState<T>(T newValue) =>
+      _controller.add(Resource.success(data: newValue) as State);
+
+  void emitPopScreen<T>([T? result]) {
+    screenEventCubit.emitPopScreen(result);
+  }
+
+  void emitEvent<T>(T event, {Object? data}) {
+    screenEventCubit.emit(BlocEvent<T>(name: event, data: data));
   }
 }

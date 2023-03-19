@@ -1,19 +1,21 @@
 library falconx;
 
 
+export 'package:falconnect/falconnect.dart';
 export 'package:falmodel/falmodel.dart';
 export 'package:faltool/faltool.dart';
 export 'package:falstore/falstore.dart';
 
 export 'dart:async';
 export 'dart:convert';
+export 'package:flutter/services.dart';
 export 'package:flutter/material.dart' hide Notification, Badge;
 export 'package:flutter/cupertino.dart' hide RefreshCallback, Notification;
 export 'package:provider/provider.dart';
 export 'package:flutter_cache_manager/flutter_cache_manager.dart';
-export 'package:universal_io/io.dart';
+export 'package:universal_io/io.dart' hide SocketException;
 
-export 'package:webview_flutter/webview_flutter.dart';
+export 'package:webview_flutter/webview_flutter.dart' hide ProgressCallback;
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 export 'package:shimmer_animation/shimmer_animation.dart';
 export 'package:badges/badges.dart';

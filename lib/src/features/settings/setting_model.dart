@@ -1,6 +1,6 @@
 import 'package:falconx/falconx.dart';
 
-class SettingModel extends ModelX {
+class SettingModel extends UniqueModelX {
   SettingModel({required this.locale, required this.themeMode});
 
   final Locale locale;

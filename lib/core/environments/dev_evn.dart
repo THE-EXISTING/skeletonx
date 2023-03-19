@@ -1,4 +1,4 @@
-import 'package:skeletonx/core/environments/environment.dart';
+import 'package:skeletonx/core/environments/environments.dart';
 
 class DevEnvironment extends Environment {
   @override

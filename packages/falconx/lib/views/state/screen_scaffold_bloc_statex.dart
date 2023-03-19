@@ -16,8 +16,8 @@ abstract class ScreenScaffoldBlocStateX<T extends StatefulWidgetX,
   @override
   void initState() {
     super.initState();
-    if (bloc is BaseBloc) {
-      _screenEventCubit = (bloc as BaseBloc).screenEventCubit;
+    if (bloc is BlocX) {
+      _screenEventCubit = (bloc as BlocX).screenEventCubit;
     } else {
       Log.w('No use Blocx');
     }

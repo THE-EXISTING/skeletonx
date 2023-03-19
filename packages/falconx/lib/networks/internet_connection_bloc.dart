@@ -5,7 +5,7 @@ enum InternetResult {
   noInternet,
 }
 
-class InternetConnectionBloc extends BaseBloc<InternetResult> {
+class InternetConnectionBloc extends BlocX<InternetResult> {
   InternetConnectionBloc({Connectivity? connectivity})
       : super(InternetResult.connected) {
     _connectivity = connectivity ?? Connectivity();

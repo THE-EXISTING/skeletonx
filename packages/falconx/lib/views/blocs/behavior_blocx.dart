@@ -1,7 +1,7 @@
 import 'package:falconx/falconx.dart';
 
 abstract class BehaviorBlocX<E, Event extends BlocEvent<E>, State>
-    extends BaseBloc<State> {
+    extends BlocX<State> {
   BehaviorBlocX(State initialState)
       : _state = initialState,
         super(initialState) {

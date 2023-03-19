@@ -5,12 +5,8 @@ import 'src/features/settings/settings_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await setupBeforeRunApp();
+  await MyApplication.setupBeforeRunApp();
   await runApplication();
-}
-
-Future<void> setupBeforeRunApp() async {
-  await SettingsController.instance.loadSettings();
 }
 
 Future<void> runApplication({Widget? testWidget, SettingModel? setting}) async {

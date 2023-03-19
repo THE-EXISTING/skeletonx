@@ -1,12 +1,12 @@
 import 'package:falconx/falconx.dart';
 
-class ModelState<T extends ModelX> with EquatableMixin {
+class ModelState<T extends UniqueModelX> with EquatableMixin {
   ModelState({
     String? id,
     required this.data,
     this.index,
     this.selected,
-  }) : id = id ?? data.generatedId;
+  }) : id = id ?? data.id;
 
   final String id;
   final int? index;

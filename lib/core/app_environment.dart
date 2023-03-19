@@ -37,5 +37,7 @@ class AppEnvironment {
 
   String get baseUrl => environment.baseUrl;
 
+  String get baseSocketUrl => environment.baseSocketUrl;
+
   String get deeplink => environment.deepLink;
 }

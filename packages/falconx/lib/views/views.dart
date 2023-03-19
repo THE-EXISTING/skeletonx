@@ -19,8 +19,8 @@ export 'package:falconx/views/screenx.dart';
 export 'package:falconx/views/componentx.dart';
 export 'package:falconx/views/component_group.dart';
 
-export 'package:falconx/views/blocs/base_bloc.dart';
 export 'package:falconx/views/blocs/blocx.dart';
+export 'package:falconx/views/blocs/event_blocx.dart';
 export 'package:falconx/views/blocs/no_event.dart';
 export 'package:falconx/views/blocs/screen_blocx.dart';
 export 'package:falconx/views/blocs/behavior_blocx.dart';

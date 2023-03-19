@@ -3,10 +3,10 @@ import 'package:falconnect/falconnect.dart';
 import 'package:falmodel/falmodel.dart';
 
 extension HttpFutureDynamicExtensions<T> on Future<Response<dynamic>> {
-  Future<ResponseBodyX<T>> mapToResponse<T>(
+  Future<ResponseX<T>> mapToResponse<T>(
       T Function(Response<dynamic> response) f) async {
     return then((Response response) {
-      return ResponseBodyX(
+      return ResponseX(
           data: f(response),
           statusCode: response.statusCode,
           statusMessage: response.statusMessage ?? '');
@@ -33,7 +33,7 @@ extension HttpFutureDynamicExtensions<T> on Future<Response<dynamic>> {
 extension HttpFutureExtensions<T> on Future<T> {}
 
 extension HttpFutureResponseExtensions<T> on Future<Response<T>> {
-  Future<T> noWrapResponse() {
+  Future<T> unWrapResponse() {
     return then<T>((Response<T> response) {
       return Future.value(response.data);
     });

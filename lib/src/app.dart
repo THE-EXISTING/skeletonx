@@ -14,12 +14,23 @@ class MyApplication extends ApplicationX {
     this.settingsController = settingsController ?? SettingsController.instance;
   }
 
+  static AppHttpClient get httpClient => AppHttpClient.instance;
+
   late final SettingsController settingsController;
   late final Widget? widget;
   late final SettingModel? testSetting;
 
   @override
   State<StatefulWidget> createState() => _MyApplication();
+
+  static Future<void> setupBeforeRunApp() async {
+    // await SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    // ]);
+    await SettingsController.instance.loadSettings();
+    httpClient.setupBaseUrl(AppConfig.apiBaseUrl);
+  }
+
 }
 
 class _MyApplication extends LocaleStateX<MyApplication> {
@@ -32,7 +43,6 @@ class _MyApplication extends LocaleStateX<MyApplication> {
     return AnimatedBuilder(
       animation: widget.settingsController,
       builder: (BuildContext context, Widget? child) {
-
         return MaterialApp(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and

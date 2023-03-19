@@ -5,7 +5,7 @@ import 'package:faltool/faltool.dart';
 class SocketRetryException extends SocketException {
   const SocketRetryException({
     required this.retryCount,
-    SocketResponse? response,
+    SocketResponseX? response,
     String? message,
     Exception? exception,
     StackTrace? stackTrace,
