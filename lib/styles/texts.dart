@@ -183,7 +183,7 @@ class _PrimaryTextStyle {
       case Breakpoint.desktopLg:
         if (desktop != null) return desktop;
         return 1.0;
-      case Breakpoint.desktop4k:
+      case Breakpoint.desktopXl:
         if (desktop != null) return desktop;
         return 1.0;
     }

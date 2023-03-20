@@ -9,7 +9,7 @@ class YourPage extends AppScreen {
   _YourPageState createState() => _YourPageState();
 }
 
-class _YourPageState extends LocaleStateX<YourPage> {
+class _YourPageState extends AppLocaleState<YourPage> {
   @override
   Widget build(BuildContext context) {
     return TodoView.create(todo: TodoFeature.authentication, appbar: true);

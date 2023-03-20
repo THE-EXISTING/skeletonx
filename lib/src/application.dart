@@ -23,17 +23,26 @@ class MyApplication extends ApplicationX {
   @override
   State<StatefulWidget> createState() => _MyApplication();
 
-  static Future<void> setupBeforeRunApp() async {
+  @override
+  Future<void> setupBeforeRunApp() async {
     // await SystemChrome.setPreferredOrientations([
     //   DeviceOrientation.portraitUp,
     // ]);
     await SettingsController.instance.loadSettings();
     httpClient.setupBaseUrl(AppConfig.apiBaseUrl);
   }
-
 }
 
-class _MyApplication extends LocaleStateX<MyApplication> {
+class _MyApplication extends ApplicationLocaleState<MyApplication> {
+  @override
+  void onDeeplinkUri(Uri uri) {
+    // TODO: implement onDeeplinkUri
+    if (uri.path == '/link/') {
+      return;
+    }
+    super.onDeeplinkUri(uri);
+  }
+
   @override
   Widget build(BuildContext context) {
     // Glue the SettingsController to the MaterialApp.

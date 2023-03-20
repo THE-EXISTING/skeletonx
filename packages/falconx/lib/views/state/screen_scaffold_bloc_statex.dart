@@ -54,7 +54,7 @@ abstract class ScreenScaffoldBlocStateX<T extends StatefulWidgetX,
                 body: Stack(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
-                    buildMainContent(context, state),
+                    buildContent(context, state),
                     ValueListenableBuilder<bool>(
                       valueListenable: _showPageLoadingIndicator,
                       builder: (context, show, child) {
@@ -77,7 +77,7 @@ abstract class ScreenScaffoldBlocStateX<T extends StatefulWidgetX,
 
   void clearFocus() => FocusManager.instance.primaryFocus?.unfocus();
 
-  Widget buildMainContent(BuildContext context, S state) {
+  Widget buildContent(BuildContext context, S state) {
     Widget buildWidget;
     if (state is Resource) {
       switch (state.status) {

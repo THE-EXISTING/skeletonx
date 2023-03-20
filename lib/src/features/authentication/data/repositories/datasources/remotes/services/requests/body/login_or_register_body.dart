@@ -18,11 +18,4 @@ class LoginOrRegisterBody extends RequestBodyX {
   @override
   List<Object?> get props => <Object?>[mobileNumber];
 
-  static LoginOrRegisterBody fromJsonStr(String data) =>
-      LoginOrRegisterBody.fromJson(json.decode(data));
-
-  static LoginOrRegisterBody fromJson(Map<String, dynamic> json) =>
-      LoginOrRegisterBody(
-        mobileNumber: json[MOBILE_NUMBER_FIELD] as String,
-      );
 }

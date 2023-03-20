@@ -18,13 +18,4 @@ class YourResponse extends ResponseDataX {
         data,
         dataList,
       ];
-
-  static YourResponse fromJsonStr(String data) =>
-      YourResponse.fromJson(json.decode(data));
-
-  static YourResponse fromJson(Map<String, dynamic> json) => YourResponse(
-        data: json[DATA_FIELD] as String,
-        dataList: List<YourResponse>.from(
-            json[DATA_LIST_FIELD].map((x) => YourResponse.fromJson(x))),
-      );
 }

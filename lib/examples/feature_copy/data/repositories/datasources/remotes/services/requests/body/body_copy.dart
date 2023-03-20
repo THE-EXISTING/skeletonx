@@ -20,4 +20,13 @@ class YourBody extends RequestBodyX {
     data,
   ];
 
+  static YourBody fromJsonStr(String data) =>
+      YourBody.fromJson(json.decode(data));
+
+  static YourBody fromJson(Map<String, dynamic> json) {
+    return YourBody(
+      data: json[DATA_FIELD] as String,
+    );
+  }
+
 }

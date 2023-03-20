@@ -24,14 +24,4 @@ class ConfirmOTPBody extends RequestBodyX {
     OTP_FIELD: otp,
     TOKEN_FIELD: token,
   }.removeNullOrEmptyString();
-
-  static ConfirmOTPBody fromJsonStr(String data) =>
-      ConfirmOTPBody.fromJson(json.decode(data));
-
-  static ConfirmOTPBody fromJson(Map<String, dynamic> json) {
-    return ConfirmOTPBody(
-      otp: json[OTP_FIELD] as String,
-      token: json[TOKEN_FIELD] as String,
-    );
-  }
 }

@@ -8,4 +8,5 @@ class AppConfig {
 
   static const String refreshTokenPath = 'api/auth/refresh';
   static const Duration timeout = Duration(microseconds: 20000);
+
 }

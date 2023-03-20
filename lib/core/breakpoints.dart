@@ -1,4 +1,4 @@
-import 'package:falconx/falconx.dart';
+import 'package:skeletonx/core/core.dart';
 
 enum Breakpoint {
   mobile,
@@ -6,7 +6,7 @@ enum Breakpoint {
   tablet,
   desktop,
   desktopLg,
-  desktop4k,
+  desktopXl,
 }
 
 class AppBreakpoint {
@@ -32,7 +32,7 @@ class AppBreakpoint {
     } else if (screenWidth > desktopMax && screenWidth <= desktopLgMax) {
       return Breakpoint.desktopLg;
     } else {
-      return Breakpoint.desktop4k;
+      return Breakpoint.desktopXl;
     }
   }
 }

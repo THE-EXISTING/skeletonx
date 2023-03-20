@@ -1,5 +1,4 @@
 import 'package:skeletonx/core/core.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 abstract class AppScreenLocaleScaffoldBlocState<T extends StatefulWidgetX,
     B extends BlocBase<S>, S> extends ScreenScaffoldBlocStateX<T, B, S> {

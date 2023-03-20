@@ -9,8 +9,8 @@ class AppHttpClient extends HttpClientX {
   @override
   void setupConfig(Dio dio, BaseOptions config) {
     super.setupConfig(dio, config);
-    config.connectTimeout = const Duration(microseconds: 20000);
-    config.receiveTimeout = const Duration(microseconds: 20000);
+    config.connectTimeout = AppConfig.timeout;
+    config.receiveTimeout = AppConfig.timeout;
   }
 
   @override

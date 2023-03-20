@@ -20,12 +20,4 @@ class RefreshTokenBody extends RequestBodyX {
     REFRESH_TOKEN_FIELD: refreshToken,
   }.removeNullOrEmptyString();
 
-  static RefreshTokenBody fromJsonStr(String data) =>
-      RefreshTokenBody.fromJson(json.decode(data));
-
-  static RefreshTokenBody fromJson(Map<String, dynamic> json) {
-    return RefreshTokenBody(
-      refreshToken: json[REFRESH_TOKEN_FIELD] as String,
-    );
-  }
 }

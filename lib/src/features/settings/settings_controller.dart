@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skeletonx/src/features/settings/setting_local_database.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
 
+//TODO: Change to BLOC
 class SettingsController with ChangeNotifier {
   factory SettingsController() => instance;
 

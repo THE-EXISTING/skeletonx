@@ -12,7 +12,7 @@ class YourPage extends AppScreen {
 }
 
 class _YourPageState
-    extends LocaleStateX<YourPage> {
+    extends AppLocaleState<YourPage> {
   @override
   Widget build(BuildContext context) {
     return Container();
