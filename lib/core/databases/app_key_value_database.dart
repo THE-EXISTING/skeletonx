@@ -1,4 +1,4 @@
-import 'package:falconx/falconx.dart';
+import 'package:skeletonx/core/core.dart';
 
 abstract class AppSecureLocalDatabase {
   final SecureStorageX _secureStorage;

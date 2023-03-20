@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:falmodel/falmodel.dart';
 import 'package:equatable/equatable.dart';
 
-class ResponseBodyX<T> with EquatableMixin {
+class ResponseX<T> with EquatableMixin {
   /// Response body. may have been transformed, please refer to [ResponseType].
   T data;
 
@@ -14,7 +14,7 @@ class ResponseBodyX<T> with EquatableMixin {
   /// to. Setting the reason phrase after writing to the body.
   String statusMessage;
 
-  ResponseBodyX({
+  ResponseX({
     this.statusCode,
     required this.data,
     this.statusMessage = '',

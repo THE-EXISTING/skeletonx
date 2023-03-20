@@ -4,7 +4,7 @@ import 'package:falmodel/falmodel.dart';
 ///   'string': 'string'
 /// }
 
-class StringResponse extends ResponseBodyX<String> {
+class StringResponse extends ResponseX<String> {
   StringResponse({
     required int statusCode,
     required String string,

@@ -11,8 +11,6 @@ export 'package:connectivity_plus/connectivity_plus.dart';
 export 'engine/https/network_bound_resource.dart';
 export 'engine/network_constant.dart';
 export 'engine/https/not_fetch_when_load_stream_builder.dart';
-export 'engine/https/fetcher.dart';
-export 'engine/https/fetcher_list.dart';
 export 'engine/https/http_clientx.dart';
 
 export 'engine/https/interceptors/log_interceptor.dart';

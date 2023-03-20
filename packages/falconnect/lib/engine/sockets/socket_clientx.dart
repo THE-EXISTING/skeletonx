@@ -7,7 +7,7 @@ import 'package:faltool/faltool.dart';
 abstract class SocketClientX implements RequestSocketService {
   static const TAG = 'SocketChannel';
   late SocketOptions _tmpOptions;
-  late PublishSubject<SocketResponse> _replaySubject;
+  late PublishSubject<SocketResponseX> _replaySubject;
   late int _retryLimitCounter;
   late final SocketInterceptors interceptors;
 
@@ -24,7 +24,7 @@ abstract class SocketClientX implements RequestSocketService {
   SocketClientX(String baseUrl) {
     _tmpOptions = SocketOptions();
     _tmpOptions.uri = baseUrl;
-    _replaySubject = PublishSubject<SocketResponse>();
+    _replaySubject = PublishSubject<SocketResponseX>();
     _retryLimitCounter = _tmpOptions.retryLimit;
     interceptors = SocketInterceptors();
     setupConfig(_tmpOptions);
@@ -111,16 +111,16 @@ abstract class SocketClientX implements RequestSocketService {
 
   @override
   Stream<T> getResponseStream<T>({
-    bool Function(SocketResponse response)? filter,
-    required T Function(SocketResponse response) converter,
+    bool Function(SocketResponseX response)? filter,
+    required T Function(SocketResponseX response) converter,
   }) =>
       _replaySubject.stream
           .where(filter ?? (data) => true)
           .asyncMap((response) => converter(response));
 
   @override
-  Stream<SocketResponse> getRawStream({
-    bool Function(SocketResponse response)? filter,
+  Stream<SocketResponseX> getRawStream({
+    bool Function(SocketResponseX response)? filter,
   }) =>
       _replaySubject.stream.where(filter ?? (data) => true);
 
@@ -136,7 +136,7 @@ abstract class SocketClientX implements RequestSocketService {
 
   void _onResponse(response) {
     _retryLimitCounter = _tmpOptions.retryLimit;
-    final responseWrap = SocketResponse(
+    final responseWrap = SocketResponseX(
       data: response,
       requestOptions: _tmpOptions.copyWith(),
     );
@@ -153,7 +153,7 @@ abstract class SocketClientX implements RequestSocketService {
   }
 
   void _executeInterceptorOnResponse({
-    required SocketResponse response,
+    required SocketResponseX response,
   }) {
     for (var interceptor in interceptors) {
       interceptor.onResponse(response);

@@ -4,7 +4,7 @@ import 'package:faltool/faltool.dart';
 
 class SocketOperationNotFound extends SocketException {
   const SocketOperationNotFound({
-    SocketResponse? response,
+    SocketResponseX? response,
     String? message,
     Exception? exception,
     StackTrace? stackTrace,

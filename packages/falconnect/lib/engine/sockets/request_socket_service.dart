@@ -10,11 +10,11 @@ abstract class RequestSocketService {
   Future<void> closeChannel();
 
   Stream<T> getResponseStream<T>({
-    required bool Function(SocketResponse response) filter,
-    required T Function(SocketResponse response) converter,
+    required bool Function(SocketResponseX response) filter,
+    required T Function(SocketResponseX response) converter,
   });
 
-  Stream<SocketResponse> getRawStream({
-    bool Function(SocketResponse response)? filter,
+  Stream<SocketResponseX> getRawStream({
+    bool Function(SocketResponseX response)? filter,
   });
 }

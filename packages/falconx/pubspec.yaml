@@ -30,7 +30,7 @@ dependencies:
   wechat_assets_picker: ^8.4.0
   fluttertoast: ^8.2.1
   progressive_image: ^2.0.1
-  flutter_svg: ^2.0.3
+  flutter_svg: ^2.0.4
   mask_text_input_formatter: ^2.4.0
   pin_code_fields: ^7.4.0
   responsive_framework: ^0.2.0
@@ -50,6 +50,8 @@ dependencies:
   cached_network_image: ^3.2.3
   http_parser: ^4.0.2
   path_provider: ^2.0.13
+  uni_links: ^0.5.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

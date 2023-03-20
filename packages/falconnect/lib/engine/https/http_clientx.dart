@@ -223,6 +223,7 @@ abstract class HttpClientX implements RequestApiService {
         .catchWhenError(catchError);
   }
 
+  ///========================= PRIVATE METHOD =========================///
   TokenInterceptorX? _getTokenInterceptor() {
     return _dio.interceptors.firstOrNullWhere((interceptor) => interceptor is TokenInterceptorX)
         as TokenInterceptorX?;
