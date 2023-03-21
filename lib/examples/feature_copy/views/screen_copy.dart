@@ -1,18 +1,18 @@
 import 'package:skeletonx/core/core.dart';
 
-class YourPage extends AppScreen {
-  const YourPage._({required Key key}) : super(key: key);
+class YourScreen extends AppScreen {
+  const YourScreen._({required Key key}) : super(key: key);
 
   static Widget create() =>
-      const YourPage._(key: Key('YourPage'));
+      const YourScreen._(key: Key('YourPage'));
 
   @override
-  _YourPageState createState() =>
+  State<YourScreen> createState() =>
       _YourPageState();
 }
 
 class _YourPageState
-    extends AppLocaleState<YourPage> {
+    extends AppLocaleState<YourScreen> {
   @override
   Widget build(BuildContext context) {
     return Container();

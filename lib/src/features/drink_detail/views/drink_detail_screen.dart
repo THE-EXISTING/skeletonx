@@ -13,7 +13,7 @@ class DrinkDetailScreen extends AppScreen {
       );
 
   @override
-  _DrinkDetailScreenState createState() => _DrinkDetailScreenState();
+  State<DrinkDetailScreen> createState() => _DrinkDetailScreenState();
 }
 
 class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<

@@ -12,7 +12,7 @@ class YourBlocScreen extends AppScreen {
       );
 
   @override
-  _YourBlocScreenState createState() => _YourBlocScreenState();
+  State<YourBlocScreen> createState() => _YourBlocScreenState();
 }
 
 class _YourBlocScreenState extends AppScreenLocaleScaffoldBlocState<

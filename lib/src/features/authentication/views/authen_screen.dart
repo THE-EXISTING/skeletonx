@@ -2,20 +2,20 @@ import 'package:skeletonx/core/core.dart';
 
 enum AuthenPageEvent { showErrorSignIn }
 
-class AuthenPage extends AppScreen {
-  const AuthenPage._({
+class AuthenScreen extends AppScreen {
+  const AuthenScreen._({
     required Key key,
   }) : super(key: key);
 
-  static Widget createScreen() => const AuthenPage._(
+  static Widget createScreen() => const AuthenScreen._(
         key: Key('AuthenticationScreen'),
       );
 
   @override
-  _AuthenPageState createState() => _AuthenPageState();
+  State<AuthenScreen> createState() => _AuthenPageState();
 }
 
-class _AuthenPageState extends AppScreenLocaleScaffoldBlocState<AuthenPage,
+class _AuthenPageState extends AppScreenLocaleScaffoldBlocState<AuthenScreen,
     AuthBloc, Resource<Object?>> {
   AuthBloc get signInBloc => context.read<AuthBloc>();
 
