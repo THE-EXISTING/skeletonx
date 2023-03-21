@@ -5,8 +5,8 @@ class ProdEnvironment extends Environment {
   final String appName = 'Skeleton X';
 
   @override
-  final String baseUrl = '';
+  final String baseUrl = 'https://www.thecocktaildb.com/';
 
   @override
-  final String deepLink = '';
+  final String deepLink = 'prod.skeletonx';
 }

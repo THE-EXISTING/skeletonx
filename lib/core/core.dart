@@ -4,6 +4,7 @@ export 'app_environment.dart';
 export 'breakpoints.dart';
 export 'views/states/app_locale_state.dart';
 
+export 'animates/animates.dart';
 export 'constants/constants.dart';
 export 'notifications/notifications.dart';
 export 'databases/databases.dart';

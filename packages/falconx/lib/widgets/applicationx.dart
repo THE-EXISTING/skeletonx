@@ -2,8 +2,8 @@ import 'package:falconx/falconx.dart';
 
 abstract class ApplicationX extends StatefulWidgetX {
   ApplicationX({required Key key}) : super(key: key) {
-    setupBeforeRunApp();
+    setupApplication();
   }
 
-  Future<void> setupBeforeRunApp();
+  Future<void> setupApplication();
 }

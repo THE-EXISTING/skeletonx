@@ -1,6 +1,7 @@
 export 'exceptions/should_open_signin_exception.dart';
 export 'exceptions/view_exception.dart';
 export 'app_component.dart';
+export 'app_component_group.dart';
 export 'app_screen.dart';
 export 'states/app_locale_state.dart';
 export 'states/application_locale_state.dart';

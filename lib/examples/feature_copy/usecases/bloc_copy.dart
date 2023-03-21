@@ -2,8 +2,8 @@ import 'package:skeletonx/core/core.dart';
 
 enum YourEvent { yourEvent }
 
-class YourEventBloc extends ScreenBlocX<YourEvent, BlocEvent<YourEvent>,
-    Resource<YourModel?>> {
+class YourEventBloc
+    extends ScreenBlocX<YourEvent, BlocEvent<YourEvent>, Resource<YourModel?>> {
   YourEventBloc({
     YourRepositories? yourRepo,
   })  : _yourRepo = yourRepo ?? YourRepositories(),
@@ -19,14 +19,20 @@ class YourEventBloc extends ScreenBlocX<YourEvent, BlocEvent<YourEvent>,
     }
   }
 
-
   // void _yourMethod() => fetch(
   //       key: YourEvent.yourEvent,
   //       call: _yourRepo.method(),
-  //       onData: emitState,
-  //       onError: (exception, stackTrace) {
-  //         //TODO: Handle error to show modal
-  //         // emitState(Resource.createEvent(AuthenPageEvent.showErrorSignIn));
+  //       onResource: (resource) async {
+  //         if (resource.isLoading()) {
+  //           //TODO: Handle loading with your business logic
+  //         }
+  //         if (resource.isSuccess()) {
+  //           emitState(resource);
+  //           //TODO: Handle success with your business logic
+  //         }
+  //         if (resource.isException()) {
+  //           //TODO: Handle error with your business logic
+  //         }
   //       },
   //     );
 }

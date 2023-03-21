@@ -7,6 +7,6 @@ class AppConfig {
   static String get socketBaseUrl => AppEnvironment.instance.baseUrl;
 
   static const String refreshTokenPath = 'api/auth/refresh';
-  static const Duration timeout = Duration(microseconds: 20000);
+  static const Duration timeout = Duration(milliseconds: 20000);
 
 }

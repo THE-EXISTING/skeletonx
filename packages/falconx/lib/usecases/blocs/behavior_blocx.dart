@@ -21,8 +21,8 @@ abstract class BehaviorBlocX<E, Event extends BlocEvent<E>, State>
 
   Future<void> onListenEvent(BlocEvent<E> event);
 
-  void addInitEvent(E event) {
-    add(InitEvent(event) as Event);
+  void addInitEvent<T>(E event, {T? data}) {
+    add(InitEvent(event, data: data) as Event);
   }
 
   void addAppEvent<T>(E event, {T? data}) {

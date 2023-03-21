@@ -5,8 +5,8 @@ class UATEnvironment extends Environment {
   final String appName = 'Skeleton X (UAT)';
 
   @override
-  final String baseUrl = '';
+  final String baseUrl = 'https://www.thecocktaildb.com/';
 
   @override
-  final String deepLink = '';
+  final String deepLink = 'uat.skeletonx';
 }

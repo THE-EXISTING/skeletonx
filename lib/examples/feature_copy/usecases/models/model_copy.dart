@@ -1,7 +1,7 @@
 import 'package:skeletonx/core/core.dart';
 
-class YourModel with EquatableMixin {
-  const YourModel({
+class YourModel extends ModelX<YourModel> {
+  YourModel({
     required this.yourData,
   });
 
@@ -11,9 +11,14 @@ class YourModel with EquatableMixin {
   List<Object?> get props => [yourData];
 
   @override
-  bool? get stringify => true;
+  YourModel copyWith({
+    String? yourData,
+  }) =>
+      YourModel(
+        yourData: yourData ?? this.yourData,
+      );
 
-  static YourModel fromResponse(Response response) => const YourModel(
+  static YourModel fromResponse(Response response) => YourModel(
         yourData: '',
       );
 }

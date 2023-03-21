@@ -2,6 +2,8 @@ import 'package:falconx/falconx.dart';
 
 class Space extends SizedBox {
 
+  static get empty => const Space.box(0.00);
+
   const Space.height(double height, [Key? key]) : super(key: key, height: height);
 
   const Space.width(double width, [Key? key]) : super(key: key, width: width);

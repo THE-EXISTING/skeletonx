@@ -71,7 +71,7 @@ class _PrimaryTextStyle {
         letterSpacing: 0.5,
       );
 
-  TextColorStyleX titleSm(BuildContext context) => _TextColorStyle(
+  TextStyle titleSm(BuildContext context) => _TextColorStyle(
         fontFamily: AppTextStyle._primaryFont,
         fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,
@@ -97,7 +97,7 @@ class _PrimaryTextStyle {
         lineHeight: 22.00 + _increaseSize(context),
       );
 
-  TextColorStyleX bodySm(BuildContext context) => _TextColorStyle(
+  TextStyle bodySm(BuildContext context) => _TextColorStyle(
         fontFamily: AppTextStyle._primaryFont,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
@@ -115,7 +115,7 @@ class _PrimaryTextStyle {
         letterSpacing: 0.25,
       );
 
-  TextColorStyleX buttonLg(BuildContext context) => _TextColorStyle(
+  TextStyle buttonLg(BuildContext context) => _TextColorStyle(
         fontFamily: AppTextStyle._primaryFont,
         fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,

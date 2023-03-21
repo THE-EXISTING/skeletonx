@@ -1,21 +1,22 @@
 import 'package:falconx/falconx.dart';
 
-abstract class TextColorStyleX {
+abstract class TextColorStyleX extends TextStyle {
   const TextColorStyleX({
-    required this.fontFamily,
-    required this.fontWeight,
-    required this.fontStyle,
-    required this.fontSize,
-    this.letterSpacing,
-    this.lineHeight,
-  });
-
-  final String fontFamily;
-  final FontWeight fontWeight;
-  final FontStyle fontStyle;
-  final double fontSize;
-  final double? letterSpacing;
-  final double? lineHeight;
+    required String fontFamily,
+    required FontWeight fontWeight,
+    required FontStyle fontStyle,
+    required double fontSize,
+    double? letterSpacing,
+    double? lineHeight,
+    Paint? paint,
+  }) : super(
+            fontFamily: fontFamily,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            height: lineHeight,
+            foreground: paint);
 
   TextStyle get primary;
 
@@ -44,17 +45,24 @@ abstract class TextColorStyleX {
 
   TextStyle createTextStyle({
     required Color color,
+    String? fontFamily,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? fontSize,
+    double? letterSpacing,
+    double? lineHeight,
     Paint? paint,
   }) {
-    return TextStyle(
+    return super.copyWith(
       color: (paint == null) ? color : null,
-      fontWeight: fontWeight,
-      fontFamily: fontFamily,
-      fontStyle: fontStyle,
-      fontSize: fontSize,
-      letterSpacing: letterSpacing,
-      height: lineHeight == null ? null : lineHeight! / fontSize,
-      foreground: paint,
+      fontWeight: fontWeight ?? this.fontWeight,
+      fontFamily: fontFamily ?? this.fontFamily,
+      fontStyle: fontStyle ?? this.fontStyle,
+      fontSize: fontSize ?? this.fontSize,
+      letterSpacing: letterSpacing ?? this.letterSpacing,
+      // height: lineHeight == null ? null : lineHeight! / fontSize!,
+      height: lineHeight ?? height,
+      foreground: paint ?? foreground,
     );
   }
 }

@@ -111,6 +111,7 @@ class _TransparentColors {
   final Color white40 = const Color.fromRGBO(255, 255, 255, 0.4);
   final Color white30 = const Color.fromRGBO(255, 255, 255, 0.3);
   final Color white20 = const Color.fromRGBO(255, 255, 255, 0.2);
+  final Color white15 = const Color.fromRGBO(255, 255, 255, 0.15);
   final Color white10 = const Color.fromRGBO(255, 255, 255, 0.1);
   final Color white8 = const Color.fromRGBO(255, 255, 255, 0.08);
   final Color white6 = const Color.fromRGBO(255, 255, 255, 0.06);
@@ -126,6 +127,7 @@ class _TransparentColors {
   final Color black40 = const Color.fromRGBO(0, 0, 0, 0.4);
   final Color black30 = const Color.fromRGBO(0, 0, 0, 0.3);
   final Color black20 = const Color.fromRGBO(0, 0, 0, 0.2);
+  final Color black15 = const Color.fromRGBO(0, 0, 0, 0.15);
   final Color black10 = const Color.fromRGBO(0, 0, 0, 0.1);
   final Color black8 = const Color.fromRGBO(0, 0, 0, 0.08);
   final Color black6 = const Color.fromRGBO(0, 0, 0, 0.06);

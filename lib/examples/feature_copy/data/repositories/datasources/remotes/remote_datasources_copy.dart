@@ -11,4 +11,10 @@ class YourRemoteDataSources {
   //   _yourApiService.setupToken(token)        .noWrapResponse();
   // }
 
+  // Future<LoginOrRegisResponse> signInWithMobile(String number) async =>
+  //     await _authApiService
+  //         .signInOrRegisterWithMobile(
+  //         body: LoginOrRegisterBody(mobileNumber: number))
+  //         .unWrapResponse();
+
 }

@@ -1,0 +1,1 @@
+export 'app_slide_transition.dart';

@@ -7,7 +7,6 @@ class YourRepositories {
 
   final YourRemoteDataSources _yourRemote;
 
-  // @override
   // Stream<Resource<TokenModel>> signInWithFacebook() => NetworkBoundResource
   //         .asStream<TokenModel, LoginOrRegisResponse>(
   //       createCallFuture: () => _authRemote.signInWithFacebook(),
@@ -19,7 +18,7 @@ class YourRepositories {
   //         return _authLocal.saveToken(token: token);
   //       },
   //       error: (exception, stackTrace) {
-  //         Log.e(exception);
+  //         Log.e(exception, stackTrace);
   //       },
   //     );
 

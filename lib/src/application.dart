@@ -25,11 +25,10 @@ class MyApplication extends ApplicationX {
   State<StatefulWidget> createState() => _MyApplication();
 
   @override
-  Future<void> setupBeforeRunApp() async {
+  Future<void> setupApplication() async {
     // await SystemChrome.setPreferredOrientations([
     //   DeviceOrientation.portraitUp,
     // ]);
-    await SettingsController.instance.loadSettings();
     httpClient.setupBaseUrl(AppConfig.apiBaseUrl);
   }
 }
@@ -86,7 +85,8 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                   default:
-                    return const SampleListView();
+                    return DrinkDetailScreen.create(id: '17248');
+                    // return SampleListView();
                 }
               },
             );
