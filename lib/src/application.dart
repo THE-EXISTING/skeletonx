@@ -1,5 +1,6 @@
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/localization/l10n.dart';
+import 'package:skeletonx/src/features/drinks_home/views/drink_home_screen.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
 import 'features/sample_list_view_feature/sample_list_view.dart';
 import 'features/settings/settings_view.dart';
@@ -57,6 +58,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
           // background.
+          debugShowCheckedModeBanner: false,
           restorationScopeId: restorationId,
           localizationsDelegates: L10n.localizationsDelegates,
           supportedLocales: L10n.supportedLocales,
@@ -85,7 +87,8 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                   default:
-                    return DrinkDetailScreen.create(id: '11007');
+                    return DrinksHomeScreen.create(id: '0');
+                  // return DrinkDetailScreen.create(id: '11007');
                   // return SampleListView();
                 }
               },

@@ -49,6 +49,7 @@ abstract class ScreenScaffoldBlocStateX<T extends StatefulWidgetX,
             child: WillPopScope(
               onWillPop: () => onWillPop(state),
               child: Scaffold(
+                drawer: buildDrawer(context, state),
                 backgroundColor: backgroundColor,
                 appBar: buildAppBar(state),
                 body: Stack(
@@ -124,6 +125,10 @@ abstract class ScreenScaffoldBlocStateX<T extends StatefulWidgetX,
 
   Widget buildPageLoadingIndicator() {
     return Space.boxZero;
+  }
+
+  Widget? buildDrawer(BuildContext context, S state) {
+    return null;
   }
 
   void postBuild(BuildContext context, S state) {}
