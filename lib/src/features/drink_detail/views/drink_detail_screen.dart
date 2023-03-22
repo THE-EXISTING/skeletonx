@@ -40,6 +40,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
         Expanded(
           child: AppScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
                 _buildTitleText(state.data),
@@ -47,6 +48,9 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
                 _buildImage(state.data),
                 const SizedBox(height: 20),
                 _buildInstructionsText(state.data),
+                const SizedBox(height: 20),
+                _buildIngredientTitleText(),
+                _buildIngredientTabs(state.data),
               ],
             ),
           ),
@@ -59,7 +63,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     if (model == null) return Space.empty;
     return Text(
       model.name,
-      style: Theme.of(context).textTheme.titleLarge,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 
@@ -84,6 +88,45 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
           ),
           const SizedBox(height: 20),
           Text(model.instruction),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIngredientTitleText() {
+    return Container(
+      padding: const EdgeInsets.only(left: 25),
+      width: double.infinity,
+      child: Text(
+        'Ingredient',
+        style: Theme.of(context).textTheme.headlineSmall,
+        textAlign: TextAlign.left,
+      ),
+    );
+  }
+
+  Widget _buildIngredientTabs(DrinkModel? model) {
+    return Wrap(
+      children: [
+        _buildIngredientTab(model),
+        _buildIngredientTab(model),
+        _buildIngredientTab(model),
+      ],
+    );
+  }
+
+  Widget _buildIngredientTab(DrinkModel? model) {
+    if (model == null) return Space.empty;
+    return Container(
+      margin: const EdgeInsets.all(12.0),
+      color: Colors.grey[300],
+      width: 150,
+      height: 150,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Icon(Icons.access_alarm),
+          Text(model.props.second.toString()),
         ],
       ),
     );
