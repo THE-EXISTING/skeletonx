@@ -74,6 +74,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     return Text(
       model.name,
       style: Theme.of(context).textTheme.headlineMedium,
+      textAlign: TextAlign.center,
     );
   }
 
@@ -132,8 +133,8 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     return Container(
       margin: const EdgeInsets.all(12.0),
       color: Colors.grey[300],
-      width: 150,
-      height: 150,
+      width: 120,
+      height: 120,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
