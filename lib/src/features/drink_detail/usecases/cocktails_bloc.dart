@@ -29,9 +29,14 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
         call: _cocktailRepo.searchDrinkByName(name: 'martini'),
         onResource: (resource) {
           if (resource.isLoading()) {
+            screenEventCubit
+                .emit(const BlocEvent(name: ViewEvent.loading, data: true));
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
+            screenEventCubit
+                .emit(const BlocEvent(name: ViewEvent.loading, data: false));
+
             emitState(resource);
             //TODO: Handle success with your business logic
           }

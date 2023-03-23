@@ -18,6 +18,19 @@ class DrinkDetailScreen extends AppScreen {
 
 class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinkDetailScreen, CocktailBloc, Resource<DrinkModel?>> {
+  bool _isLoading = false;
+
+  @override
+  void onListenEvent(BuildContext context, Object event, Object? data) {
+    switch (event) {
+      case ViewEvent.loading:
+        setState(() {
+          _isLoading = data as bool;
+        });
+        break;
+    }
+  }
+
   @override
   PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
     return AppToolbar(title: 'Detail');
@@ -25,33 +38,35 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBodyLoading(BuildContext context, Resource<DrinkModel?> state) {
-    return buildBody(context, state);
+    return const CircularProgressIndicator();
   }
 
   @override
   Widget buildBody(BuildContext context, Resource<DrinkModel?> state) {
-    return Column(
-      children: [
-        Expanded(
-          child: AppScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                _buildTitleText(state.data),
-                const SizedBox(height: 20),
-                _buildImage(state.data),
-                const SizedBox(height: 20),
-                _buildInstructionsText(state.data),
-                const SizedBox(height: 20),
-                _buildIngredientTitleText(),
-                _buildIngredientTabs(state.data),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
+    return _isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Column(
+            children: [
+              Expanded(
+                child: AppScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 20),
+                      _buildTitleText(state.data),
+                      const SizedBox(height: 20),
+                      _buildImage(state.data),
+                      const SizedBox(height: 20),
+                      _buildInstructionsText(state.data),
+                      const SizedBox(height: 20),
+                      _buildIngredientTitleText(),
+                      _buildIngredientTabs(state.data),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
   }
 
   Widget _buildTitleText(DrinkModel? model) {

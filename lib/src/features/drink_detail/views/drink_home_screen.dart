@@ -18,6 +18,19 @@ class DrinksHomeScreen extends AppScreen {
 
 class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinksHomeScreen, CocktailsBloc, Resource<List<DrinkModel>?>> {
+  bool _isLoading = false;
+
+  @override
+  void onListenEvent(BuildContext context, Object event, Object? data) {
+    switch (event) {
+      case ViewEvent.loading:
+        setState(() {
+          _isLoading = data as bool;
+        });
+        break;
+    }
+  }
+
   @override
   PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel>?> state) {
     return AppToolbar(
@@ -65,7 +78,9 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBody(BuildContext context, Resource<List<DrinkModel>?> state) {
-    return _buildDrinkTabs(state);
+    return _isLoading
+        ? Center(child: CircularProgressIndicator())
+        : _buildDrinkTabs(state);
   }
 
   Widget _buildDrinkTabs(Resource<List<DrinkModel>?> state) {
