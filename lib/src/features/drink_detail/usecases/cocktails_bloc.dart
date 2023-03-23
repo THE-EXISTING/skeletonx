@@ -7,12 +7,10 @@ enum CocktailsEvent {
 class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
     BlocEvent<CocktailsEvent>, Resource<List<DrinkModel>?>> {
   CocktailsBloc({
-    required this.id,
     DrinkRepository? cocktailRepo,
   })  : _cocktailRepo = cocktailRepo ?? DrinkRepository(),
         super(Resource.init());
 
-  final String id;
   final DrinkRepository _cocktailRepo;
 
   @override
@@ -28,7 +26,7 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
 
   void _fetchDrinks() => fetch(
         key: CocktailsEvent.loadDrinks,
-        call: _cocktailRepo.searchDrinkByName(name: 'lemon'),
+        call: _cocktailRepo.searchDrinkByName(name: 'martini'),
         onResource: (resource) {
           if (resource.isLoading()) {
             //TODO: Handle loading with your business logic

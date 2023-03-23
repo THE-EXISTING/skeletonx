@@ -3,10 +3,10 @@ import 'package:skeletonx/core/core.dart';
 class DrinksHomeScreen extends AppScreen {
   const DrinksHomeScreen._({required Key key}) : super(key: key);
 
-  static Widget create({required String id}) => //
+  static Widget create() => //
       BlocProvider(
         create: (context) =>
-            CocktailsBloc(id: id)..addInitEvent(CocktailsEvent.loadDrinks),
+            CocktailsBloc()..addInitEvent(CocktailsEvent.loadDrinks),
         child: const DrinksHomeScreen._(
           key: Key('DrinksHomeScreen'),
         ),

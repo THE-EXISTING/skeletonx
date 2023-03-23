@@ -87,7 +87,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                   default:
-                    return DrinksHomeScreen.create(id: '17222');
+                    return DrinksHomeScreen.create();
                   // return DrinkDetailScreen.create(id: '11007');
                   // return SampleListView();
                 }
