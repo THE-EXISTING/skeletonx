@@ -60,7 +60,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
                       _buildInstructionsText(state.data),
                       const SizedBox(height: 20),
                       _buildIngredientTitleText(),
-                      _buildIngredientTabs(state.data),
+                      _buildIngredientTabs(state.data?.ingredients),
                     ],
                   ),
                 ),
@@ -118,18 +118,16 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     );
   }
 
-  Widget _buildIngredientTabs(DrinkModel? model) {
+  Widget _buildIngredientTabs(Set<String>? ingredients) {
+    if (ingredients == null) return Space.empty;
     return Wrap(
       children: [
-        _buildIngredientTab(model),
-        _buildIngredientTab(model),
-        _buildIngredientTab(model),
+        for (var ingredient in ingredients) _buildIngredientTab(ingredient)
       ],
     );
   }
 
-  Widget _buildIngredientTab(DrinkModel? model) {
-    if (model == null) return Space.empty;
+  Widget _buildIngredientTab(String ingredient) {
     return Container(
       margin: const EdgeInsets.all(12.0),
       color: Colors.grey[300],
@@ -138,9 +136,9 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Icon(Icons.image),
+          const Icon(Icons.water_drop),
           Text(
-            model.props.second.toString(),
+            ingredient,
             textAlign: TextAlign.center,
           ),
         ],
