@@ -18,6 +18,91 @@ class DrinksHomeScreen extends AppScreen {
 
 class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinksHomeScreen, CocktailBloc, Resource<DrinkModel?>> {
+  final items = [
+    DrinkModel(
+      id: '',
+      name: 'a',
+      instruction: '',
+      category: '',
+      thumbnailUrl:
+          'https://www.thecocktaildb.com/images/media/drink/zaqa381504368758.jpg',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: 'b',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: 'c',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+    DrinkModel(
+      id: '',
+      name: '',
+      instruction: '',
+      category: '',
+      thumbnailUrl: '',
+      imgUrl: '',
+      videoUrl: '',
+    ),
+  ];
+
   @override
   Future<bool> onWillPop(Resource<DrinkModel?> resource) {
     return Future.value(false);
@@ -42,7 +127,7 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBody(BuildContext context, Resource<DrinkModel?> state) {
-    return Container();
+    return _buildDrinkTabs(items);
   }
 
   @override
@@ -72,7 +157,47 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     );
   }
 
-  ListTile _buildDrawerMenuItem(
+  Widget _buildDrinkTabs(List<DrinkModel>? models) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1,
+      ),
+      itemCount: models?.length,
+      itemBuilder: (context, index) {
+        return _buildDrinkTab(
+          models?[index],
+        );
+      },
+    );
+  }
+
+  Widget _buildDrinkTab(DrinkModel? model) {
+    if (model == null) return Space.empty;
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.all(12.0),
+        color: Colors.grey[300],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ClipOval(
+              child: SizedBox.fromSize(
+                size: const Size.fromRadius(48),
+                child: model.thumbnailUrl.isNotNullOrEmpty
+                    ? Image.network(model.thumbnailUrl)
+                    : const Icon(Icons.image),
+              ),
+            ),
+            Text(model.name),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerMenuItem(
       {required Icon icon, required String title, Function()? onTap}) {
     return ListTile(
       onTap: onTap,
