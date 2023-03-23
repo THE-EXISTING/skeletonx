@@ -19,11 +19,6 @@ class DrinksHomeScreen extends AppScreen {
 class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinksHomeScreen, CocktailsBloc, Resource<List<DrinkModel>?>> {
   @override
-  Future<bool> onWillPop(Resource<List<DrinkModel>?> state) {
-    return Future.value(false);
-  }
-
-  @override
   PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel>?> state) {
     return AppToolbar(
       title: 'Drinks',
@@ -70,10 +65,6 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBody(BuildContext context, Resource<List<DrinkModel>?> state) {
-    if (state == null) return Space.empty;
-
-    print('l: ${state.data?.length}');
-
     return _buildDrinkTabs(state);
   }
 
@@ -95,7 +86,15 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
   Widget _buildDrinkTab(DrinkModel? model) {
     if (model == null) return Space.empty;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return DrinkDetailScreen.create(id: model.id);
+            },
+          ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.all(12.0),
         color: Colors.grey[300],

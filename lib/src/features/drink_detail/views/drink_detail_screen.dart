@@ -19,11 +19,6 @@ class DrinkDetailScreen extends AppScreen {
 class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinkDetailScreen, CocktailBloc, Resource<DrinkModel?>> {
   @override
-  Future<bool> onWillPop(Resource<DrinkModel?> resource) {
-    return Future.value(false);
-  }
-
-  @override
   PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
     return AppToolbar(title: 'Detail');
   }
