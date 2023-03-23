@@ -79,10 +79,12 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
 
   Widget _buildImage(DrinkModel? model) {
     if (model == null) return Space.empty;
-    return SizedBox(
-      width: 200,
-      height: 200,
-      child: Image.network(model.thumbnailUrl),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: SizedBox.fromSize(
+        size: const Size.fromRadius(100),
+        child: Image.network(model.thumbnailUrl),
+      ),
     );
   }
 
@@ -135,7 +137,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Icon(Icons.access_alarm),
+          const Icon(Icons.image),
           Text(model.props.second.toString()),
         ],
       ),
