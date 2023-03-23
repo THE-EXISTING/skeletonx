@@ -6,7 +6,7 @@ class DrinksHomeScreen extends AppScreen {
   static Widget create({required String id}) => //
       BlocProvider(
         create: (context) =>
-            CocktailBloc(id: id)..addInitEvent(CocktailEvent.loadDrink),
+            CocktailsBloc(id: id)..addInitEvent(CocktailsEvent.loadDrinks),
         child: const DrinksHomeScreen._(
           key: Key('DrinksHomeScreen'),
         ),
@@ -17,99 +17,14 @@ class DrinksHomeScreen extends AppScreen {
 }
 
 class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
-    DrinksHomeScreen, CocktailBloc, Resource<DrinkModel?>> {
-  final items = [
-    DrinkModel(
-      id: '',
-      name: 'a',
-      instruction: '',
-      category: '',
-      thumbnailUrl:
-          'https://www.thecocktaildb.com/images/media/drink/zaqa381504368758.jpg',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: 'b',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: 'c',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-    DrinkModel(
-      id: '',
-      name: '',
-      instruction: '',
-      category: '',
-      thumbnailUrl: '',
-      imgUrl: '',
-      videoUrl: '',
-    ),
-  ];
-
+    DrinksHomeScreen, CocktailsBloc, Resource<List<DrinkModel>?>> {
   @override
-  Future<bool> onWillPop(Resource<DrinkModel?> resource) {
+  Future<bool> onWillPop(Resource<List<DrinkModel>?> state) {
     return Future.value(false);
   }
 
   @override
-  PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
+  PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel>?> state) {
     return AppToolbar(
       title: 'Drinks',
       actionWidgets: [
@@ -121,17 +36,13 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
   }
 
   @override
-  Widget buildBodyLoading(BuildContext context, Resource<DrinkModel?> state) {
+  Widget buildBodyLoading(
+      BuildContext context, Resource<List<DrinkModel>?> state) {
     return buildBody(context, state);
   }
 
   @override
-  Widget buildBody(BuildContext context, Resource<DrinkModel?> state) {
-    return _buildDrinkTabs(items);
-  }
-
-  @override
-  Widget? buildDrawer(BuildContext context, Resource<DrinkModel?> state) {
+  Widget? buildDrawer(BuildContext context, Resource<List<DrinkModel>?> state) {
     return Container(
       color: Colors.blue,
       width: 150,
@@ -157,16 +68,25 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     );
   }
 
-  Widget _buildDrinkTabs(List<DrinkModel>? models) {
+  @override
+  Widget buildBody(BuildContext context, Resource<List<DrinkModel>?> state) {
+    if (state == null) return Space.empty;
+
+    print('l: ${state.data?.length}');
+
+    return _buildDrinkTabs(state);
+  }
+
+  Widget _buildDrinkTabs(Resource<List<DrinkModel>?> state) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 1,
       ),
-      itemCount: models?.length,
+      itemCount: state.data?.length,
       itemBuilder: (context, index) {
         return _buildDrinkTab(
-          models?[index],
+          state.data?[index],
         );
       },
     );

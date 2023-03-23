@@ -1,12 +1,12 @@
 import 'package:skeletonx/core/core.dart';
 
-enum CocktailEvent {
-  loadDrink,
+enum CocktailsEvent {
+  loadDrinks,
 }
 
-class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
-    Resource<DrinkModel?>> {
-  CocktailBloc({
+class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
+    BlocEvent<CocktailsEvent>, Resource<List<DrinkModel>?>> {
+  CocktailsBloc({
     required this.id,
     DrinkRepository? cocktailRepo,
   })  : _cocktailRepo = cocktailRepo ?? DrinkRepository(),
@@ -16,19 +16,19 @@ class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
   final DrinkRepository _cocktailRepo;
 
   @override
-  Future<void> onListenEvent(BlocEvent<CocktailEvent> event) async {
+  Future<void> onListenEvent(BlocEvent<CocktailsEvent> event) async {
     switch (event.name) {
-      case CocktailEvent.loadDrink:
-        _fetchDrink();
+      case CocktailsEvent.loadDrinks:
+        _fetchDrinks();
         break;
     }
   }
 
   ///========================= PRIVATE METHOD =========================///
 
-  void _fetchDrink() => fetch(
-        key: CocktailEvent.loadDrink,
-        call: _cocktailRepo.getDrinkById(id: id),
+  void _fetchDrinks() => fetch(
+        key: CocktailsEvent.loadDrinks,
+        call: _cocktailRepo.searchDrinkByName(name: 'lemon'),
         onResource: (resource) {
           if (resource.isLoading()) {
             //TODO: Handle loading with your business logic
