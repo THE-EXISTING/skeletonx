@@ -35,6 +35,7 @@ class AppToolbar extends AppComponent with PreferredSizeWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
+      leading: backButtonWidget,
       elevation: 0,
       centerTitle: centerTitle,
       actions: actionWidgets,

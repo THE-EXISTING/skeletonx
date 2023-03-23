@@ -1,7 +1,7 @@
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/localization/l10n.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
-import 'features/sample_list_view_feature/sample_list_view.dart';
+import 'features/home/views/home_screen.dart';
 import 'features/settings/settings_view.dart';
 import 'features/settings/settings_controller.dart';
 import 'features/sample_feature/sample_item_details_view.dart';
@@ -85,7 +85,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                   default:
-                    return DrinkDetailScreen.create(id: '17248');
+                    return HomeScreen.create(id: '17248');
                     // return SampleListView();
                 }
               },
