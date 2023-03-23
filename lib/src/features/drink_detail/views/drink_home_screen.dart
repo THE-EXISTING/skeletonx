@@ -124,7 +124,10 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
                     : const Icon(Icons.image),
               ),
             ),
-            Text(model.name),
+            Text(
+              model.name,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

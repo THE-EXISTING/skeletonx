@@ -139,7 +139,10 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Icon(Icons.image),
-          Text(model.props.second.toString()),
+          Text(
+            model.props.second.toString(),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );
