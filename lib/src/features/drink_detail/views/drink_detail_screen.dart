@@ -1,5 +1,9 @@
 import 'package:skeletonx/core/core.dart';
 
+enum DrinkDetailScreenEvent {
+  loading,
+}
+
 class DrinkDetailScreen extends AppScreen {
   const DrinkDetailScreen._({required Key key}) : super(key: key);
 
@@ -23,7 +27,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
   @override
   void onListenEvent(BuildContext context, Object event, Object? data) {
     switch (event) {
-      case ViewEvent.loading:
+      case DrinkDetailScreenEvent.loading:
         setState(() {
           _isLoading = data as bool;
         });

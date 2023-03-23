@@ -4,10 +4,6 @@ enum CocktailEvent {
   loadDrink,
 }
 
-enum ViewEvent {
-  loading,
-}
-
 class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
     Resource<DrinkModel?>> {
   CocktailBloc({
@@ -35,15 +31,15 @@ class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
         call: _cocktailRepo.getDrinkById(id: id),
         onResource: (resource) {
           if (resource.isLoading()) {
-            screenEventCubit
-                .emit(const BlocEvent(name: ViewEvent.loading, data: true));
+            screenEventCubit.emit(const BlocEvent(
+                name: DrinkDetailScreenEvent.loading, data: true));
 
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
             Future.delayed(const Duration(seconds: 1), () {
-              screenEventCubit
-                  .emit(const BlocEvent(name: ViewEvent.loading, data: false));
+              screenEventCubit.emit(const BlocEvent(
+                  name: DrinkDetailScreenEvent.loading, data: false));
 
               emitState(resource);
             });

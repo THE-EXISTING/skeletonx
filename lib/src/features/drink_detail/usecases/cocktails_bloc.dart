@@ -1,5 +1,7 @@
 import 'package:skeletonx/core/core.dart';
 
+import '../views/drink_home_screen.dart';
+
 enum CocktailsEvent {
   loadDrinks,
 }
@@ -29,14 +31,14 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
         call: _cocktailRepo.searchDrinkByName(name: 'martini'),
         onResource: (resource) {
           if (resource.isLoading()) {
-            screenEventCubit
-                .emit(const BlocEvent(name: ViewEvent.loading, data: true));
+            screenEventCubit.emit(const BlocEvent(
+                name: DrinkHomeScreenEvent.loading, data: true));
 
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
-            screenEventCubit
-                .emit(const BlocEvent(name: ViewEvent.loading, data: false));
+            screenEventCubit.emit(const BlocEvent(
+                name: DrinkHomeScreenEvent.loading, data: false));
 
             emitState(resource);
 
