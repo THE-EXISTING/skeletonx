@@ -37,13 +37,17 @@ class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
           if (resource.isLoading()) {
             screenEventCubit
                 .emit(const BlocEvent(name: ViewEvent.loading, data: true));
+
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
-            screenEventCubit
-                .emit(const BlocEvent(name: ViewEvent.loading, data: false));
+            Future.delayed(const Duration(seconds: 1), () {
+              screenEventCubit
+                  .emit(const BlocEvent(name: ViewEvent.loading, data: false));
 
-            emitState(resource);
+              emitState(resource);
+            });
+
             //TODO: Handle success with your business logic
           }
           if (resource.isException()) {
