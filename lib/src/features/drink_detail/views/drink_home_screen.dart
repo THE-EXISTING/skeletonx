@@ -121,17 +121,23 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ClipOval(
-                child: SizedBox.fromSize(
-                  size: const Size.fromRadius(48),
-                  child: model.thumbnailUrl.isNotNullOrEmpty
-                      ? Image.network(model.thumbnailUrl)
-                      : const Icon(Icons.image),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ClipOval(
+                  child: SizedBox.fromSize(
+                    size: const Size.fromRadius(48),
+                    child: model.thumbnailUrl.isNotNullOrEmpty
+                        ? Image.network(model.thumbnailUrl)
+                        : const Icon(Icons.image),
+                  ),
                 ),
               ),
-              Text(
-                model.name,
-                textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  model.name,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           ),
