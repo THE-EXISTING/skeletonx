@@ -28,7 +28,7 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
 
   void _fetchDrinks() => fetch(
         key: CocktailsEvent.loadDrinks,
-        call: _cocktailRepo.searchDrinkByName(name: 'martini'),
+        call: _cocktailRepo.searchDrinkByName(name: 'cocktail'),
         onResource: (resource) {
           if (resource.isLoading()) {
             screenEventCubit.emit(const BlocEvent(

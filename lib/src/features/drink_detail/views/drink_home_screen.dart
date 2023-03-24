@@ -83,7 +83,7 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
   @override
   Widget buildBody(BuildContext context, Resource<List<DrinkModel>?> state) {
     return _isLoading
-        ? Center(child: CircularProgressIndicator())
+        ? const Center(child: CircularProgressIndicator())
         : _buildDrinkTabs(state);
   }
 
@@ -117,22 +117,24 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Container(
         margin: const EdgeInsets.all(12.0),
         color: Colors.grey[300],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ClipOval(
-              child: SizedBox.fromSize(
-                size: const Size.fromRadius(48),
-                child: model.thumbnailUrl.isNotNullOrEmpty
-                    ? Image.network(model.thumbnailUrl)
-                    : const Icon(Icons.image),
+        child: FittedBox(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ClipOval(
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(48),
+                  child: model.thumbnailUrl.isNotNullOrEmpty
+                      ? Image.network(model.thumbnailUrl)
+                      : const Icon(Icons.image),
+                ),
               ),
-            ),
-            Text(
-              model.name,
-              textAlign: TextAlign.center,
-            ),
-          ],
+              Text(
+                model.name,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
