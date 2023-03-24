@@ -26,9 +26,6 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
 
   @override
   Future<bool> onWillPop(Resource<DrinkModel?> resource) {
-
-    print('builbody${resource.data?.name}');
-
     return Future.value(false);
   }
 
@@ -141,8 +138,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
             title: const Text('Refresh'),
             onTap: () {
               // mock up as refresh button
-
-              HomeBloc().addClickEvent(HomeEvent.loadHomePage);
+              bloc.addClickEvent(HomeEvent.loadHomePage);
               // Then close the drawer
               Navigator.pop(context);
             },

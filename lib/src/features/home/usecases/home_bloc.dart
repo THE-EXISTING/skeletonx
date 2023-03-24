@@ -33,7 +33,6 @@ class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
         //TODO: Handle loading with your business logic
       }
       if (resource.isSuccess()) {
-        print("success ${resource.data?.name}");
         emitState(resource);
 
         //TODO: Handle success with your business logic
