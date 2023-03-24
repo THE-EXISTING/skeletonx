@@ -85,7 +85,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                   default:
-                    return HomeScreen.create(id: '17248');
+                    return HomeScreen.create();
                     // return SampleListView();
                 }
               },

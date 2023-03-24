@@ -8,13 +8,11 @@ enum HomeEvent {
 
 class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
     Resource<DrinkModel?>> {
-  HomeBloc({
-    required this.id,
+  HomeBloc( {
     HomeRepository? cocktailRepo,
   })  : _cocktailRepo = cocktailRepo ?? HomeRepository(),
         super(Resource.init());
 
-  final String id;
   final HomeRepository _cocktailRepo;
 
   @override
@@ -28,19 +26,21 @@ class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
 
   ///========================= PRIVATE METHOD =========================///
   void _fetchDrink() => fetch(
-        key: HomeEvent.loadHomePage,
-        call: _cocktailRepo.getDrinkById(id: id),
-        onResource: (resource) {
-          if (resource.isLoading()) {
-            //TODO: Handle loading with your business logic
-          }
-          if (resource.isSuccess()) {
-            emitState(resource);
-            //TODO: Handle success with your business logic
-          }
-          if (resource.isException()) {
-            //TODO: Handle error with your business logic
-          }
-        },
-      );
+    key: HomeEvent.loadHomePage,
+    call: _cocktailRepo.randomDrink(),
+    onResource: (resource) {
+      if (resource.isLoading()) {
+        //TODO: Handle loading with your business logic
+      }
+      if (resource.isSuccess()) {
+        print("success ${resource.data?.name}");
+        emitState(resource);
+
+        //TODO: Handle success with your business logic
+      }
+      if (resource.isException()) {
+        //TODO: Handle error with your business logic
+      }
+    },
+  );
 }

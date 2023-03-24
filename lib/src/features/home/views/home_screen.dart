@@ -5,10 +5,10 @@ import '../usecases/home_bloc.dart';
 class HomeScreen extends AppScreen {
   const HomeScreen._({required Key key}) : super(key: key);
 
-  static Widget create({required String id}) => //
+  static Widget create() => //
       BlocProvider(
         create: (context) =>
-            HomeBloc(id: id)..addInitEvent(HomeEvent.loadHomePage),
+            HomeBloc()..addInitEvent(HomeEvent.loadHomePage),
         child: const HomeScreen._(
           key: Key('HomeScreen'),
         ),
@@ -26,6 +26,9 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
 
   @override
   Future<bool> onWillPop(Resource<DrinkModel?> resource) {
+
+    print('builbody${resource.data?.name}');
+
     return Future.value(false);
   }
 
@@ -135,8 +138,11 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
               )
           ),
           ListTile(
-            title: const Text('Item 1'),
+            title: const Text('Refresh'),
             onTap: () {
+              // mock up as refresh button
+
+              HomeBloc().addClickEvent(HomeEvent.loadHomePage);
               // Then close the drawer
               Navigator.pop(context);
             },
