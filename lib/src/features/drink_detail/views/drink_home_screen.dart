@@ -48,12 +48,6 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
   }
 
   @override
-  Widget buildBodyLoading(
-      BuildContext context, Resource<List<DrinkModel>?> state) {
-    return buildBody(context, state);
-  }
-
-  @override
   Widget? buildDrawer(BuildContext context, Resource<List<DrinkModel>?> state) {
     return Container(
       color: Colors.blue,
@@ -82,11 +76,16 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBody(BuildContext context, Resource<List<DrinkModel>?> state) {
-    return _isLoading
-        ? const Center(child: CircularProgressIndicator())
-        : _buildDrinkTabs(state);
+    return _buildDrinkTabs(state);
   }
 
+  @override
+  Widget buildBodyLoading(
+      BuildContext context, Resource<List<DrinkModel>?> state) {
+    return const Center(child: CircularProgressIndicator());
+  }
+
+  ///========================= PRIVATE METHOD =========================///
   Widget _buildDrinkTabs(Resource<List<DrinkModel>?> state) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -106,13 +105,14 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     if (model == null) return Space.empty;
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return DrinkDetailScreen.create(id: model.id);
-            },
-          ),
-        );
+        pushScreen(DrinkDetailScreen.create(id: model.id));
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) {
+        //       return DrinkDetailScreen.create(id: model.id);
+        //     },
+        //   ),
+        // );
       },
       child: Container(
         margin: const EdgeInsets.all(12.0),
@@ -177,13 +177,13 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
       onSelected: (value) {
         switch (value) {
           case 0:
-            print("Login is selected.");
+            print('Login is selected.');
             break;
           case 1:
-            print("Settings is selected.");
+            print('Settings is selected.');
             break;
           case 2:
-            print("About is selected.");
+            print('About is selected.');
             break;
         }
       },
@@ -216,16 +216,16 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
       onSelected: (value) {
         switch (value) {
           case 0:
-            print("Login is selected.");
+            Log.d('Login is selected.');
             break;
           case 1:
-            print("Settings is selected.");
+            print('Settings is selected.');
             break;
           case 2:
-            print("About is selected.");
+            print('About is selected.');
             break;
           case 3:
-            print("Sign-out is selected.");
+            print('Sign-out is selected.');
             break;
         }
       },
