@@ -31,16 +31,12 @@ class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
         call: _cocktailRepo.getDrinkById(id: id),
         onResource: (resource) {
           if (resource.isLoading()) {
-            screenEventCubit.emit(const BlocEvent(
-                name: DrinkDetailScreenEvent.loading, data: true));
+            emitState(resource);
 
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
             Future.delayed(const Duration(seconds: 1), () {
-              screenEventCubit.emit(const BlocEvent(
-                  name: DrinkDetailScreenEvent.loading, data: false));
-
               emitState(resource);
             });
 
@@ -51,4 +47,24 @@ class CocktailBloc extends ScreenBlocX<CocktailEvent, BlocEvent<CocktailEvent>,
           }
         },
       );
+
+  // void _fetchIngredient({required name}) async => fetch(
+  //       key: CocktailEvent.loadIngredient,
+  //       call: _cocktailRepo.searchIngredientByName(name: name),
+  //       onResource: (resource) {
+  //         if (resource.isLoading()) {
+  //           //TODO: Handle loading with your business logic
+  //         }
+  //         if (resource.isSuccess()) {
+  //           Future.delayed(const Duration(seconds: 1), () {
+  //             emitState(resource);
+  //           });
+  //
+  //           //TODO: Handle success with your business logic
+  //         }
+  //         if (resource.isException()) {
+  //           //TODO: Handle error with your business logic
+  //         }
+  //       },
+  //     );
 }

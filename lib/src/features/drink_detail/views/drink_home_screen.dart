@@ -1,14 +1,9 @@
 import 'package:skeletonx/core/core.dart';
 
-enum DrinkHomeScreenEvent {
-  loading,
-}
-
 class DrinksHomeScreen extends AppScreen {
   const DrinksHomeScreen._({required Key key}) : super(key: key);
 
-  static Widget create() => //
-      BlocProvider(
+  static Widget create() => BlocProvider(
         create: (context) =>
             CocktailsBloc()..addInitEvent(CocktailsEvent.loadDrinks),
         child: const DrinksHomeScreen._(
@@ -22,18 +17,8 @@ class DrinksHomeScreen extends AppScreen {
 
 class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinksHomeScreen, CocktailsBloc, Resource<List<DrinkModel>?>> {
-  bool _isLoading = false;
-
   @override
-  void onListenEvent(BuildContext context, Object event, Object? data) {
-    switch (event) {
-      case DrinkHomeScreenEvent.loading:
-        setState(() {
-          _isLoading = data as bool;
-        });
-        break;
-    }
-  }
+  void onListenEvent(BuildContext context, Object event, Object? data) {}
 
   @override
   PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel>?> state) {
@@ -55,17 +40,17 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Column(
         children: [
           _buildDrawerMenuItem(
-            onTap: () => print('Drinks'),
+            onTap: () => Log.d('Drinks'),
             icon: const Icon(Icons.emoji_food_beverage, color: Colors.black),
             title: 'Drinks',
           ),
           _buildDrawerMenuItem(
-            onTap: () => print('Cars'),
+            onTap: () => Log.d('Cars'),
             icon: const Icon(Icons.car_crash_sharp, color: Colors.black),
             title: 'Cars',
           ),
           _buildDrawerMenuItem(
-            onTap: () => print('Foods'),
+            onTap: () => Log.d('Foods'),
             icon: const Icon(Icons.fastfood, color: Colors.black),
             title: 'Foods',
           ),
@@ -106,13 +91,6 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     return InkWell(
       onTap: () {
         pushScreen(DrinkDetailScreen.create(id: model.id));
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) {
-        //       return DrinkDetailScreen.create(id: model.id);
-        //     },
-        //   ),
-        // );
       },
       child: Container(
         margin: const EdgeInsets.all(12.0),
@@ -177,13 +155,13 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
       onSelected: (value) {
         switch (value) {
           case 0:
-            print('Login is selected.');
+            Log.d('Login is selected.');
             break;
           case 1:
-            print('Settings is selected.');
+            Log.d('Settings is selected.');
             break;
           case 2:
-            print('About is selected.');
+            Log.d('About is selected.');
             break;
         }
       },
@@ -219,13 +197,13 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
             Log.d('Login is selected.');
             break;
           case 1:
-            print('Settings is selected.');
+            Log.d('Settings is selected.');
             break;
           case 2:
-            print('About is selected.');
+            Log.d('About is selected.');
             break;
           case 3:
-            print('Sign-out is selected.');
+            Log.d('Sign-out is selected.');
             break;
         }
       },

@@ -10,27 +10,30 @@ class DrinkRemoteDataSources {
   Future<DrinkListResponse> searchDrinkByName({required String name}) async =>
       await _drinkApi.searchDrinkByName(name: name).unWrapResponse();
 
-  // Future<DrinkResponse> getDrinkById({required String id}) async =>
-  //     await _drinkApi
-  //         .getDrinkById(id: id)
-  //         .unWrapResponse()
-  //         .then((list) => list.drinks[0]);
+  Future<DrinkResponse> getDrinkById({required String id}) async =>
+      await _drinkApi
+          .getDrinkById(id: id)
+          .unWrapResponse()
+          .then((list) => list.drinks[0]);
 
-  Future<Two<DrinkResponse, List<IngredientResponse>>> getDrinkById(
-      {required String id}) async {
-    DrinkResponse drinkResponse = await _drinkApi
-        .getDrinkById(id: id)
-        .unWrapResponse()
-        .then((list) => list.drinks[0]);
+  // Future<Two<DrinkResponse, List<IngredientResponse>>> getDrinkById(
+  //     {required String id}) async {
+  //   DrinkResponse drinkResponse = await _drinkApi
+  //       .getDrinkById(id: id)
+  //       .unWrapResponse()
+  //       .then((list) => list.drinks[0]);
+  //
+  //   List<IngredientResponse> ingredientList = Future.wait(futures);
+  //
+  //   return Two(first: drinkResponse, second: ingredientList);
+  // }
 
-    List<IngredientResponse> ingredientList = Future.wait(futures);
-
-    return Two(first: drinkResponse, second: ingredientList);
-  }
-
-  Future<IngredientListResponse> searchIngredientByName(
+  Future<IngredientResponse> searchIngredientByName(
           {required String name}) async =>
-      await _drinkApi.searchIngredientByName(name: name).unWrapResponse();
+      await _drinkApi
+          .searchIngredientByName(name: name)
+          .unWrapResponse()
+          .then((list) => list.ingredients[0]);
 
   Future<IngredientResponse> getIngredientById({required String id}) async =>
       await _drinkApi

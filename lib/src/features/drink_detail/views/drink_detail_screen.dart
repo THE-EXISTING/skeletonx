@@ -1,9 +1,5 @@
 import 'package:skeletonx/core/core.dart';
 
-enum DrinkDetailScreenEvent {
-  loading,
-}
-
 class DrinkDetailScreen extends AppScreen {
   const DrinkDetailScreen._({required Key key}) : super(key: key);
 
@@ -22,18 +18,8 @@ class DrinkDetailScreen extends AppScreen {
 
 class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     DrinkDetailScreen, CocktailBloc, Resource<DrinkModel?>> {
-  bool _isLoading = false;
-
   @override
-  void onListenEvent(BuildContext context, Object event, Object? data) {
-    switch (event) {
-      case DrinkDetailScreenEvent.loading:
-        setState(() {
-          _isLoading = data as bool;
-        });
-        break;
-    }
-  }
+  void onListenEvent(BuildContext context, Object event, Object? data) {}
 
   @override
   PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
@@ -42,35 +28,33 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   Widget buildBodyLoading(BuildContext context, Resource<DrinkModel?> state) {
-    return const CircularProgressIndicator();
+    return const Center(child: CircularProgressIndicator());
   }
 
   @override
   Widget buildBody(BuildContext context, Resource<DrinkModel?> state) {
-    return _isLoading
-        ? const Center(child: CircularProgressIndicator())
-        : Column(
-            children: [
-              Expanded(
-                child: AppScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 20),
-                      _buildTitleText(state.data),
-                      const SizedBox(height: 20),
-                      _buildImage(state.data),
-                      const SizedBox(height: 20),
-                      _buildInstructionsText(state.data),
-                      const SizedBox(height: 20),
-                      _buildIngredientTitleText(),
-                      _buildIngredientTabs(state.data?.ingredients),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          );
+    return Column(
+      children: [
+        Expanded(
+          child: AppScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                _buildTitleText(state.data),
+                const SizedBox(height: 20),
+                _buildImage(state.data),
+                const SizedBox(height: 20),
+                _buildInstructionsText(state.data),
+                const SizedBox(height: 20),
+                _buildIngredientTitleText(),
+                _buildIngredientTabs(state.data?.ingredients),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildTitleText(DrinkModel? model) {
@@ -140,7 +124,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Icon(Icons.water_drop),
+          const Icon(false ? Icons.dangerous : Icons.health_and_safety),
           Text(
             ingredient,
             textAlign: TextAlign.center,

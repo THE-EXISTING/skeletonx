@@ -36,4 +36,14 @@ class DrinkRepository {
           Log.e(exception, stackTrace);
         },
       );
+
+  Stream<Resource<IngredientModel>> searchIngredientByName(
+          {required String name}) =>
+      NetworkBoundResource.asStream<IngredientModel, IngredientResponse>(
+        createCallFuture: () => _drinkRemote.searchIngredientByName(name: name),
+        processResponse: (response) => IngredientModel.fromResponse(response),
+        error: (exception, stackTrace) {
+          Log.e(exception, stackTrace);
+        },
+      );
 }

@@ -19,7 +19,8 @@ class DrinkModel with EquatableMixin {
   final String thumbnailUrl;
   final String imgUrl;
   final String videoUrl;
-  final Set<IngredientModel> ingredients;
+  final Set<String> ingredients;
+  // final Set<IngredientModel> ingredients;
 
   @override
   List<Object?> get props => [
