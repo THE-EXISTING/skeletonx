@@ -40,7 +40,11 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
 
   @override
   Widget buildBodyLoading(BuildContext context, Resource<DrinkModel?> state) {
-    return buildBody(context, state);
+    if (state.isLoading()) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return buildBody(context, state);
+    }
   }
 
   @override

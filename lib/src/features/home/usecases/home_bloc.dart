@@ -30,6 +30,8 @@ class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
     call: _cocktailRepo.randomDrink(),
     onResource: (resource) {
       if (resource.isLoading()) {
+        emitState(resource);
+
         //TODO: Handle loading with your business logic
       }
       if (resource.isSuccess()) {
