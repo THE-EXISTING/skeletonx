@@ -1,16 +1,18 @@
 import 'package:skeletonx/core/core.dart';
 
+import 'datasources/remotes/home_remote_datasources.dart';
+
 class HomeRepository {
   HomeRepository({
-    DrinkRemoteDataSources? drinkRemote,
-  }) : _drinkRemote = drinkRemote ?? DrinkRemoteDataSources();
+    HomeRemoteDataSources? homeRemote,
+  }) : _homeRemote = homeRemote ?? HomeRemoteDataSources();
 
-  final DrinkRemoteDataSources _drinkRemote;
+  final HomeRemoteDataSources _homeRemote;
 
   Stream<Resource<List<DrinkModel>>> searchDrinkByName(
           {required String name}) =>
       NetworkBoundResource.asStream<List<DrinkModel>, DrinkListResponse>(
-        createCallFuture: () => _drinkRemote.searchDrinkByName(name: name),
+        createCallFuture: () => _homeRemote.searchDrinkByName(name: name),
         processResponse: (response) => response.drinks
             .map((response) => DrinkModel.fromResponse(response))
             .toList(),
@@ -21,7 +23,7 @@ class HomeRepository {
 
   Stream<Resource<DrinkModel>> getDrinkById({required String id}) =>
       NetworkBoundResource.asStream<DrinkModel, DrinkResponse>(
-        createCallFuture: () => _drinkRemote.getDrinkById(id: id),
+        createCallFuture: () => _homeRemote.getDrinkById(id: id),
         processResponse: (response) => DrinkModel.fromResponse(response),
         error: (exception, stackTrace) {
           Log.e(exception, stackTrace);
@@ -30,7 +32,7 @@ class HomeRepository {
 
   Stream<Resource<DrinkModel>> randomDrink() =>
       NetworkBoundResource.asStream<DrinkModel, DrinkResponse>(
-        createCallFuture: () => _drinkRemote.randomDrink(),
+        createCallFuture: () => _homeRemote.randomDrink(),
         processResponse: (response) => DrinkModel.fromResponse(response),
         error: (exception, stackTrace) {
           Log.e(exception, stackTrace);
