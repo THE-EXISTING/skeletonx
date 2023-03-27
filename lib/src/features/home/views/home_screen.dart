@@ -50,9 +50,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   Widget buildBody(BuildContext context, Resource<List<DrinkModel?>> state) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
-          child: drawer(context)),
+      drawer: drawer(context),
       body: Column(
         children: [
           Expanded(
@@ -148,41 +146,41 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   }
 
   Widget drawer(BuildContext context) {
-    //TODO: Handle Drawer Menu Detail onClick
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const SizedBox(
-              height: 64,
-              width: double.infinity,
-              child: DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.amber),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                      child: Text('Details')
-                  )
-              )
+    return SizedBox(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child:
+            //TODO: Handle Drawer Menu Detail onClick
+            Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const SizedBox(
+                  height: 64,
+                  width: double.infinity,
+                  child: DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.amber),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Details')))),
+              ListTile(
+                title: const Text('Refresh'),
+                onTap: () {
+                  // mock up as refresh button
+                  bloc.addClickEvent(HomeEvent.loadHomePage);
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Item 2'),
+                onTap: () {
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              ),
+            ],
           ),
-          ListTile(
-            title: const Text('Refresh'),
-            onTap: () {
-              // mock up as refresh button
-              bloc.addClickEvent(HomeEvent.loadHomePage);
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Item 2'),
-            onTap: () {
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget dropdownMenu() {
