@@ -7,8 +7,7 @@ class HomeScreen extends AppScreen {
 
   static Widget create() => //
       BlocProvider(
-        create: (context) =>
-            HomeBloc()..addInitEvent(HomeEvent.loadHomePage),
+        create: (context) => HomeBloc()..addInitEvent(HomeEvent.loadHomePage),
         child: const HomeScreen._(
           key: Key('HomeScreen'),
         ),
@@ -20,17 +19,16 @@ class HomeScreen extends AppScreen {
 }
 
 class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
-    HomeBloc, Resource<DrinkModel?>> {
-
+    HomeBloc, Resource<List<DrinkModel?>>> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Future<bool> onWillPop(Resource<DrinkModel?> resource) {
+  Future<bool> onWillPop(Resource<List<DrinkModel?>> resource) {
     return Future.value(false);
   }
 
   @override
-  PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
+  PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel?>> state) {
     return AppToolbar(
       title: 'NEXTZY BAR ',
       backButtonWidget: drawerIcon(),
@@ -39,7 +37,8 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   }
 
   @override
-  Widget buildBodyLoading(BuildContext context, Resource<DrinkModel?> state) {
+  Widget buildBodyLoading(
+      BuildContext context, Resource<List<DrinkModel?>> state) {
     if (state.isLoading()) {
       return const Center(child: CircularProgressIndicator());
     } else {
@@ -48,7 +47,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   }
 
   @override
-  Widget buildBody(BuildContext context, Resource<DrinkModel?> state) {
+  Widget buildBody(BuildContext context, Resource<List<DrinkModel?>> state) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: SizedBox(
@@ -57,18 +56,45 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
       body: Column(
         children: [
           Expanded(
-            child: AppScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  _buildTitleText(state.data),
-                  const SizedBox(height: 20),
-                  _buildImage(state.data),
-                  const SizedBox(height: 20),
-                  _buildInstructionsText(state.data)
-                ],
+            child: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                for (DrinkModel? drink in state.data ?? []) ...{
+                  itemContainer(drink)
+                }
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget itemContainer(DrinkModel? drink) {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.amber[400],
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: SizedBox(
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(drink?.thumbnailUrl ?? ''),
               ),
             ),
+          ),
+          Center(
+            child: AppText(drink?.name, textAlign: TextAlign.center),
           ),
         ],
       ),

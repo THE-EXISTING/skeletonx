@@ -38,4 +38,16 @@ class HomeRepository {
           Log.e(exception, stackTrace);
         },
       );
+
+
+  Stream<Resource<List<DrinkModel>>> get4RandomDrink() =>
+      NetworkBoundResource.asStream<List<DrinkModel>, List<DrinkResponse>>(
+        createCallFuture: () => _homeRemote.get4RandomDrink(),
+        processResponse: (response) => response
+            .map((response) => DrinkModel.fromResponse(response))
+            .toList(),
+        error: (exception, stackTrace) {
+          Log.e(exception, stackTrace);
+        },
+      );
 }

@@ -30,4 +30,17 @@ class HomeRemoteDataSources {
       .randomDrink()
       .unWrapResponse()
       .then((list) => list.drinks[0]);
+
+  Future<List<DrinkResponse>> get4RandomDrink() async {
+    List<DrinkResponse> list = [];
+    await Future.wait([
+      _drinkApi.randomDrink().unWrapResponse().then((list) => list.drinks[0]),
+      _drinkApi.randomDrink().unWrapResponse().then((list) => list.drinks[0]),
+      _drinkApi.randomDrink().unWrapResponse().then((list) => list.drinks[0]),
+      _drinkApi.randomDrink().unWrapResponse().then((list) => list.drinks[0])
+    ]).then((listDrink) {
+      list.addAll(listDrink);
+    });
+    return list;
+  }
 }

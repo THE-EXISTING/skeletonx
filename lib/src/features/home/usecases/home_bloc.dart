@@ -7,7 +7,7 @@ enum HomeEvent {
 }
 
 class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
-    Resource<DrinkModel?>> {
+    Resource<List<DrinkModel?>>> {
   HomeBloc( {
     HomeRepository? cocktailRepo,
   })  : _cocktailRepo = cocktailRepo ?? HomeRepository(),
@@ -27,7 +27,7 @@ class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
   ///========================= PRIVATE METHOD =========================///
   void _fetchDrink() => fetch(
     key: HomeEvent.loadHomePage,
-    call: _cocktailRepo.randomDrink(),
+    call: _cocktailRepo.get4RandomDrink(),
     onResource: (resource) {
       if (resource.isLoading()) {
         emitState(resource);
