@@ -51,22 +51,37 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
     return Scaffold(
       key: _scaffoldKey,
       drawer: drawer(context),
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
-                for (DrinkModel? drink in state.data ?? []) ...{
-                  itemContainer(drink)
-                }
-              ],
-            ),
+      body: ListView(
+        children: <Widget>[
+          header( 'Popular Drinks'),
+          GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            padding: const EdgeInsets.all(8),
+            children: <Widget>[
+              for (DrinkModel? drink in state.data ?? []) ...{
+                itemContainer(drink)
+              }
+            ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget header(String text) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: const BoxDecoration(
+        color: Colors.deepOrange,
+      ),
+      child: AppText(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
