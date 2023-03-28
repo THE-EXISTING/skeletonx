@@ -15,7 +15,6 @@ class HomeScreen extends AppScreen {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-
 }
 
 class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
@@ -53,7 +52,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
       drawer: drawer(context),
       body: ListView(
         children: <Widget>[
-          header( 'Popular Drinks'),
+          header('Popular Drinks'),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -217,12 +216,8 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
       ];
     }, onSelected: (value) {
       if (value == 0) {
-
       } else if (value == 1) {
-
-      } else if (value == 2) {
-
-      }
+      } else if (value == 2) {}
     });
   }
 }
