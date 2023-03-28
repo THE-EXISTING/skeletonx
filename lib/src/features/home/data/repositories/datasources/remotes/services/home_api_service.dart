@@ -2,12 +2,12 @@
 import 'package:skeletonx/core/core.dart';
 
 /// API spec link: https://www.thecocktaildb.com/api.php
-class DrinkApiService extends AppApiService {
+class HomeApiServices extends AppApiService {
   static const URL_SEARCH = 'api/json/v1/1/search.php';
   static const URL_LOOKUP = 'api/json/v1/1/lookup.php';
   static const URL_RANDOM = 'api/json/v1/1/random.php';
 
-  DrinkApiService();
+  HomeApiServices();
 
   Future<Response<DrinkListResponse>> searchDrinkByName(
       {required String name}) {
