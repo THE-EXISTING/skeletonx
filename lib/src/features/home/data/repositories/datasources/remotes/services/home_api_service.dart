@@ -6,6 +6,7 @@ class HomeApiServices extends AppApiService {
   static const URL_SEARCH = 'api/json/v1/1/search.php';
   static const URL_LOOKUP = 'api/json/v1/1/lookup.php';
   static const URL_RANDOM = 'api/json/v1/1/random.php';
+  static const URL_FILTER = 'api/json/v1/1/filter.php';
 
   HomeApiServices();
 
@@ -50,6 +51,14 @@ class HomeApiServices extends AppApiService {
 
   Future<Response<DrinkListResponse>> randomDrink() {
     return post(URL_RANDOM,
+        converter: (json) => DrinkListResponse.fromJson(json),
+        isUseToken: false);
+  }
+
+  Future<Response<DrinkListResponse>> filterByAlcoholic(
+      {required String name}) {
+    return get(URL_FILTER,
+        queryParameters: {'a': name},
         converter: (json) => DrinkListResponse.fromJson(json),
         isUseToken: false);
   }

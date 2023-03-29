@@ -50,4 +50,15 @@ class HomeRepository {
           Log.e(exception, stackTrace);
         },
       );
+
+  Stream<Resource<List<DrinkModel>>> filterByAlcoholic({required bool isAlcoholic}) =>
+      NetworkBoundResource.asStream<List<DrinkModel>, DrinkListResponse>(
+        createCallFuture: () => _homeRemote.filterByAlcoholic(isAlcoholic: isAlcoholic),
+        processResponse: (response) => response.drinks
+            .map((response) => DrinkModel.fromResponse(response))
+            .toList(),
+        error: (exception, stackTrace) {
+          Log.e(exception, stackTrace);
+        },
+      );
 }

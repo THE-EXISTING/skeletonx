@@ -1,7 +1,7 @@
 import 'package:skeletonx/core/core.dart';
 
-class DrinkModel with EquatableMixin {
-  const DrinkModel({
+class HomeDrinkModel with EquatableMixin {
+  const HomeDrinkModel({
     required this.id,
     required this.name,
     required this.instruction,
@@ -33,10 +33,10 @@ class DrinkModel with EquatableMixin {
   @override
   bool? get stringify => true;
 
-  static DrinkModel fromResponse(DrinkResponse response) => DrinkModel(
+  static HomeDrinkModel fromResponse(DrinkResponse response) => HomeDrinkModel(
         id: response.idDrink!,
         name: response.strDrink!,
-        instruction: response.strInstructions!,
+        instruction: response.strInstructions ?? '',
         category: response.strCategory ?? '',
         thumbnailUrl: response.strDrinkThumb!,
         imgUrl: response.strImageSource ?? '',

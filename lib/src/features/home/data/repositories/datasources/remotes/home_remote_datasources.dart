@@ -18,7 +18,7 @@ class HomeRemoteDataSources {
           .then((list) => list.drinks[0]);
 
   Future<IngredientListResponse> searchIngredientByName(
-          {required String name}) async =>
+      {required String name}) async =>
       await _homeApi.searchIngredientByName(name: name).unWrapResponse();
 
   Future<IngredientResponse> getIngredientById({required String id}) async =>
@@ -43,5 +43,10 @@ class HomeRemoteDataSources {
       list.addAll(listDrink);
     });
     return list;
+  }
+
+  Future<DrinkListResponse> filterByAlcoholic({required bool isAlcoholic}) async {
+    String name = isAlcoholic ? 'Alcoholic' : 'Non_Alcoholic';
+    return await  _homeApi.filterByAlcoholic(name: name).unWrapResponse();
   }
 }
