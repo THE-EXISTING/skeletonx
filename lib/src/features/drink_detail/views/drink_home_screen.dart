@@ -1,4 +1,5 @@
 import 'package:skeletonx/core/core.dart';
+import 'package:skeletonx/src/features/about/views/about_screen.dart';
 import 'package:skeletonx/src/features/settings/settings_controller.dart';
 import 'package:skeletonx/src/features/settings/settings_view.dart';
 
@@ -169,6 +170,9 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
             break;
           case 2:
             Log.d('About is selected.');
+            pushScreen(
+              AboutScreen(),
+            );
             break;
         }
       },
