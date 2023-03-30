@@ -1,6 +1,5 @@
 import 'package:skeletonx/core/core.dart';
-
-import '../usecases/home_bloc.dart';
+import 'package:skeletonx/src/features/home/home.dart';
 
 class HomeScreen extends AppScreen {
   const HomeScreen._({required Key key}) : super(key: key);
@@ -20,6 +19,34 @@ class HomeScreen extends AppScreen {
 class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
     HomeBloc, Resource<List<HomeDrinkModel?>>> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool popular = false;
+  bool alcoholic = false;
+  bool nonAlcoholic = false;
+  List<Widget> data = [];
+
+  @override
+  void onListenEvent(BuildContext context, Object event, Object? data) {
+    switch (event) {
+      case HomeEvent.loadHomePage:
+        setState(() {
+          popular = true;
+        });
+        break;
+
+      case HomeEvent.getAlcoholic:
+        setState(() {
+          alcoholic = true;
+        });
+        break;
+
+      case HomeEvent.getNonAlcoholic:
+        setState(() {
+          nonAlcoholic = true;
+        });
+        break;
+    }
+  }
 
   @override
   Future<bool> onWillPop(Resource<List<HomeDrinkModel?>> resource) {
@@ -46,13 +73,11 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   }
 
   @override
-  Widget buildBody(BuildContext context, Resource<List<HomeDrinkModel?>> state) {
-    return Scaffold(
-      key: _scaffoldKey,
-      drawer: drawer(context),
-      body: ListView(
-        children: <Widget>[
-          header('Popular Drinks'),
+  Widget buildBody(
+      BuildContext context, Resource<List<HomeDrinkModel?>> state) {
+    if (popular) {
+      data.insert(0, header('Popular Drinks'));
+      data.insert(1,
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -65,14 +90,63 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
                 itemContainer(drink)
               }
             ],
+          ));
+      popular = false;
+    }
+
+    if (alcoholic) {
+      alcoholic = false;
+      data.add(header('Alcoholic'));
+      data.add(
+        SizedBox(
+          height: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (HomeDrinkModel? drink in state.data ?? []) ...{
+                itemHorizontalContainer(drink)
+              }
+            ],
           ),
-        ],
+        ),
+      );
+    }
+
+    if (nonAlcoholic) {
+      nonAlcoholic = false;
+      data.add(header('Non - Alcoholic'));
+      data.add(
+        SizedBox(
+          height: 200,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (HomeDrinkModel? drink in state.data ?? []) ...{
+                itemHorizontalContainer(drink)
+              }
+            ],
+          ),
+        ),
+      );
+    }
+    return buildScreen(context, data);
+  }
+
+  Widget buildScreen(BuildContext context, List<Widget> data) {
+    return Scaffold(
+      key: _scaffoldKey,
+      drawer: drawer(context),
+      body: SingleChildScrollView(
+        child: Column(
+          children: data,
+        ),
       ),
     );
   }
 
   Widget header(String text) {
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
         color: Colors.deepOrange,
@@ -87,7 +161,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
 
   Widget itemContainer(HomeDrinkModel? drink) {
     return Container(
-      height: 50,
+      height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.amber[400],
@@ -95,10 +169,10 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 16),
             child: SizedBox(
-              width: 100,
-              height: 100,
+              width: 90,
+              height: 90,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(drink?.thumbnailUrl ?? ''),
@@ -113,35 +187,30 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
     );
   }
 
-  Widget _buildTitleText(DrinkModel? model) {
-    if (model == null) return Space.empty;
-    return Text(
-      model.name,
-      style: Theme.of(context).textTheme.titleLarge,
-    );
-  }
-
-  Widget _buildImage(DrinkModel? model) {
-    if (model == null) return Space.empty;
-    return SizedBox(
-      width: 200,
-      height: 200,
-      child: Image.network(model.thumbnailUrl),
-    );
-  }
-
-  Widget _buildInstructionsText(DrinkModel? model) {
-    if (model == null) return Space.empty;
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
+  Widget itemHorizontalContainer(HomeDrinkModel? drink) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      height: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.green[400],
+      ),
       child: Column(
         children: [
-          Text(
-            '- Instructions -',
-            style: Theme.of(context).textTheme.titleMedium,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: SizedBox(
+              width: 80,
+              height: 80,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(drink?.thumbnailUrl ?? ''),
+              ),
+            ),
           ),
-          const SizedBox(height: 20),
-          Text(model.instruction),
+          Center(
+            child: AppText(drink?.name, textAlign: TextAlign.justify),
+          ),
         ],
       ),
     );
@@ -180,6 +249,10 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
                 title: const Text('Refresh'),
                 onTap: () {
                   // mock up as refresh button
+                  popular = false;
+                  alcoholic = false;
+                  nonAlcoholic = false;
+                  data.clear();
                   bloc.addClickEvent(HomeEvent.loadHomePage);
                   // Then close the drawer
                   Navigator.pop(context);

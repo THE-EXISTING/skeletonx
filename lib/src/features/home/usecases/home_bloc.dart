@@ -1,10 +1,8 @@
 import 'package:skeletonx/core/core.dart';
 
-import '../data/data.dart';
+import '../home.dart';
 
-enum HomeEvent {
-  loadHomePage
-}
+enum HomeEvent { loadHomePage, getAlcoholic, getNonAlcoholic }
 
 class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
     Resource<List<HomeDrinkModel?>>> {
@@ -20,28 +18,67 @@ class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
     switch (event.name) {
       case HomeEvent.loadHomePage:
         _fetchDrink();
+        _getAlcoholic();
+        _getNonAlcoholic();
+        break;
+      case HomeEvent.getAlcoholic:
+        _getAlcoholic();
+        break;
+      case HomeEvent.getNonAlcoholic:
+        _getNonAlcoholic();
         break;
     }
   }
 
   ///========================= PRIVATE METHOD =========================///
   void _fetchDrink() => fetch(
-    key: HomeEvent.loadHomePage,
-    call: _cocktailRepo.get4RandomDrink(),
-    onResource: (resource) {
-      if (resource.isLoading()) {
-        emitState(resource);
+        key: HomeEvent.loadHomePage,
+        call: _cocktailRepo.get4RandomDrink(),
+        onResource: (resource) {
+          if (resource.isLoading()) {
+            emitState(resource);
+          }
+          if (resource.isSuccess()) {
+            emitEvent(HomeEvent.loadHomePage);
+            emitState(resource);
+          }
+          if (resource.isException()) {
+            //TODO: Handle error with your business logic
+          }
+        },
+      );
 
-        //TODO: Handle loading with your business logic
-      }
-      if (resource.isSuccess()) {
-        emitState(resource);
+  void _getAlcoholic() => fetch(
+        key: HomeEvent.getAlcoholic,
+        call: _cocktailRepo.filterByAlcoholic(isAlcoholic: true),
+        onResource: (resource) {
+          if (resource.isLoading()) {
+            emitState(resource);
+          }
+          if (resource.isSuccess()) {
+            emitEvent(HomeEvent.getAlcoholic);
+            emitState(resource);
+          }
+          if (resource.isException()) {
+            //TODO: Handle error with your business logic
+          }
+        },
+      );
 
-        //TODO: Handle success with your business logic
-      }
-      if (resource.isException()) {
-        //TODO: Handle error with your business logic
-      }
-    },
-  );
+  void _getNonAlcoholic() => fetch(
+        key: HomeEvent.getNonAlcoholic,
+        call: _cocktailRepo.filterByAlcoholic(isAlcoholic: false),
+        onResource: (resource) {
+          if (resource.isLoading()) {
+            emitState(resource);
+          }
+          if (resource.isSuccess()) {
+            emitEvent(HomeEvent.getNonAlcoholic);
+            emitState(resource);
+          }
+          if (resource.isException()) {
+            //TODO: Handle error with your business logic
+          }
+        },
+      );
 }
