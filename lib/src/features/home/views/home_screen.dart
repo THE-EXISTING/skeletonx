@@ -18,16 +18,16 @@ class HomeScreen extends AppScreen {
 }
 
 class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
-    HomeBloc, Resource<List<DrinkModel?>>> {
+    HomeBloc, Resource<List<HomeDrinkModel?>>> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Future<bool> onWillPop(Resource<List<DrinkModel?>> resource) {
+  Future<bool> onWillPop(Resource<List<HomeDrinkModel?>> resource) {
     return Future.value(false);
   }
 
   @override
-  PreferredSizeWidget? buildAppBar(Resource<List<DrinkModel?>> state) {
+  PreferredSizeWidget? buildAppBar(Resource<List<HomeDrinkModel?>> state) {
     return AppToolbar(
       title: 'NEXTZY BAR ',
       backButtonWidget: drawerIcon(),
@@ -37,7 +37,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
 
   @override
   Widget buildBodyLoading(
-      BuildContext context, Resource<List<DrinkModel?>> state) {
+      BuildContext context, Resource<List<HomeDrinkModel?>> state) {
     if (state.isLoading()) {
       return const Center(child: CircularProgressIndicator());
     } else {
@@ -46,7 +46,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
   }
 
   @override
-  Widget buildBody(BuildContext context, Resource<List<DrinkModel?>> state) {
+  Widget buildBody(BuildContext context, Resource<List<HomeDrinkModel?>> state) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: drawer(context),
@@ -61,7 +61,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
             mainAxisSpacing: 20,
             padding: const EdgeInsets.all(8),
             children: <Widget>[
-              for (DrinkModel? drink in state.data ?? []) ...{
+              for (HomeDrinkModel? drink in state.data ?? []) ...{
                 itemContainer(drink)
               }
             ],
@@ -85,7 +85,7 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
     );
   }
 
-  Widget itemContainer(DrinkModel? drink) {
+  Widget itemContainer(HomeDrinkModel? drink) {
     return Container(
       height: 50,
       decoration: BoxDecoration(

@@ -7,8 +7,8 @@ enum HomeEvent {
 }
 
 class HomeBloc extends ScreenBlocX<HomeEvent, BlocEvent<HomeEvent>,
-    Resource<List<DrinkModel?>>> {
-  HomeBloc( {
+    Resource<List<HomeDrinkModel?>>> {
+  HomeBloc({
     HomeRepository? cocktailRepo,
   })  : _cocktailRepo = cocktailRepo ?? HomeRepository(),
         super(Resource.init());
