@@ -15,6 +15,8 @@ export 'views/views.dart';
 export 'permissions/app_permissions.dart';
 export 'utils/utils.dart';
 
+export '../catcher.dart';
+
 export '../widgets/widgets.dart';
 export '../examples/feature_copy/feature_copy.dart';
 

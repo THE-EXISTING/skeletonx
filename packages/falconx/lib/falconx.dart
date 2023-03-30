@@ -1,6 +1,5 @@
 library falconx;
 
-
 export 'package:falconnect/falconnect.dart';
 export 'package:falmodel/falmodel.dart';
 export 'package:faltool/faltool.dart';
@@ -27,6 +26,10 @@ export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:responsive_framework/responsive_framework.dart';
 
+export 'package:catcher/catcher.dart';
+export 'package:sentry_flutter/sentry_flutter.dart'
+    hide HttpSanitizer, UrlDetails;
+
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:share_plus/share_plus.dart';
 export 'package:device_info_plus/device_info_plus.dart';
@@ -35,6 +38,7 @@ export 'package:tap_debouncer/tap_debouncer.dart';
 export 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:equatable/equatable.dart';
+
 // export 'package:catcher/catcher.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:cached_network_image/cached_network_image.dart';

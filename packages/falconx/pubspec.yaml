@@ -26,8 +26,8 @@ dependencies:
 
   #=======  UI ========#
   shimmer_animation: ^2.1.0+1
-  badges: ^3.0.2
-  wechat_assets_picker: ^8.4.0
+  badges: ^3.0.3
+  wechat_assets_picker: ^8.4.1
   fluttertoast: ^8.2.1
   progressive_image: ^2.0.1
   flutter_svg: ^2.0.4
@@ -35,7 +35,11 @@ dependencies:
   pin_code_fields: ^7.4.0
   responsive_framework: ^0.2.0
 
-  #=======  Utils ========#
+  #======= Analytic ========#
+  sentry_flutter: ^7.4.0
+
+  #======= Utils ========#
+#  go_router: ^6.5.1
   universal_io: ^2.2.0
   flutter_bloc: ^8.1.2
   share_plus: ^6.3.1
@@ -46,15 +50,20 @@ dependencies:
   permission_handler: ^10.2.0
   equatable: ^2.0.5
 #  catcher: any #conflict with device_info_plus and conflict with dio
+  catcher:
+    git:
+      url: https://github.com/THE-EXISTING/catcher.git
   url_launcher: ^6.1.10
   cached_network_image: ^3.2.3
   http_parser: ^4.0.2
-  path_provider: ^2.0.13
+  path_provider: ^2.0.14
   uni_links: ^0.5.1
   intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  widgetbook: ^3.0.0-beta.13
+
 
 flutter:
