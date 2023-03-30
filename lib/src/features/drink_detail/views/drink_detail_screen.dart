@@ -99,14 +99,14 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       padding: const EdgeInsets.only(left: 25),
       width: double.infinity,
       child: Text(
-        'Ingredient',
+        'Ingredients',
         style: Theme.of(context).textTheme.headlineSmall,
         textAlign: TextAlign.left,
       ),
     );
   }
 
-  Widget _buildIngredientTabs(Set<String>? ingredients) {
+  Widget _buildIngredientTabs(List<IngredientModel>? ingredients) {
     if (ingredients == null) return Space.empty;
     return Wrap(
       children: [
@@ -115,7 +115,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
     );
   }
 
-  Widget _buildIngredientTab(String ingredient) {
+  Widget _buildIngredientTab(IngredientModel ingredient) {
     return Container(
       margin: const EdgeInsets.all(12.0),
       color: Colors.grey[300],
@@ -124,10 +124,15 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Icon(false ? Icons.dangerous : Icons.health_and_safety),
+          Icon(
+            ingredient.isAlcohol ? Icons.dangerous : Icons.health_and_safety,
+            color: ingredient.isAlcohol ? Colors.red : Colors.green,
+          ),
           Text(
-            ingredient,
+            ingredient.name,
             textAlign: TextAlign.center,
+            style: TextStyle(
+                color: ingredient.isAlcohol ? Colors.red : Colors.green),
           ),
         ],
       ),

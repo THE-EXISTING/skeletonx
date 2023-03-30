@@ -34,9 +34,7 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
             //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
-            Future.delayed(const Duration(seconds: 1), () {
-              emitState(resource);
-            });
+            emitState(resource);
 
             //TODO: Handle success with your business logic
           }

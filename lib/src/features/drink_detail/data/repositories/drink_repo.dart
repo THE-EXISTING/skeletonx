@@ -22,7 +22,22 @@ class DrinkRepository {
   Stream<Resource<DrinkModel>> getDrinkById({required String id}) =>
       NetworkBoundResource.asStream<DrinkModel, DrinkResponse>(
         createCallFuture: () => _drinkRemote.getDrinkById(id: id),
-        processResponse: (response) => DrinkModel.fromResponse(response, ),
+        processResponse: (response) => DrinkModel.fromResponse(response),
+        error: (exception, stackTrace) {
+          Log.e(exception, stackTrace);
+        },
+      );
+
+  Stream<Resource<DrinkModel>> getDrinkWithIngredientsById(
+          {required String id}) =>
+      NetworkBoundResource.asStream<DrinkModel,
+          Two<DrinkResponse, List<IngredientResponse>>>(
+        createCallFuture: () =>
+            _drinkRemote.getDrinkWithIngredientsById(id: id),
+        processResponse: (response) => DrinkModel.fromResponse(
+          response.first,
+          ingredientResponseList: response.second,
+        ),
         error: (exception, stackTrace) {
           Log.e(exception, stackTrace);
         },
