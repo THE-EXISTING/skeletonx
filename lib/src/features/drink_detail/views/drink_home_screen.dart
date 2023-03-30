@@ -1,4 +1,6 @@
 import 'package:skeletonx/core/core.dart';
+import 'package:skeletonx/src/features/settings/settings_controller.dart';
+import 'package:skeletonx/src/features/settings/settings_view.dart';
 
 class DrinksHomeScreen extends AppScreen {
   const DrinksHomeScreen._({required Key key}) : super(key: key);
@@ -159,6 +161,11 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
             break;
           case 1:
             Log.d('Settings is selected.');
+            pushScreen(
+              SettingsView(
+                controller: SettingsController(),
+              ),
+            );
             break;
           case 2:
             Log.d('About is selected.');
