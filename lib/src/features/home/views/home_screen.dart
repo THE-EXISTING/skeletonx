@@ -166,23 +166,28 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
         borderRadius: BorderRadius.circular(8),
         color: Colors.amber[400],
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: SizedBox(
-              width: 90,
-              height: 90,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.network(drink?.thumbnailUrl ?? ''),
+      child: InkWell(
+        onTap: () {
+          pushScreen(DrinkDetailScreen.create(id: drink?.id ?? ''));
+        },
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                width: 90,
+                height: 90,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(drink?.thumbnailUrl ?? ''),
+                ),
               ),
             ),
-          ),
-          Center(
-            child: AppText(drink?.name, textAlign: TextAlign.center),
-          ),
-        ],
+            Center(
+              child: AppText(drink?.name, textAlign: TextAlign.center),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -195,23 +200,28 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
         borderRadius: BorderRadius.circular(8),
         color: Colors.green[400],
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: SizedBox(
-              width: 80,
-              height: 80,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.network(drink?.thumbnailUrl ?? ''),
+      child: InkWell(
+        onTap: () {
+          pushScreen(DrinkDetailScreen.create(id: drink?.id ?? ''));
+        },
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                width: 80,
+                height: 80,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(drink?.thumbnailUrl ?? ''),
+                ),
               ),
             ),
-          ),
-          Center(
-            child: AppText(drink?.name, textAlign: TextAlign.justify),
-          ),
-        ],
+            Center(
+              child: AppText(drink?.name, textAlign: TextAlign.justify),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -261,8 +271,9 @@ class _HomeScreenState extends AppScreenLocaleScaffoldBlocState<HomeScreen,
               ListTile(
                 title: const Text('Item 2'),
                 onTap: () {
-                  // Then close the drawer
                   Navigator.pop(context);
+
+                  // Then close the drawer
                 },
               ),
             ],
