@@ -4,20 +4,23 @@ class DrinkDetailScreen extends AppScreen {
   const DrinkDetailScreen._({required Key key}) : super(key: key);
 
   static Widget create({required String id}) => //
-      BlocProvider(
-        create: (context) =>
-            CocktailBloc(id: id)..addInitEvent(CocktailEvent.loadDrink),
-        child: const DrinkDetailScreen._(
-          key: Key('DrinkDetailScreen'),
-        ),
-      );
+  BlocProvider(
+    create: (context) =>
+    CocktailBloc(id: id)
+      ..addInitEvent(CocktailEvent.loadDrink),
+    child: const DrinkDetailScreen._(
+      key: Key('DrinkDetailScreen'),
+    ),
+  );
 
   @override
   State<DrinkDetailScreen> createState() => _DrinkDetailScreenState();
 }
 
 class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
-    DrinkDetailScreen, CocktailBloc, Resource<DrinkModel?>> {
+    DrinkDetailScreen,
+    CocktailBloc,
+    Resource<DrinkModel?>> {
   @override
   Future<bool> onWillPop(Resource<DrinkModel?> resource) {
     return Future.value(false);
@@ -25,7 +28,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
-    return AppToolbar(title: 'Detail');
+    return AppToolbar(title: 'Detail', backButtonWidget: _backButton(),);
   }
 
   @override
@@ -53,6 +56,14 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
         ),
       ],
     );
+  }
+
+  Widget _backButton() {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
+        Navigator.pop(context);
+      },);
   }
 
   Widget _buildTitleText(DrinkModel? model) {
