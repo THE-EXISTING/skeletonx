@@ -3,6 +3,8 @@ import 'src/features/settings/setting_model.dart';
 import 'src/features/settings/settings_controller.dart';
 
 void main() async {
+  setPathUrlStrategy(); //remove # sign on web's browser
+
   WidgetsFlutterBinding.ensureInitialized();
   await SettingsController.instance.loadSettings();
   await runApplication();
