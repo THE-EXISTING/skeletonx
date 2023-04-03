@@ -1,4 +1,5 @@
 import 'package:skeletonx/core/core.dart';
+import 'package:skeletonx/core/routes/routes.dart';
 import 'package:skeletonx/src/features/about/views/about_screen.dart';
 import 'package:skeletonx/src/features/settings/settings_controller.dart';
 import 'package:skeletonx/src/features/settings/settings_view.dart';
@@ -93,7 +94,10 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     if (model == null) return Space.empty;
     return InkWell(
       onTap: () {
-        pushScreen(DrinkDetailScreen.create(id: model.id));
+        pushScreen(
+          routeDrinkDetails,
+          queryParams: {'id': model.id},
+        );
       },
       child: Container(
         margin: const EdgeInsets.all(12.0),
@@ -162,17 +166,11 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
             break;
           case 1:
             Log.d('Settings is selected.');
-            pushScreen(
-              SettingsView(
-                controller: SettingsController(),
-              ),
-            );
+            pushScreen(routeSettings);
             break;
           case 2:
             Log.d('About is selected.');
-            pushScreen(
-              AboutScreen(),
-            );
+            pushScreen(routeAbout);
             break;
         }
       },

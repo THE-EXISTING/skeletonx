@@ -1,4 +1,5 @@
 import 'package:skeletonx/core/core.dart';
+import 'package:skeletonx/core/routes/routes.dart';
 import 'package:skeletonx/localization/l10n.dart';
 import 'package:skeletonx/src/features/drink_detail/views/drink_home_screen.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
@@ -53,7 +54,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
     return AnimatedBuilder(
       animation: widget.settingsController,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return MaterialApp.router(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -76,24 +77,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
           darkTheme: ThemeData.dark(),
           themeMode: widget.settingsController.themeMode,
 
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: widget.settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                  default:
-                    return DrinksHomeScreen.create();
-                  // return DrinkDetailScreen.create(id: '11007');
-                  // return SampleListView();
-                }
-              },
-            );
-          },
+          routerConfig: router,
 
           builder: (context, child) => ResponsiveWrapper.builder(
               BouncingScrollWrapper.builder(context, child!),
