@@ -1,13 +1,8 @@
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/core/routes/routes.dart';
 import 'package:skeletonx/localization/l10n.dart';
-import 'package:skeletonx/src/features/drink_detail/views/drink_home_screen.dart';
 import 'package:skeletonx/src/features/settings/setting_model.dart';
-import 'features/sample_list_view_feature/sample_list_view.dart';
-import 'features/settings/settings_view.dart';
 import 'features/settings/settings_controller.dart';
-import 'features/sample_feature/sample_item_details_view.dart';
-import 'features/sample_feature/sample_item_list_view.dart';
 
 /// The Widget that configures your application.
 class MyApplication extends ApplicationX {

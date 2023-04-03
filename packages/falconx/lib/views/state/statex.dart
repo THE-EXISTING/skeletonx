@@ -198,50 +198,6 @@ abstract class StateX<T extends StatefulWidgetX> extends State<T>
     super.registerForRestoration(property, restorationId);
   }
 
-  // Future<T?> pushScreen(
-  //   Widget page, {
-  //   Key? key,
-  //   Widget? childCurrent,
-  //   PageTransitionType type = PageTransitionType.rightToLeft,
-  //   bool inheritTheme = false,
-  //   Curve curve = Curves.easeInOutQuint,
-  //   Alignment? alignment,
-  //   Duration duration = const Duration(milliseconds: 350),
-  //   Duration reverseDuration = const Duration(milliseconds: 200),
-  //   bool fullscreenDialog = false,
-  // }) {
-  //   return Navigator.push(
-  //       context,
-  //       PageTransitionX(
-  //         key: key,
-  //         type: type,
-  //         child: page,
-  //         childCurrent: childCurrent,
-  //         inheritTheme: inheritTheme,
-  //         curve: curve,
-  //         alignment: alignment,
-  //         duration: duration,
-  //         reverseDuration: reverseDuration,
-  //         fullscreenDialog: fullscreenDialog,
-  //       ));
-  // }
-  //
-  // Future<T?> popAndPushScreen(String path, {Map<String, Object>? arguments}) {
-  //   return Navigator.popAndPushNamed(context, path, arguments: arguments);
-  // }
-  //
-  // String restorePushName(String path, {Map<String, Object>? arguments}) {
-  //   return Navigator.restorablePushNamed(context, path, arguments: arguments);
-  // }
-  //
-  // Future<T?> pushNamed(String path, {Map<String, Object>? arguments}) {
-  //   return Navigator.pushNamed(context, path, arguments: arguments);
-  // }
-  //
-  // void popScreen<R extends Object?>([R? result]) {
-  //   Navigator.of(context).pop(result);
-  // }
-
   Future<T?> pushScreen(String screenName,
       {Map<String, dynamic>? queryParams}) {
     return queryParams == null

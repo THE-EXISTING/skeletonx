@@ -1,8 +1,5 @@
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/core/routes/routes.dart';
-import 'package:skeletonx/src/features/about/views/about_screen.dart';
-import 'package:skeletonx/src/features/settings/settings_controller.dart';
-import 'package:skeletonx/src/features/settings/settings_view.dart';
 
 class DrinksHomeScreen extends AppScreen {
   const DrinksHomeScreen._({required Key key}) : super(key: key);
