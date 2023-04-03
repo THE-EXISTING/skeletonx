@@ -9,11 +9,15 @@ abstract class HttpClientX implements RequestApiService {
 
   HttpClientX({required Dio dio}) {
     _dio = dio;
+
     //check bad certificate
-    (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (HttpClient client) {
-      client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-      return client;
-    };
+    // (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+    //     (HttpClient client) {
+    //   client.badCertificateCallback =
+    //       (X509Certificate cert, String host, int port) => true;
+    //   return client;
+    // };
+
     setupConfig(_dio, _dio.options);
     setupInterceptors(_dio, _dio.interceptors);
   }
@@ -225,7 +229,8 @@ abstract class HttpClientX implements RequestApiService {
 
   ///========================= PRIVATE METHOD =========================///
   TokenInterceptorX? _getTokenInterceptor() {
-    return _dio.interceptors.firstOrNullWhere((interceptor) => interceptor is TokenInterceptorX)
+    return _dio.interceptors
+            .firstOrNullWhere((interceptor) => interceptor is TokenInterceptorX)
         as TokenInterceptorX?;
   }
 }
