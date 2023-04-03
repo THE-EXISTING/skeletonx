@@ -14,38 +14,72 @@ final router = GoRouter(
     GoRoute(
       name: routeHome,
       path: routeHome,
-      builder: (context, state) {
-        return DrinksHomeScreen.create();
-      },
+      pageBuilder: (context, state) => _buildPageWithCustomTransition(
+        context: context,
+        state: state,
+        child: DrinksHomeScreen.create(),
+      ),
       routes: [
         GoRoute(
           name: routeSettings,
           path: routeSettings,
-          builder: (context, state) {
-            return SettingsView(
+          pageBuilder: (context, state) => _buildPageWithCustomTransition(
+            context: context,
+            state: state,
+            child: SettingsView(
               controller: SettingsController(),
-            );
-          },
+            ),
+          ),
         ),
         GoRoute(
           name: routeAbout,
           path: routeAbout,
-          builder: (context, state) {
-            return AboutScreen();
-          },
+          pageBuilder: (context, state) => _buildPageWithCustomTransition(
+            context: context,
+            state: state,
+            child: const AboutScreen(),
+          ),
         ),
         GoRoute(
           name: routeDrinkDetails,
           path: routeDrinkDetails,
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             final id = state.queryParams['id'];
-
             if (id == null) return Space.empty;
 
-            return DrinkDetailScreen.create(id: id);
+            return _buildPageWithCustomTransition(
+              context: context,
+              state: state,
+              child: DrinkDetailScreen.create(id: id),
+            );
           },
         ),
       ],
     ),
   ],
 );
+
+CustomTransitionPage _buildPageWithCustomTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+  double dx = 1.5,
+  double dy = 0.0,
+}) {
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final begin = Offset(dx, dy);
+      const end = Offset.zero;
+      const curve = Curves.easeIn;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
