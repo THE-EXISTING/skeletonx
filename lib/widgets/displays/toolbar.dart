@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:skeletonx/core/core.dart';
 
 class AppToolbar extends AppComponent with PreferredSizeWidget {
@@ -28,6 +29,7 @@ class AppToolbar extends AppComponent with PreferredSizeWidget {
   @override
   Widget buildDefault(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: kIsWeb ? false : true,
       toolbarHeight: height ?? AppSize.toolbar,
       leadingWidth: 64,
       title: AppText(

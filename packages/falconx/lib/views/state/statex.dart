@@ -209,8 +209,8 @@ abstract class StateX<T extends StatefulWidgetX> extends State<T>
   }
 
   void goToScreen(
-    String screenName,
-    Object? extra, {
+    String screenName, {
+    Object? extra,
     Map<String, dynamic>? queryParams,
   }) {
     return queryParams == null
