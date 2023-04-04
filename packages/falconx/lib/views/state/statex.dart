@@ -200,22 +200,20 @@ abstract class StateX<T extends StatefulWidgetX> extends State<T>
 
   Future<T?> pushScreen(
     String screenName, {
-    Object? extra,
     Map<String, dynamic>? queryParams,
   }) {
     return queryParams == null
-        ? context.pushNamed(screenName, extra: extra)
-        : context.pushNamed(screenName, extra: extra, queryParams: queryParams);
+        ? context.pushNamed(screenName)
+        : context.pushNamed(screenName, queryParams: queryParams);
   }
 
   void goToScreen(
     String screenName, {
-    Object? extra,
     Map<String, dynamic>? queryParams,
   }) {
     return queryParams == null
-        ? context.goNamed(screenName, extra: extra)
-        : context.goNamed(screenName, extra: extra, queryParams: queryParams);
+        ? context.goNamed(screenName)
+        : context.goNamed(screenName, queryParams: queryParams);
   }
 
   void replaceScreen(String screenName, {Map<String, dynamic>? queryParams}) {

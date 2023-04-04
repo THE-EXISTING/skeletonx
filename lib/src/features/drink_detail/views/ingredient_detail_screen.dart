@@ -4,9 +4,9 @@ import 'package:skeletonx/src/features/drink_detail/usecases/ingredient_bloc.dar
 class IngredientDetailScreen extends AppScreen {
   const IngredientDetailScreen._({required Key key}) : super(key: key);
 
-  static Widget create({required IngredientModel ingredient}) {
+  static Widget create({required String name}) {
     return BlocProvider(
-      create: (context) => IngredientBloc(ingredient: ingredient)
+      create: (context) => IngredientBloc(name: name)
         ..addInitEvent(IngredientEvent.init),
       child: const IngredientDetailScreen._(
         key: Key('IngredientDetailScreen'),

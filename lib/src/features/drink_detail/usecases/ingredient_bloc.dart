@@ -7,17 +7,20 @@ enum IngredientEvent {
 class IngredientBloc extends ScreenBlocX<IngredientEvent,
     BlocEvent<IngredientEvent>, Resource<IngredientModel?>> {
   IngredientBloc({
-    required this.ingredient,
+    required this.name,
     DrinkRepository? cocktailRepo,
   }) : super(Resource.init());
 
-  final IngredientModel ingredient;
+  final String name;
 
   @override
   Future<void> onListenEvent(BlocEvent<IngredientEvent> event) async {
     switch (event.name) {
       case IngredientEvent.init:
-        emitResourceSuccessState(ingredient);
+        emitResourceSuccessState(
+          IngredientModel(
+              id: '', name: name, description: 'desc', isAlcohol: false),
+        );
         break;
     }
   }

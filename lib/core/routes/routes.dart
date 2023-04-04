@@ -46,14 +46,12 @@ final router = GoRouter(
           name: routeDrinkDetail,
           path: routeDrinkDetail,
           pageBuilder: (context, state) {
-            final id = state.queryParams['id'];
-
-            if (id == null) return Space.empty;
-
             return _buildPageWithCustomTransition(
               context: context,
               state: state,
-              child: DrinkDetailScreen.create(id: id),
+              child: DrinkDetailScreen.create(
+                id: state.queryParams['id'].toString(),
+              ),
             );
           },
           routes: [
@@ -61,12 +59,12 @@ final router = GoRouter(
               name: routeIngredientDetail,
               path: routeIngredientDetail,
               pageBuilder: (context, state) {
-                final ingredient = state.extra as IngredientModel;
-
                 return _buildPageWithCustomTransition(
                   context: context,
                   state: state,
-                  child: IngredientDetailScreen.create(ingredient: ingredient),
+                  child: IngredientDetailScreen.create(
+                    name: state.queryParams['name'].toString(),
+                  ),
                 );
               },
             ),

@@ -121,7 +121,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
       onTap: () {
         pushScreen(
           routeIngredientDetail,
-          extra: ingredient,
+          queryParams: {'name': ingredient.name},
         );
       },
       child: Container(
