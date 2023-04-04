@@ -30,17 +30,11 @@ class CocktailsBloc extends ScreenBlocX<CocktailsEvent,
         onResource: (resource) {
           if (resource.isLoading()) {
             emitState(resource);
-
-            //TODO: Handle loading with your business logic
           }
           if (resource.isSuccess()) {
             emitState(resource);
-
-            //TODO: Handle success with your business logic
           }
-          if (resource.isException()) {
-            //TODO: Handle error with your business logic
-          }
+          if (resource.isException()) {}
         },
       );
 }

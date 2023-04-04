@@ -1,13 +1,15 @@
 import 'package:skeletonx/core/core.dart';
 import 'package:skeletonx/src/features/about/views/about_screen.dart';
 import 'package:skeletonx/src/features/drink_detail/views/drink_home_screen.dart';
+import 'package:skeletonx/src/features/drink_detail/views/ingredient_detail_screen.dart';
 import 'package:skeletonx/src/features/settings/settings_controller.dart';
 import 'package:skeletonx/src/features/settings/settings_view.dart';
 
 const String routeHome = '/';
 const String routeSettings = 'settings';
 const String routeAbout = 'about';
-const String routeDrinkDetails = 'drink_details';
+const String routeDrinkDetail = 'drink_detail';
+const String routeIngredientDetail = 'ingredient_detail';
 
 final router = GoRouter(
   routes: [
@@ -41,10 +43,11 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
-          name: routeDrinkDetails,
-          path: routeDrinkDetails,
+          name: routeDrinkDetail,
+          path: routeDrinkDetail,
           pageBuilder: (context, state) {
             final id = state.queryParams['id'];
+
             if (id == null) return Space.empty;
 
             return _buildPageWithCustomTransition(
@@ -53,6 +56,21 @@ final router = GoRouter(
               child: DrinkDetailScreen.create(id: id),
             );
           },
+          routes: [
+            GoRoute(
+              name: routeIngredientDetail,
+              path: routeIngredientDetail,
+              pageBuilder: (context, state) {
+                final ingredient = state.extra as IngredientModel;
+
+                return _buildPageWithCustomTransition(
+                  context: context,
+                  state: state,
+                  child: IngredientDetailScreen.create(ingredient: ingredient),
+                );
+              },
+            ),
+          ],
         ),
       ],
     ),

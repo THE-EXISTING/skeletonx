@@ -92,7 +92,7 @@ class _DrinksHomeScreenState extends AppScreenLocaleScaffoldBlocState<
     return InkWell(
       onTap: () {
         pushScreen(
-          routeDrinkDetails,
+          routeDrinkDetail,
           queryParams: {'id': model.id},
         );
       },

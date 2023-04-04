@@ -1,4 +1,5 @@
 import 'package:skeletonx/core/core.dart';
+import 'package:skeletonx/core/routes/routes.dart';
 
 class DrinkDetailScreen extends AppScreen {
   const DrinkDetailScreen._({required Key key}) : super(key: key);
@@ -23,7 +24,7 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
 
   @override
   PreferredSizeWidget? buildAppBar(Resource<DrinkModel?> state) {
-    return AppToolbar(title: 'Detail');
+    return AppToolbar(title: 'Drink Detail');
   }
 
   @override
@@ -116,25 +117,33 @@ class _DrinkDetailScreenState extends AppScreenLocaleScaffoldBlocState<
   }
 
   Widget _buildIngredientTab(IngredientModel ingredient) {
-    return Container(
-      margin: const EdgeInsets.all(12.0),
-      color: Colors.grey[300],
-      width: 120,
-      height: 120,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(
-            ingredient.isAlcohol ? Icons.dangerous : Icons.health_and_safety,
-            color: ingredient.isAlcohol ? Colors.red : Colors.green,
-          ),
-          Text(
-            ingredient.name,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: ingredient.isAlcohol ? Colors.red : Colors.green),
-          ),
-        ],
+    return InkWell(
+      onTap: () {
+        pushScreen(
+          routeIngredientDetail,
+          extra: ingredient,
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(12.0),
+        color: Colors.grey[300],
+        width: 120,
+        height: 120,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(
+              ingredient.isAlcohol ? Icons.dangerous : Icons.health_and_safety,
+              color: ingredient.isAlcohol ? Colors.red : Colors.green,
+            ),
+            Text(
+              ingredient.name,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: ingredient.isAlcohol ? Colors.red : Colors.green),
+            ),
+          ],
+        ),
       ),
     );
   }
