@@ -1,5 +1,4 @@
 import 'package:skeletonx/core/core.dart';
-import 'package:skeletonx/src/features/about/usecases/models/about_model.dart';
 
 enum AboutEvent {
   init,

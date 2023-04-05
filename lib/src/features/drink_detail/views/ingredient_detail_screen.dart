@@ -1,5 +1,4 @@
 import 'package:skeletonx/core/core.dart';
-import 'package:skeletonx/src/features/drink_detail/usecases/ingredient_bloc.dart';
 
 class IngredientDetailScreen extends AppScreen {
   const IngredientDetailScreen._({required Key key}) : super(key: key);

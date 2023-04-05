@@ -1,6 +1,4 @@
 import 'package:skeletonx/core/core.dart';
-import 'package:skeletonx/src/features/about/usecases/about_bloc.dart';
-import 'package:skeletonx/src/features/about/usecases/models/about_model.dart';
 
 class AboutScreen extends AppScreen {
   const AboutScreen._({required Key key}) : super(key: key);
