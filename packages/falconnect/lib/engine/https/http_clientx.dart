@@ -11,12 +11,14 @@ abstract class HttpClientX implements RequestApiService {
     _dio = dio;
 
     //check bad certificate
-    // (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
-    //     (HttpClient client) {
-    //   client.badCertificateCallback =
-    //       (X509Certificate cert, String host, int port) => true;
-    //   return client;
-    // };
+    if (_dio.httpClientAdapter is IOHttpClientAdapter) {
+      (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+          (HttpClient client) {
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
+        return client;
+      };
+    }
 
     setupConfig(_dio, _dio.options);
     setupInterceptors(_dio, _dio.interceptors);

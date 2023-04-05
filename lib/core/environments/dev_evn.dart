@@ -9,5 +9,4 @@ class DevEnvironment extends Environment {
 
   @override
   final String deepLink = 'dev.skeletonx';
-
 }
