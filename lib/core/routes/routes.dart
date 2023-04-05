@@ -39,7 +39,7 @@ final router = GoRouter(
           pageBuilder: (context, state) => _buildPageWithCustomTransition(
             context: context,
             state: state,
-            child: const AboutScreen(),
+            child: AboutScreen.create(),
           ),
         ),
         GoRoute(
