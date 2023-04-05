@@ -7,7 +7,7 @@ class IngredientDetailScreen extends AppScreen {
   static Widget create({required String name}) {
     return BlocProvider(
       create: (context) => IngredientBloc(name: name)
-        ..addInitEvent(IngredientEvent.init),
+        ..addInitEvent(IngredientEvent.loadIngredient),
       child: const IngredientDetailScreen._(
         key: Key('IngredientDetailScreen'),
       ),
