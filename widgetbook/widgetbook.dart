@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:falconx/falconx.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 class WidgetbookHotReload extends StatelessWidget {
@@ -6,39 +6,6 @@ class WidgetbookHotReload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook(
-      categories: [
-        WidgetbookCategory(
-          name: 'material',
-          widgets: [
-            WidgetbookComponent(
-              name: 'FAB',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Icon',
-                  builder: (context) {
-                    return FloatingActionButton(
-                      onPressed: () {},
-                      child: const Icon(Icons.add),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-      appInfo: AppInfo(name: 'SkeletonX Widgetbook'),
-      themes: [
-        WidgetbookTheme(
-          name: 'Light',
-          data: ThemeData.light(),
-        ),
-        WidgetbookTheme(
-          name: 'Dark',
-          data: ThemeData.dark(),
-        ),
-      ],
-    );
+    return Space.empty;
   }
 }
