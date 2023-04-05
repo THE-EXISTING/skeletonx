@@ -21,6 +21,11 @@ class AboutScreen extends AppScreen {
 class _AboutScreenState extends AppScreenLocaleScaffoldBlocState<AboutScreen,
     AboutBloc, Resource<AboutModel?>> {
   @override
+  PreferredSizeWidget? buildAppBar(Resource<AboutModel?> state) {
+    return AppToolbar(title: 'About');
+  }
+
+  @override
   Widget buildBody(BuildContext context, Resource<AboutModel?> state) {
     return Center(
       child: Text('About'),
