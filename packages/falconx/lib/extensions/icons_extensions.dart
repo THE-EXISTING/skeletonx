@@ -1,7 +1,7 @@
 import 'package:falconx/falconx.dart';
 
-extension SvgIcons on String {
-  Widget toSvg({
+extension SvgIcons on String? {
+  SvgPicture toSvg({
     Key? key,
     double height = 24,
     double width = 24,
@@ -9,7 +9,7 @@ extension SvgIcons on String {
     String? label,
   }) =>
       SvgPicture.asset(
-        this,
+        this!,
         height: height,
         width: width,
         colorFilter:

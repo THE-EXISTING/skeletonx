@@ -1,5 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="widgetbook.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--debug" />
+    <option name="attachArgs" value="--stacktrace --dart-define=ENVIRONMENT=DEV" />
+    <option name="buildFlavor" value="dev" />
     <option name="filePath" value="$PROJECT_DIR$/widgetbook/main.dart" />
     <method v="2" />
   </configuration>

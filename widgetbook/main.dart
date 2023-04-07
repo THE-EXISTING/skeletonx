@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widgetbook.dart';
+import 'package:flutter/rendering.dart';
 
 void main(List<String> args) {
-  runApp(const WidgetbookHotReload());
+  debugPaintSizeEnabled = false;
+  runApp(WidgetbookHotReload());
 }

@@ -18,9 +18,9 @@ extension ColorThemeExtensions on Color {
 
   /// Lightens the color with the given integer percentage amount.
   /// Defaults to 10%.
-  Color lighten([int amount = 10]) {
-    if (amount <= 0) return this;
-    if (amount > 100) return Colors.white;
+  Color lighten([double amount = 10]) {
+    if (amount <= 0.0) return this;
+    if (amount > 100.0) return Colors.white;
     // HSLColor returns saturation 1 for black, we want 0 instead to be able
     // lighten black color up along the grey scale from black.
     final HSLColor hsl = this == const Color(0xFF000000)
@@ -33,9 +33,9 @@ extension ColorThemeExtensions on Color {
 
   /// Darkens the color with the given integer percentage amount.
   /// Defaults to 10%.
-  Color darken([int amount = 10]) {
-    if (amount <= 0) return this;
-    if (amount > 100) return Colors.black;
+  Color darken([double amount = 10]) {
+    if (amount <= 0.0) return this;
+    if (amount > 100.0) return Colors.black;
     final HSLColor hsl = HSLColor.fromColor(this);
     return hsl
         .withLightness(math.min(1, math.max(0, hsl.lightness - amount / 100)))
@@ -78,7 +78,7 @@ extension ColorThemeExtensions on Color {
   /// darker, the extension just returns white or black for such attempts, with
   /// a quick exist from the call.
   Color getShadeColor({
-    int shadeValue = 15,
+    double shadeValue = 15.0,
     bool lighten = true,
     bool keepBlack = true,
     bool keepWhite = true,

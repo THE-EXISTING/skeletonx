@@ -49,7 +49,7 @@ flutter:
     - assets/launcher/uat/
 
   fonts:
-    - family: Thai
+    - family: PrimaryThai
       fonts:
         - asset: assets/font/anuphan_regular.otf
           weight: 400
@@ -59,7 +59,7 @@ flutter:
           weight: 600
         - asset: assets/font/anuphan_bold.otf
           weight: 700
-    - family: English
+    - family: PrimaryEnglish
       fonts:
         - asset: assets/font/inter_regular.otf
           weight: 400

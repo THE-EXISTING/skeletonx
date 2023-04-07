@@ -23,7 +23,7 @@ class SampleItemListView extends StatelessWidget {
         actions: [
           IconButton(
             // icon: const Icon(Icons.settings),
-            icon: AppIcons.ic_setting.toSvg(color: AppColors.white),
+            icon: Assets.iconSettings01.toSvg(color: AppColors.white),
             onPressed: () {
               // Navigate to the settings page. If the user leaves and returns
               // to the app after it has been killed while running in the
