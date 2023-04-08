@@ -1,10 +1,15 @@
+export 'package:skeletonx/core/core.dart';
+export 'package:widgetbook/widgetbook.dart' hide Frame;
+export 'widgets/widgets.dart';
+export 'config.dart';
+
 import 'package:skeletonx/core/core.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'config.dart';
 import 'widgets/widgets.dart';
 
-class WidgetbookHotReload extends StatelessWidget {
-  WidgetbookHotReload({Key? key}) : super(key: key);
+class AppWidgetbookHotReload extends StatelessWidget {
+  const AppWidgetbookHotReload({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class WidgetbookHotReload extends StatelessWidget {
         WidgetbookCategory(
           name: 'Inputs',
           children: [
-            ButtonBook.createSolidButton(),
+            ButtonBook.createBook(),
           ],
         ),
         WidgetbookCategory(

@@ -3,7 +3,7 @@ import 'package:falconx/falconx.dart';
 abstract class ComponentStateX<T extends StatefulWidgetX> extends StateX<T> {
   ComponentStateX({ViewState? viewState})
       : _stateNotifier =
-            ViewStateNotifier(state: viewState ?? ViewState.normal);
+  ViewStateNotifier(state: viewState ?? ViewState.normal);
 
   final ViewStateNotifier _stateNotifier;
 
@@ -15,25 +15,33 @@ abstract class ComponentStateX<T extends StatefulWidgetX> extends StateX<T> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ViewStateNotifier>(
         create: (context) => _stateNotifier,
-        child: Consumer<ViewStateNotifier>(//
+        child: Consumer<ViewStateNotifier>( //
             builder: (context, viewState, child) {
-          switch (viewState.value) {
-            case ViewState.normal:
-              if(viewState.value == ViewState.loading) return buildLoading(context);
-              if(viewState.value == ViewState.empty) return buildEmpty(context);
-              if(viewState.value == ViewState.disabled) return buildDisabled(context);
-              if(viewState.value == ViewState.error) return buildError(context);
-              return buildDefault(context);
-            case ViewState.loading:
-              return buildLoading(context);
-            case ViewState.empty:
-              return buildEmpty(context);
-            case ViewState.disabled:
-              return buildDisabled(context);
-            case ViewState.error:
-              return buildError(context);
-          }
-        }));
+              switch (viewState.value) {
+                case ViewState.normal:
+                  if (viewState.value == ViewState.loading) {
+                    return buildLoading(context);
+                  }
+                  if (viewState.value == ViewState.empty) {
+                    return buildEmpty(context);
+                  }
+                  if (viewState.value == ViewState.disabled) {
+                    return buildDisabled(context);
+                  }
+                  if (viewState.value == ViewState.error) {
+                    return buildError(context);
+                  }
+                  return buildDefault(context);
+                case ViewState.loading:
+                  return buildLoading(context);
+                case ViewState.empty:
+                  return buildEmpty(context);
+                case ViewState.disabled:
+                  return buildDisabled(context);
+                case ViewState.error:
+                  return buildError(context);
+              }
+            }));
   }
 
   Widget buildDefault(BuildContext context);
@@ -56,5 +64,9 @@ abstract class ComponentStateX<T extends StatefulWidgetX> extends StateX<T> {
 
   void changeState(ViewState state) {
     _stateNotifier.value = state;
+  }
+
+  void updateState() {
+    setState(() { });
   }
 }

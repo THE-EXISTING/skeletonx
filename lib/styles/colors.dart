@@ -81,11 +81,11 @@ class _TextColors extends GrayModernColor {
   Color get lightStrong => c100;
   Color get lightStronger => const Color(0xffFFFFFF);
 
-  Color get darkWeaker => c500;
-  Color get darkWeak => c600;
-  Color get dark => c700;
-  Color get darkStrong => c800;
-  Color get darkStronger => c900;
+  Color get darkWeaker => c400;
+  Color get darkWeak => c500;
+  Color get dark => c600;
+  Color get darkStrong => c700;
+  Color get darkStronger => c800;
 }
 
 
@@ -110,11 +110,11 @@ class _LineStrokeColors extends GrayModernColor {
 
   Color get lightStrong => c100;
 
-  Color get darkWeak => c600;
+  Color get darkWeak => c200;
 
-  Color get dark => c700;
+  Color get dark => c300;
 
-  Color get darkStrong => c800;
+  Color get darkStrong => c400;
 }
 
 class _TransparentColors {

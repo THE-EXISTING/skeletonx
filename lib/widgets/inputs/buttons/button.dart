@@ -32,6 +32,7 @@ class AppButton extends AppComponentGroup {
     this.destructive = false,
     required this.text,
     this.expanded = false,
+    this.enabled = true,
   }) : super(key: key);
 
   final AppButtonType type;
@@ -49,119 +50,165 @@ class AppButton extends AppComponentGroup {
   final String? iconEnd;
   final bool expanded;
   final bool destructive;
+  final bool enabled;
 
   @override
   State<AppButton> createState() => _AppButtonState();
 }
 
 class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
+  bool focused = false;
+
   @override
   Widget buildDefault(BuildContext context) {
     final iconSize = _getIconSize(widget.size);
-    return ElevatedButton(
-      onPressed: widget.onPressed,
-      onLongPress: widget.onLongPress,
-      onHover: widget.onHover,
-      focusNode: widget.focusNode,
-      onFocusChange: widget.onFocusChange,
-      autofocus: widget.autofocus,
-      clipBehavior: widget.clipBehavior,
-      style: ButtonStyle(
-        padding: _resetPaddingStyle(),
-        overlayColor: _createBackgroundStateStyle(context),
-        shape: _createCornerStyle(),
-        elevation: _createElevatorStyle(),
-        //Disabled ripple effect
-        splashFactory: NoSplash.splashFactory,
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: _getVerticalMargin(widget.size),
-          horizontal: _getHorizontalMargin(widget.size),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: widget.expanded ? MainAxisSize.max : MainAxisSize.min,
-          children: [
-            if (widget.iconStart != null)
-              widget.iconStart.toSvg(
-                color: AppColors.white,
-                height: iconSize,
-                width: iconSize,
-              ),
-            if (widget.iconStart != null) Space.width8,
-            Text(
-              widget.text ?? '',
-              style: _getTextStyle(widget.size, context),
-              textAlign: TextAlign.center,
+    final iconColor = _getTextColor(context, widget.type);
+    return AppHoverSpreadShadow(
+      childCorner: widget.corner,
+      focused: focused,
+      color: _getMainColor(context, widget.type).withOpacity(0.2),
+      child: Opacity(
+        opacity: widget.enabled ? 1.0 : 0.5,
+        child: ElevatedButton(
+          onPressed: widget.enabled ? widget.onPressed : null,
+          onLongPress: widget.onLongPress,
+          onHover: widget.onHover,
+          focusNode: widget.focusNode,
+          onFocusChange: _onFocusChange,
+          autofocus: widget.autofocus,
+          clipBehavior: widget.clipBehavior,
+          style: ButtonStyle(
+            padding: _resetPaddingStyle(),
+            overlayColor: _createOverlayStateStyle(context, widget.type),
+            backgroundColor: _createBackgroundStyle(context, widget.type),
+            shape: _createShapeStyle(context, widget.type),
+            elevation: _createElevatorStyle(),
+            //Disabled ripple effect
+            splashFactory: NoSplash.splashFactory,
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: _getVerticalMargin(widget.size),
+              horizontal: _getHorizontalMargin(widget.size),
             ),
-            if (widget.iconStart != null) Space.width8,
-            if (widget.iconEnd != null)
-              widget.iconEnd.toSvg(
-                color: AppColors.white,
-                height: iconSize,
-                width: iconSize,
-              ),
-          ],
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize:
+                  widget.expanded ? MainAxisSize.max : MainAxisSize.min,
+              children: [
+                if (widget.iconStart != null)
+                  widget.iconStart.toSvg(
+                    color: iconColor,
+                    height: iconSize,
+                    width: iconSize,
+                  ),
+                if (widget.iconStart != null) Space.width8,
+                Text(
+                  widget.text ?? '',
+                  style: _getTextStyle(widget.size, context, widget.type),
+                ),
+                if (widget.iconStart != null) Space.width8,
+                if (widget.iconEnd != null)
+                  widget.iconEnd.toSvg(
+                    color: iconColor,
+                    height: iconSize,
+                    width: iconSize,
+                  ),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 
-  ///========================= PRIVATE METHOD =========================///
-  MaterialStateProperty<Color?> _createBackgroundStateStyle(
-      BuildContext context) {
-    final primaryColor = Theme.of(context).primaryColor;
+  ///========================= BUTTON STYLE METHOD =========================///
+  MaterialStateProperty<Color?> _createBackgroundStyle(
+          BuildContext context, AppButtonType type) =>
+      MaterialStateProperty.all<Color?>(_getBackgroundColor(context, type));
+
+  MaterialStateProperty<Color?> _createOverlayStateStyle(
+      BuildContext context, AppButtonType type) {
     return MaterialStateProperty.resolveWith<Color?>(
       (states) {
         if (states.contains(MaterialState.hovered)) {
-          return primaryColor.darken(5);
+          if (type == AppButtonType.solidPrimary ||
+              type == AppButtonType.solidSecondary) {
+            return _getMainColor(context, type).darken(5);
+          } else if (type == AppButtonType.outlinePrimary ||
+              type == AppButtonType.outlineSecondary ||
+              type == AppButtonType.outlineGray ||
+              type == AppButtonType.ghostPrimary ||
+              type == AppButtonType.ghostSecondary ||
+              type == AppButtonType.ghostGray ||
+              type == AppButtonType.linkPrimary ||
+              type == AppButtonType.linkSecondary ||
+              type == AppButtonType.linkGray) {
+            return _getMainColor(context, type).withOpacity(0.05);
+          } else {
+            return AppColors.transparent;
+          }
         } else if (states.contains(MaterialState.focused)) {
-          return primaryColor;
+          return _getBackgroundColor(context, type);
         } else if (states.contains(MaterialState.pressed)) {
-          return primaryColor.darken(10);
-        } else if (states.contains(MaterialState.disabled)) {
-          return primaryColor.withOpacity(0.5);
+          if (type == AppButtonType.solidPrimary ||
+              type == AppButtonType.solidSecondary) {
+            return _getMainColor(context, type).darken(10);
+          } else if (type == AppButtonType.outlinePrimary ||
+              type == AppButtonType.outlineSecondary ||
+              type == AppButtonType.outlineGray ||
+              type == AppButtonType.ghostPrimary ||
+              type == AppButtonType.ghostSecondary ||
+              type == AppButtonType.ghostGray ||
+              type == AppButtonType.linkPrimary ||
+              type == AppButtonType.linkSecondary ||
+              type == AppButtonType.linkGray) {
+            return _getMainColor(context, type).withOpacity(0.10);
+          } else {
+            return AppColors.transparent;
+          }
         } else {
-          // Default state
-          return primaryColor;
+          return null;
         }
       },
     );
   }
 
-  MaterialStateProperty<Color?> _createOverlayStyle(BuildContext context) {
-    return MaterialStateProperty.all<Color?>(Colors.transparent);
-  }
-
   MaterialStateProperty<double?> _createElevatorStyle() =>
       MaterialStateProperty.all<double?>(0.0);
 
-  MaterialStateProperty<OutlinedBorder> _createCornerStyle() {
-    return MaterialStateProperty.all<OutlinedBorder>(
-      RoundedRectangleBorder(
+  MaterialStateProperty<OutlinedBorder?> _createShapeStyle(
+      BuildContext context, AppButtonType type) {
+    return MaterialStateProperty.resolveWith<OutlinedBorder?>((states) {
+      return RoundedRectangleBorder(
+        side: BorderSide(
+            color: _getStrokeColor(context, type, states),
+            width: 1,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside),
         borderRadius: BorderRadius.circular(widget.corner),
-      ),
-    );
+      );
+    });
   }
 
-  TextStyle _getTextStyle(AppWidgetSize size, BuildContext context) {
+  TextStyle _getTextStyle(
+    AppWidgetSize size,
+    BuildContext context,
+    AppButtonType type,
+  ) {
+    AppTextStyleBuilder styleBuilder =
+        AppTextStyleBuilder.primaryText.color(_getTextColor(context, type));
     switch (size) {
       case AppWidgetSize.sm:
-        return AppTextStyleBuilder.primaryText.sm.lightStrong.semiBold
-            .build(context);
+        return styleBuilder.sm.semiBold.build(context);
       case AppWidgetSize.md:
-        return AppTextStyleBuilder.primaryText.sm.lightStrong.semiBold
-            .build(context);
+        return styleBuilder.sm.semiBold.build(context);
       case AppWidgetSize.lg:
-        return AppTextStyleBuilder.primaryText.md.lightStrong.semiBold
-            .build(context);
+        return styleBuilder.md.semiBold.build(context);
       case AppWidgetSize.xl:
-        return AppTextStyleBuilder.primaryText.md.lightStrong.semiBold
-            .build(context);
+        return styleBuilder.md.semiBold.build(context);
       case AppWidgetSize.xxl:
-        return AppTextStyleBuilder.primaryText.lg.lightStrong.semiBold
-            .build(context);
+        return styleBuilder.lg.semiBold.build(context);
       default:
         throw UnimplementedError('No button size!');
     }
@@ -224,5 +271,121 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
       vertical: 0,
       horizontal: 0,
     ));
+  }
+
+  ///========================= COLOR METHOD =========================///
+  Color _getBackgroundColor(
+    BuildContext context,
+    AppButtonType type,
+  ) {
+    final primaryColor = Theme.of(context).primaryColor;
+    final secondaryColor = AppColors.secondary.base;
+    if (type == AppButtonType.solidPrimary) {
+      return primaryColor;
+    } else if (type == AppButtonType.solidSecondary) {
+      return secondaryColor;
+    } else if (type == AppButtonType.outlinePrimary ||
+        type == AppButtonType.outlineSecondary ||
+        type == AppButtonType.outlineGray ||
+        type == AppButtonType.ghostPrimary ||
+        type == AppButtonType.ghostSecondary ||
+        type == AppButtonType.ghostGray ||
+        type == AppButtonType.linkPrimary ||
+        type == AppButtonType.linkSecondary ||
+        type == AppButtonType.linkGray) {
+      return AppColors.transparent;
+    } else {
+      return AppColors.transparent;
+    }
+  }
+
+  Color _getTextColor(
+    BuildContext context,
+    AppButtonType type,
+  ) {
+    final primaryColor = Theme.of(context).primaryColor;
+    final secondaryColor = AppColors.secondary.base;
+    switch (type) {
+      case AppButtonType.solidPrimary:
+        return AppColors.text.lightStronger;
+      case AppButtonType.solidSecondary:
+        return AppColors.text.lightStronger;
+      case AppButtonType.outlinePrimary:
+        return primaryColor;
+      case AppButtonType.outlineSecondary:
+        return secondaryColor;
+      case AppButtonType.outlineGray:
+        return AppColors.text.dark;
+      case AppButtonType.ghostPrimary:
+        return primaryColor;
+      case AppButtonType.ghostSecondary:
+        return secondaryColor;
+      case AppButtonType.ghostGray:
+        return AppColors.text.dark;
+      case AppButtonType.linkPrimary:
+        return primaryColor;
+      case AppButtonType.linkSecondary:
+        return secondaryColor;
+      case AppButtonType.linkGray:
+        return AppColors.text.dark;
+    }
+  }
+
+  Color _getStrokeColor(
+    BuildContext context,
+    AppButtonType type, Set<MaterialState> states,
+  ) {
+    final primaryColor = Theme.of(context).primaryColor;
+    final secondaryColor = AppColors.secondary.base;
+    if (type == AppButtonType.solidPrimary ||
+        type == AppButtonType.solidSecondary ||
+        type == AppButtonType.ghostSecondary ||
+        type == AppButtonType.linkSecondary) {
+      return AppColors.transparent;
+    } else if (type == AppButtonType.outlinePrimary) {
+      return primaryColor;
+    } else if (type == AppButtonType.outlineSecondary) {
+      return secondaryColor;
+    } else if (type == AppButtonType.outlineGray) {
+      if (states.contains(MaterialState.hovered)) {
+        return AppColors.lineStroke.dark.darken(10);
+      }else{
+        return AppColors.lineStroke.dark;
+      }
+    } else {
+      return AppColors.transparent;
+    }
+  }
+
+  Color _getMainColor(
+    BuildContext context,
+    AppButtonType type,
+  ) {
+    final primaryColor = Theme.of(context).primaryColor;
+    final secondaryColor = AppColors.secondary.base;
+    if (type == AppButtonType.solidPrimary ||
+        type == AppButtonType.outlinePrimary ||
+        type == AppButtonType.ghostPrimary ||
+        type == AppButtonType.linkPrimary) {
+      return primaryColor;
+    } else if (type == AppButtonType.solidSecondary ||
+        type == AppButtonType.outlineSecondary ||
+        type == AppButtonType.ghostSecondary ||
+        type == AppButtonType.linkSecondary) {
+      return secondaryColor;
+    } else if (type == AppButtonType.outlineGray ||
+        type == AppButtonType.ghostGray ||
+        type == AppButtonType.linkGray) {
+      return AppColors.text.dark;
+    } else {
+      return AppColors.transparent;
+    }
+  }
+
+  ///========================= CALLBACK METHOD =========================///
+  void _onFocusChange(bool value) {
+    focused = value;
+    widget.onFocusChange?.call(value);
+    updateState();
   }
 }

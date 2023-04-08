@@ -66,10 +66,38 @@ class AppTextStyleBuilder {
   ///========================= COLOR =========================///
   AppTextStyleBuilder get colorPrimary => this.._color = AppColors.primary.base;
 
-  AppTextStyleBuilder get dark => this.._color = AppColors.text.dark;
+  AppTextStyleBuilder get colorSecondary =>
+      this.._color = AppColors.secondary.base;
 
-  AppTextStyleBuilder get lightStrong =>
+  AppTextStyleBuilder get colorLightWeaker =>
+      this.._color = AppColors.text.lightWeaker;
+
+  AppTextStyleBuilder get colorLightWeak =>
+      this.._color = AppColors.text.lightWeak;
+
+  AppTextStyleBuilder get colorLight => this.._color = AppColors.text.light;
+
+  AppTextStyleBuilder get colorLightStrong =>
       this.._color = AppColors.text.lightStrong;
+
+  AppTextStyleBuilder get colorLightStronger =>
+      this.._color = AppColors.text.lightStronger;
+
+  AppTextStyleBuilder get colorDarkWeaker =>
+      this.._color = AppColors.text.darkWeaker;
+
+  AppTextStyleBuilder get colorDarkWeak =>
+      this.._color = AppColors.text.darkWeak;
+
+  AppTextStyleBuilder get colorDark => this.._color = AppColors.text.light;
+
+  AppTextStyleBuilder get colorDarkStrong =>
+      this.._color = AppColors.text.darkStrong;
+
+  AppTextStyleBuilder get colorDarkStronger =>
+      this.._color = AppColors.text.darkStronger;
+
+  AppTextStyleBuilder color(Color color) => this.._color = color;
 
   ///========================= WEIGHT =========================///
   AppTextStyleBuilder get light => this.._weight = FontWeight.w300;

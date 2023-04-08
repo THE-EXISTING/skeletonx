@@ -40,6 +40,7 @@ export 'package:permission_handler/permission_handler.dart';
 export 'package:equatable/equatable.dart';
 export 'package:go_router/go_router.dart';
 export 'package:url_strategy/url_strategy.dart';
+export 'package:drop_shadow/drop_shadow.dart';
 
 // export 'package:catcher/catcher.dart';
 export 'package:url_launcher/url_launcher.dart';

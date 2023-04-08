@@ -34,9 +34,10 @@ dependencies:
   mask_text_input_formatter: ^2.4.0
   pin_code_fields: ^7.4.0
   responsive_framework: ^0.2.0
+  drop_shadow: ^0.1.0
 
   #======= Analytic ========#
-  sentry_flutter: ^7.4.0
+  sentry_flutter: ^7.4.1
 
   #======= Utils ========#
   go_router: ^6.5.2
