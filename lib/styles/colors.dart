@@ -5,19 +5,19 @@ class AppColors {
 
   static const white = Color(0xffffffff);
   static const black = Color(0xff000000);
+  static const transparent = Colors.transparent;
 
-  static const surface = _SurfaceColors();
-  static const line = _LineColors();
-  static const stroke = _StrokeColors();
+  static final primary = _PrimaryColors();
+  static final secondary = _SecondaryColors();
+
+  static final surface = _SurfaceColors();
+  static final lineStroke = _LineStrokeColors();
 
   static const tran = _TransparentColors();
 
-  static const text = _TextColors();
-  static const status = _FeedbackColors();
+  static final text = _TextColors();
+  static final feedback = _FeedbackColors();
   static const paint = _PaintColor();
-
-  static const primary = _PrimaryColors();
-  static const secondary = _SecondaryColors();
 
   static const gradient1 = Color.fromRGBO(245, 103, 86, 1);
   static const gradient2 = Color.fromRGBO(247, 172, 42, 1);
@@ -32,62 +32,89 @@ class AppColors {
   static const stateOverlayPrimary = Color.fromRGBO(255, 82, 73, 0.08);
   static const stateOverlayBlack = Color.fromRGBO(0, 0, 0, 0.06);
 
-  static const transparent = Colors.transparent;
   static const skeleton = Colors.grey;
 }
 
-class _PrimaryColors {
-  const _PrimaryColors();
+class _PrimaryColors extends BlueDarkColor {
+  _PrimaryColors() : super();
 
-  final bg = const Color(0xffF4FAFF);
-  final bgStrong = const Color(0xffE9F5FE);
-  final weaker = const Color(0xffD2EBFE);
-  final weak = const Color(0xffA6D7FC);
-  final base = const Color(0xff209AF8);
-  final strong = const Color(0xff1A7BC6);
-  final stronger = const Color(0xff135C95);
+  Color get bg => c25;
+
+  Color get bgStrong => c50;
+
+  Color get weaker => c300;
+
+  Color get weak => c400;
+
+  Color get base => c500;
+
+  Color get strong => c600;
+
+  Color get stronger => c700;
 }
 
-class _SecondaryColors {
-  const _SecondaryColors();
+class _SecondaryColors extends RoseColor {
+  _SecondaryColors() : super();
 
-  final Color bg = const Color(0xffFDF3F7);
-  final Color bgStrong = const Color(0xffFCE7F0);
-  final Color weaker = const Color(0xffF8CFE0);
-  final Color weak = const Color(0xffF19EC1);
-  final Color base = const Color(0xffDD0D64);
-  final Color strong = const Color(0xffB10A50);
-  final Color stronger = const Color(0xff85083C);
+  Color get bg => c25;
+
+  Color get bgStrong => c50;
+
+  Color get weaker => c300;
+
+  Color get weak => c400;
+
+  Color get base => c500;
+
+  Color get strong => c600;
+
+  Color get stronger => c700;
 }
 
-class _SurfaceColors {
-  const _SurfaceColors();
 
-  final light = const Color(0xfff5f7fa);
-  final lightStrong = const Color(0xffffffff);
+class _TextColors extends GrayModernColor {
+  _TextColors() : super();
 
-  final dark = const Color(0xff101828);
-  final darkStrong = const Color(0xff070E1E);
+  Color get lightWeaker => c400;
+  Color get lightWeak => c300;
+  Color get light => c200;
+  Color get lightStrong => c100;
+  Color get lightStronger => const Color(0xffFFFFFF);
+
+  Color get darkWeaker => c500;
+  Color get darkWeak => c600;
+  Color get dark => c700;
+  Color get darkStrong => c800;
+  Color get darkStronger => c900;
 }
 
-class _LineColors {
-  const _LineColors();
 
-  final light = const Color(0xffE4E7EC);
-  final lightStrong = const Color(0xffF2F4F7);
+class _SurfaceColors extends GrayModernColor {
+  _SurfaceColors() : super();
 
-  final dark = const Color(0xff344054);
-  final darkStrong = const Color(0xff1D2939);
+  Color get light => c50;
+
+  Color get lightStrong => c25;
+
+  Color get dark => c800;
+
+  Color get darkStrong => c900;
 }
 
-class _StrokeColors {
-  const _StrokeColors();
+class _LineStrokeColors extends GrayModernColor {
+  _LineStrokeColors() : super();
 
-  final Color light = const Color(0xffE4E7EC);
-  final Color lightStrong = const Color(0xffF2F4F7);
+  Color get lightWeak => c300;
 
-  final Color dark = const Color(0xff344054);
-  final Color darkStrong = const Color(0xff1D2939);
+  Color get light => c200;
+
+  Color get lightStrong => c100;
+
+  Color get darkWeak => c600;
+
+  Color get dark => c700;
+
+  Color get darkStrong => c800;
 }
 
 class _TransparentColors {
@@ -136,40 +163,56 @@ class _TransparentColors {
   final Color black1 = const Color.fromRGBO(0, 0, 0, 0.01);
 }
 
-class _TextColors {
-  const _TextColors();
-
-  final Color lightWeaker = const Color(0xffD0D5DD);
-  final Color lightWeak = const Color(0xffE4E7EC);
-  final Color light = const Color(0xffF2F4F7);
-  final Color lightStrong = const Color(0xffFFFFFF);
-
-  final Color darkWeaker = const Color(0xff98A2B3);
-  final Color darkWeak = const Color(0xff667085);
-  final Color dark = const Color(0xff1D2939);
-  final Color darkStrong = const Color(0xff101828);
-}
-
 class _FeedbackColors {
-  const _FeedbackColors();
+  _FeedbackColors();
 
-  final Color errorBg = const Color(0xffFBEAE9);
-  final Color errorWeaker = const Color(0xffF7D5D3);
-  final Color errorWeak = const Color(0xffE8817A);
-  final Color errorBase = const Color(0xffD92D21);
-  final Color errorStrong = const Color(0xffAE241A);
+  final PaletteColor feedback = ErrorColor();
 
-  final Color warningBg = const Color(0xffFFFAEB);
-  final Color warningWeaker = const Color(0xffFEF0C7);
-  final Color warningWeak = const Color(0xffFEC84B);
-  final Color warningBase = const Color(0xffF79009);
-  final Color warningStrong = const Color(0xffDC6803);
+  Color get errorBg => feedback.c25;
 
-  final Color successBg = const Color(0xffECFDF3);
-  final Color successWeaker = const Color(0xffD1FADF);
-  final Color successWeak = const Color(0xff6CE9A6);
-  final Color successBase = const Color(0xff12B76A);
-  final Color successStrong = const Color(0xff039855);
+  Color get errorBgStrong => feedback.c50;
+
+  Color get errorWeaker => feedback.c300;
+
+  Color get errorWeak => feedback.c400;
+
+  Color get errorBase => feedback.c500;
+
+  Color get errorStrong => feedback.c600;
+
+  Color get errorStronger => feedback.c700;
+
+  final PaletteColor warning = WarningColor();
+
+  Color get warningBg => warning.c25;
+
+  Color get warningBgStrong => warning.c50;
+
+  Color get warningWeaker => warning.c300;
+
+  Color get warningWeak => warning.c400;
+
+  Color get warningBase => warning.c500;
+
+  Color get warningStrong => warning.c600;
+
+  Color get warningStronger => warning.c700;
+
+  final PaletteColor success = SuccessColor();
+
+  Color get successBg => success.c25;
+
+  Color get successBgStrong => success.c50;
+
+  Color get successWeaker => success.c300;
+
+  Color get successWeak => success.c400;
+
+  Color get successBase => success.c500;
+
+  Color get successStrong => success.c600;
+
+  Color get successStronger => success.c700;
 }
 
 class _PaintColor {
@@ -186,4 +229,3 @@ class _PaintColor {
       ],
     ).createShader(const Rect.fromLTWH(0, 0, 80, 10));
 }
-

@@ -26,7 +26,7 @@ class AppButton extends AppComponentGroup {
     this.autofocus = false,
     this.clipBehavior = Clip.none,
     this.size = AppWidgetSize.md,
-    this.corner = AppStyle.corner,
+    this.corner = AppStyle.globalCorner,
     this.iconStart,
     this.iconEnd,
     this.destructive = false,
