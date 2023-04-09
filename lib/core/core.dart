@@ -3,6 +3,7 @@ export '../generated/assets.dart';
 
 export 'app_environment.dart';
 export 'breakpoints.dart';
+export 'material_app.dart';
 export 'views/states/app_locale_state.dart';
 
 export 'animates/animates.dart';

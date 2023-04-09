@@ -1,4 +1,5 @@
 import 'package:falconx/falconx.dart';
+import 'package:skeletonx/core/core.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 class WidgetBookConfig {
@@ -6,10 +7,21 @@ class WidgetBookConfig {
   static final themes = [
     WidgetbookTheme(
       name: 'Light',
-      data: ThemeData.light(),
+      data: AppConfig.theme.lightTheme,
     ),
     WidgetbookTheme(
       name: 'Dark',
+      data: AppConfig.theme.darkTheme,
+    )
+  ];
+
+  static final materialThemes = [
+    WidgetbookTheme(
+      name: 'Background Light',
+      data: ThemeData(),
+    ),
+    WidgetbookTheme(
+      name: 'Background Dark',
       data: ThemeData.dark(),
     )
   ];

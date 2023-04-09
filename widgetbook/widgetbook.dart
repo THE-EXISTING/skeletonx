@@ -24,6 +24,11 @@ class AppWidgetbookHotReload extends StatelessWidget {
             themes: WidgetBookConfig.themes,
           ),
         ),
+        MaterialThemeAddon(
+          setting: MaterialThemeSetting.firstAsSelected(
+            themes: WidgetBookConfig.materialThemes,
+          ),
+        ),
       ],
       directories: [
         WidgetbookCategory(
@@ -45,6 +50,46 @@ class AppWidgetbookHotReload extends StatelessWidget {
           children: [],
         ),
       ],
+      appBuilder: appBuilder,
     );
   }
 }
+
+
+get appBuilder => (BuildContext context, Widget child) {
+      final builder = Builder(
+        builder: (context) {
+          return AppTheme(
+            theme: AppConfig.theme.lightTheme,
+            darkTheme: AppConfig.theme.darkTheme,
+            themeMode: ThemeMode.system,
+            child: MaterialApp(
+              theme: context.materialTheme,
+              locale: context.localization?.activeLocale,
+              supportedLocales: context.localization?.locales ??
+                  const <Locale>[
+                    Locale('en', 'US'),
+                  ],
+              localizationsDelegates:
+                  context.localization?.localizationsDelegates,
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaleFactor: context.textScale,
+                  ),
+                  child: child,
+                ),
+              ),
+            ),
+          );
+        },
+      );
+      final frameBuilder = context.frameBuilder;
+      return frameBuilder == null
+          ? builder
+          : frameBuilder(
+              context,
+              builder,
+            );
+    };

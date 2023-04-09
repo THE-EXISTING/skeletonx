@@ -49,7 +49,7 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
     return AnimatedBuilder(
       animation: widget.settingsController,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp.router(
+        return AppMaterialRoute(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -68,8 +68,8 @@ class _MyApplication extends ApplicationLocaleState<MyApplication> {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+          theme: AppConfig.theme.lightTheme,
+          darkTheme: AppConfig.theme.darkTheme,
           themeMode: widget.settingsController.themeMode,
 
           routerConfig: router,

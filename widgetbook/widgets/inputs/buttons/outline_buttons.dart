@@ -5,59 +5,65 @@ class OutlineButtonBook extends ButtonBook {
     return [
       WidgetbookUseCase(
         name: 'Outline Primary Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
+        builder: (context) => ContainerLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
+          padding: PaddingSpace.all16,
           children: [
-            AppButton(
+            AppOutlineButton(
               onPressed: () {},
-              type: AppButtonType.outlinePrimary,
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineButton(
               onPressed: () {},
-              type: AppButtonType.outlinePrimary,
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineButton(
               onPressed: () {},
-              type: AppButtonType.outlinePrimary,
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineButton(
               onPressed: () {},
-              type: AppButtonType.outlinePrimary,
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineButton(
               onPressed: () {},
-              type: AppButtonType.outlinePrimary,
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),
@@ -68,55 +74,60 @@ class OutlineButtonBook extends ButtonBook {
           direction: Axis.vertical,
           spacing: 20,
           children: [
-            AppButton(
+            AppOutlineSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.outlineSecondary,
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.outlineSecondary,
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.outlineSecondary,
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.outlineSecondary,
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.outlineSecondary,
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),
@@ -127,55 +138,60 @@ class OutlineButtonBook extends ButtonBook {
           direction: Axis.vertical,
           spacing: 20,
           children: [
-            AppButton(
+            AppOutlineGrayButton(
               onPressed: () {},
-              type: AppButtonType.outlineGray,
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineGrayButton(
               onPressed: () {},
-              type: AppButtonType.outlineGray,
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineGrayButton(
               onPressed: () {},
-              type: AppButtonType.outlineGray,
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineGrayButton(
               onPressed: () {},
-              type: AppButtonType.outlineGray,
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppOutlineGrayButton(
               onPressed: () {},
-              type: AppButtonType.outlineGray,
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),

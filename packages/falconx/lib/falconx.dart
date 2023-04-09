@@ -6,6 +6,7 @@ export 'package:faltool/faltool.dart';
 export 'package:falstore/falstore.dart';
 
 export 'dart:async';
+export 'dart:math';
 export 'dart:convert';
 export 'package:flutter/services.dart';
 export 'package:flutter/material.dart' hide Notification, Badge;

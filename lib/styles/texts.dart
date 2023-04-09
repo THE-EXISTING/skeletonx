@@ -97,7 +97,7 @@ class AppTextStyleBuilder {
   AppTextStyleBuilder get colorDarkStronger =>
       this.._color = AppColors.text.darkStronger;
 
-  AppTextStyleBuilder color(Color color) => this.._color = color;
+  AppTextStyleBuilder color(Color? color) => this.._color = color;
 
   ///========================= WEIGHT =========================///
   AppTextStyleBuilder get light => this.._weight = FontWeight.w300;

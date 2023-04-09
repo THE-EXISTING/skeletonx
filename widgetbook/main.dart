@@ -4,5 +4,5 @@ import 'package:flutter/rendering.dart';
 
 void main(List<String> args) {
   debugPaintSizeEnabled = false;
-  runApp(AppWidgetbookHotReload());
+  runApp(const AppWidgetbookHotReload());
 }

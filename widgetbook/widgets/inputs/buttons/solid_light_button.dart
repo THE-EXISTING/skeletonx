@@ -1,16 +1,16 @@
 import '../../../widgetbook.dart';
 
-class LinkButtonBook {
+class SolidLightButtonBook {
   static List<WidgetbookUseCase> createCases() {
     return [
       WidgetbookUseCase(
-        name: 'Link Primary Button',
+        name: 'Solid Primary Light Button',
         builder: (context) => ContainerLayout(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
           padding: PaddingSpace.all16,
           children: [
-            AppLinkButton(
+            AppSolidLightButton(
               onPressed: () {},
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
@@ -19,8 +19,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkButton(
+            AppSolidLightButton(
               onPressed: () {},
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
@@ -29,8 +30,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkButton(
+            AppSolidLightButton(
               onPressed: () {},
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
@@ -39,8 +41,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkButton(
+            AppSolidLightButton(
               onPressed: () {},
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
@@ -49,8 +52,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkButton(
+            AppSolidLightButton(
               onPressed: () {},
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
@@ -59,17 +63,18 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),
       ),
       WidgetbookUseCase(
-        name: 'Link Secondary Button',
+        name: 'Solid Secondary Light Button',
         builder: (context) => Wrap(
           direction: Axis.vertical,
           spacing: 20,
           children: [
-            AppLinkSecondaryButton(
+            AppSolidLightSecondaryButton(
               onPressed: () {},
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
@@ -78,8 +83,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkSecondaryButton(
+            AppSolidLightSecondaryButton(
               onPressed: () {},
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
@@ -88,8 +94,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkSecondaryButton(
+            AppSolidLightSecondaryButton(
               onPressed: () {},
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
@@ -98,8 +105,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkSecondaryButton(
+            AppSolidLightSecondaryButton(
               onPressed: () {},
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
@@ -108,8 +116,9 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppLinkSecondaryButton(
+            AppSolidLightSecondaryButton(
               onPressed: () {},
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
@@ -118,65 +127,7 @@ class LinkButtonBook {
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
               destructive: ButtonBook.createDestructiveButtonOption(context),
-            ),
-          ],
-        ),
-      ),
-      WidgetbookUseCase(
-        name: 'Link Gray Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
-          spacing: 20,
-          children: [
-            AppLinkGrayButton(
-              onPressed: () {},
-              size: AppWidgetSize.sm,
-              text: ButtonBook.createTextButtonOption(context),
-              iconStart:
-                  ButtonBook.createIconButtonOption(context, 'Start Icon'),
-              iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
-              enabled: ButtonBook.createEnabledButtonOption(context),
-              destructive: ButtonBook.createDestructiveButtonOption(context),
-            ),
-            AppLinkGrayButton(
-              onPressed: () {},
-              size: AppWidgetSize.md,
-              text: ButtonBook.createTextButtonOption(context),
-              iconStart:
-                  ButtonBook.createIconButtonOption(context, 'Start Icon'),
-              iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
-              enabled: ButtonBook.createEnabledButtonOption(context),
-              destructive: ButtonBook.createDestructiveButtonOption(context),
-            ),
-            AppLinkGrayButton(
-              onPressed: () {},
-              size: AppWidgetSize.lg,
-              text: ButtonBook.createTextButtonOption(context),
-              iconStart:
-                  ButtonBook.createIconButtonOption(context, 'Start Icon'),
-              iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
-              enabled: ButtonBook.createEnabledButtonOption(context),
-              destructive: ButtonBook.createDestructiveButtonOption(context),
-            ),
-            AppLinkGrayButton(
-              onPressed: () {},
-              size: AppWidgetSize.xl,
-              text: ButtonBook.createTextButtonOption(context),
-              iconStart:
-                  ButtonBook.createIconButtonOption(context, 'Start Icon'),
-              iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
-              enabled: ButtonBook.createEnabledButtonOption(context),
-              destructive: ButtonBook.createDestructiveButtonOption(context),
-            ),
-            AppLinkGrayButton(
-              onPressed: () {},
-              size: AppWidgetSize.xxl,
-              text: ButtonBook.createTextButtonOption(context),
-              iconStart:
-                  ButtonBook.createIconButtonOption(context, 'Start Icon'),
-              iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
-              enabled: ButtonBook.createEnabledButtonOption(context),
-              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),

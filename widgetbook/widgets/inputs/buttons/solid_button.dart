@@ -5,11 +5,12 @@ class SolidButtonBook {
     return [
       WidgetbookUseCase(
         name: 'Solid Primary Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
+        builder: (context) => ContainerLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
+          padding: PaddingSpace.all16,
           children: [
-            AppButton(
+            AppSolidButton(
               onPressed: () {},
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
@@ -17,9 +18,10 @@ class SolidButtonBook {
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
-              // iconEnd: Assets.iconCircle,
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidButton(
               onPressed: () {},
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
@@ -27,8 +29,10 @@ class SolidButtonBook {
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidButton(
               onPressed: () {},
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
@@ -36,8 +40,10 @@ class SolidButtonBook {
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidButton(
               onPressed: () {},
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
@@ -45,8 +51,10 @@ class SolidButtonBook {
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidButton(
               onPressed: () {},
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
@@ -54,6 +62,8 @@ class SolidButtonBook {
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),
@@ -64,55 +74,60 @@ class SolidButtonBook {
           direction: Axis.vertical,
           spacing: 20,
           children: [
-            AppButton(
+            AppSolidSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.solidSecondary,
               size: AppWidgetSize.sm,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.solidSecondary,
               size: AppWidgetSize.md,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.solidSecondary,
               size: AppWidgetSize.lg,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.solidSecondary,
               size: AppWidgetSize.xl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
-            AppButton(
+            AppSolidSecondaryButton(
               onPressed: () {},
-              type: AppButtonType.solidSecondary,
               size: AppWidgetSize.xxl,
               text: ButtonBook.createTextButtonOption(context),
               iconStart:
                   ButtonBook.createIconButtonOption(context, 'Start Icon'),
               iconEnd: ButtonBook.createIconButtonOption(context, 'End Icon'),
               enabled: ButtonBook.createEnabledButtonOption(context),
+              destructive: ButtonBook.createDestructiveButtonOption(context),
+              expanded: ButtonBook.createExpandedButtonOption(context),
             ),
           ],
         ),
