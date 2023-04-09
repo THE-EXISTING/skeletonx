@@ -32,7 +32,7 @@ class AppSolidLightButton extends AppButton {
           iconColor: iconColor ?? AppColors.primary.base,
           stroke: stroke ?? 0.0,
           strokeColor: strokeColor ?? Colors.transparent,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? AppColors.primary.bgStrong,
           overlayColor:
               backgroundColor ?? AppColors.primary.bg.withOpacity(0.4),

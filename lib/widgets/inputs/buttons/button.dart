@@ -26,7 +26,7 @@ class AppButton extends AppComponentGroup {
     this.iconColor,
     this.stroke,
     this.strokeColor,
-    this.corner,
+    this.cornerRadius,
     this.backgroundColor,
     this.overlayColor,
     this.focusColor,
@@ -61,7 +61,7 @@ class AppButton extends AppComponentGroup {
   final ValueChanged<bool>? onFocusChange;
   final FocusNode? focusNode;
   final bool autofocus;
-  final double? corner;
+  final double? cornerRadius;
   final Clip clipBehavior;
   final String? iconStart;
   final String? iconEnd;
@@ -79,15 +79,22 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
   @override
   Widget buildDefault(BuildContext context) {
     final iconSize = _getIconSize(widget.size);
+    final backgroundColor = widget.backgroundColor ?? theme.primaryColor;
+    final overlayColor = widget.overlayColor ?? theme.primaryColorOverlay;
+    final stroke = widget.stroke ?? theme.lineStrokeThickness;
+    final strokeColor = widget.strokeColor ?? theme.lineStrokeColor;
+    final cornerRadius = widget.cornerRadius ?? theme.cornerRadius;
+    final focusColor =
+        widget.focusColor ?? widget.overlayColor?.withOpacity(0.1);
+    final height = _calculateHeight(widget.size);
     return AppHoverSpreadShadow(
-      childCorner: widget.corner ?? 4.0,
+      childCorner: widget.cornerRadius ?? theme.cornerRadius,
       focused: focused,
-      color: widget.focusColor ?? widget.overlayColor?.withOpacity(0.2),
+      color: focusColor,
       child: Opacity(
         opacity: widget.enabled ? 1.0 : 0.5,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: _calculateHeight(widget.size)),
-          // constraints: BoxConstraints(),
+          constraints: BoxConstraints(maxHeight: height, minHeight: height),
           child: ElevatedButton(
             onPressed: widget.enabled ? widget.onPressed : null,
             onLongPress: widget.onLongPress,
@@ -98,9 +105,21 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
             clipBehavior: widget.clipBehavior,
             style: ButtonStyle(
               padding: _createPaddingStyle(widget.size),
-              overlayColor: _createOverlayStateStyle(context),
-              backgroundColor: _createBackgroundStyle(context),
-              shape: _createShapeStyle(context),
+              overlayColor: _createOverlayStateStyle(
+                context,
+                backgroundColor: backgroundColor,
+                overlayColor: overlayColor,
+              ),
+              backgroundColor: _createBackgroundStyle(
+                context,
+                backgroundColor,
+              ),
+              shape: _createShapeStyle(
+                context,
+                stroke: stroke,
+                strokeColor: strokeColor,
+                cornerRadius: cornerRadius,
+              ),
               elevation: _createElevatorStyle(),
               //Disabled ripple effect
               splashFactory: NoSplash.splashFactory,
@@ -149,25 +168,32 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
         ));
   }
 
-  MaterialStateProperty<Color?> _createBackgroundStyle(BuildContext context) =>
-      MaterialStateProperty.all<Color?>(widget.backgroundColor);
+  MaterialStateProperty<Color?> _createBackgroundStyle(
+    BuildContext context,
+    Color backgroundColor,
+  ) =>
+      MaterialStateProperty.all<Color?>(backgroundColor);
 
-  MaterialStateProperty<Color?> _createOverlayStateStyle(BuildContext context) {
+  MaterialStateProperty<Color?> _createOverlayStateStyle(
+    BuildContext context, {
+    required Color backgroundColor,
+    required Color overlayColor,
+  }) {
     return MaterialStateProperty.resolveWith<Color?>(
       (states) {
         if (states.contains(MaterialState.hovered)) {
-          if (widget.backgroundColor?.value == Colors.transparent.value) {
-            return widget.overlayColor?.withOpacity(0.05);
+          if (backgroundColor.value == Colors.transparent.value) {
+            return overlayColor.withOpacity(0.05);
           } else {
-            return widget.overlayColor?.darken(5);
+            return overlayColor.darken(5);
           }
         } else if (states.contains(MaterialState.focused)) {
-          return widget.backgroundColor;
+          return backgroundColor;
         } else if (states.contains(MaterialState.pressed)) {
-          if (widget.backgroundColor?.value == Colors.transparent.value) {
-            return widget.overlayColor?.withOpacity(0.1);
+          if (backgroundColor.value == Colors.transparent.value) {
+            return overlayColor.withOpacity(0.1);
           } else {
-            return widget.overlayColor?.darken(10);
+            return overlayColor.darken(10);
           }
         } else {
           return null;
@@ -180,23 +206,27 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
       MaterialStateProperty.all<double?>(0.0);
 
   MaterialStateProperty<OutlinedBorder?> _createShapeStyle(
-      BuildContext context) {
+    BuildContext context, {
+    required double stroke,
+    required Color strokeColor,
+    required double cornerRadius,
+  }) {
     return MaterialStateProperty.resolveWith<OutlinedBorder?>((states) {
-      Color strokeColor = widget.strokeColor ?? Colors.transparent;
+      Color strokeColorTmp = strokeColor;
       if (states.contains(MaterialState.hovered)) {
-        strokeColor = strokeColor.darken(5);
+        strokeColorTmp = strokeColor.darken(5);
       } else if (states.contains(MaterialState.focused)) {
-        strokeColor = strokeColor;
+        strokeColorTmp = strokeColor;
       } else if (states.contains(MaterialState.pressed)) {
-        strokeColor = strokeColor.darken(10);
+        strokeColorTmp = strokeColor.darken(10);
       }
       return RoundedRectangleBorder(
         side: BorderSide(
-            color: strokeColor,
-            width: widget.stroke ?? 1.0,
+            color: strokeColorTmp,
+            width: stroke,
             style: BorderStyle.solid,
             strokeAlign: BorderSide.strokeAlignInside),
-        borderRadius: BorderRadius.circular(widget.corner ?? 4.0),
+        borderRadius: BorderRadius.circular(cornerRadius),
       );
     });
   }

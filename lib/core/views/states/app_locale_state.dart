@@ -1,5 +1,4 @@
-import 'package:falconx/falconx.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skeletonx/core/core.dart';
 
 abstract class AppLocaleState<T extends StatefulWidgetX> extends StateX<T> {
   // ignore: non_constant_identifier_names
@@ -7,4 +6,6 @@ abstract class AppLocaleState<T extends StatefulWidgetX> extends StateX<T> {
 
   AppLocalizations getStrings(BuildContext context) =>
       AppLocalizations.of(context)!;
+
+  AppThemeData get theme => AppTheme.of(context);
 }

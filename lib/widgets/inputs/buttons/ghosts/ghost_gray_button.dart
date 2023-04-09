@@ -32,7 +32,7 @@ class AppGhostGrayButton extends AppButton {
           iconColor: iconColor ?? AppColors.text.dark,
           stroke: stroke ?? 1.0,
           strokeColor: strokeColor ?? Colors.transparent,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? Colors.transparent,
           overlayColor: backgroundColor ?? AppColors.text.dark,
           focusColor: backgroundColor ?? AppColors.text.dark.lighten(30),

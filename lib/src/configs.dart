@@ -17,7 +17,9 @@ class _AppThemeConfig {
   final AppThemeData lightTheme = AppThemeData(
     themeMode: ThemeMode.light,
     primaryColor: AppColors.primary.base,
+    primaryColorOverlay: AppColors.primary.base.darken(5),
     secondaryColor: AppColors.secondary.base,
+    secondaryColorOverlay: AppColors.primary.base.darken(5),
     cornerRadius: 8.0,
     lineStrokeThickness: 1,
     lineStrokeColor: AppColors.lineStroke.dark,
@@ -26,7 +28,9 @@ class _AppThemeConfig {
   final AppThemeData darkTheme = AppThemeData(
     themeMode: ThemeMode.dark,
     primaryColor: AppColors.primary.base,
+    primaryColorOverlay: AppColors.primary.base.darken(5),
     secondaryColor: AppColors.secondary.base,
+    secondaryColorOverlay: AppColors.primary.base.darken(5),
     cornerRadius: 8.0,
     lineStrokeThickness: 1,
     lineStrokeColor: AppColors.lineStroke.dark,

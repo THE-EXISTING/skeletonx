@@ -70,9 +70,10 @@ class SolidLightButtonBook {
       ),
       WidgetbookUseCase(
         name: 'Solid Secondary Light Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
+        builder: (context) => ContainerLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
+          padding: PaddingSpace.all16,
           children: [
             AppSolidLightSecondaryButton(
               onPressed: () {},

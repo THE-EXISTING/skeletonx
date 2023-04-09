@@ -32,7 +32,7 @@ class AppOutlineSecondaryButton extends AppButton {
           iconColor: iconColor ?? AppColors.secondary.base,
           stroke: stroke ?? 1.0,
           strokeColor: strokeColor ?? AppColors.secondary.base,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? Colors.transparent,
           overlayColor: backgroundColor ?? AppColors.secondary.base,
           padding: padding,

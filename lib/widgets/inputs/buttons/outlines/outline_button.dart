@@ -32,7 +32,7 @@ class AppOutlineButton extends AppButton {
           iconColor: iconColor ?? AppColors.primary.base,
           stroke: stroke ?? 1.0,
           strokeColor: strokeColor ?? AppColors.primary.base,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? Colors.transparent,
           overlayColor: backgroundColor ?? AppColors.primary.base,
           focusColor: backgroundColor ?? AppColors.primary.base,

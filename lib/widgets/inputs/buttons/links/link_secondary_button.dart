@@ -32,7 +32,7 @@ class AppLinkSecondaryButton extends AppButton {
           iconColor: iconColor ?? AppColors.secondary.base,
           stroke: stroke ?? 1.0,
           strokeColor: strokeColor ?? Colors.transparent,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? Colors.transparent,
           overlayColor: backgroundColor ?? AppColors.secondary.base,
           focusColor: backgroundColor ?? AppColors.secondary.base.lighten(30),

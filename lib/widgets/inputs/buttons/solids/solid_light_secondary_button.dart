@@ -32,7 +32,7 @@ class AppSolidLightSecondaryButton extends AppButton {
           iconColor: iconColor ?? AppColors.secondary.base,
           stroke: stroke ?? 0.0,
           strokeColor: strokeColor ?? Colors.transparent,
-          corner: corner,
+          cornerRadius: corner,
           backgroundColor: backgroundColor ?? AppColors.secondary.bgStrong,
           overlayColor: backgroundColor ?? AppColors.secondary.bg.withOpacity(0.4),
           focusColor: backgroundColor ?? AppColors.secondary.base,

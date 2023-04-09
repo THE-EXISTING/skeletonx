@@ -70,9 +70,10 @@ class GhostButtonBook {
       ),
       WidgetbookUseCase(
         name: 'Ghost Secondary Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
+        builder: (context) => ContainerLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
+          padding: PaddingSpace.all16,
           children: [
             AppGhostSecondaryButton(
               onPressed: () {},
@@ -134,9 +135,10 @@ class GhostButtonBook {
       ),
       WidgetbookUseCase(
         name: 'Ghost Gray Button',
-        builder: (context) => Wrap(
-          direction: Axis.vertical,
+        builder: (context) => ContainerLayout(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
+          padding: PaddingSpace.all16,
           children: [
             AppGhostGrayButton(
               onPressed: () {},

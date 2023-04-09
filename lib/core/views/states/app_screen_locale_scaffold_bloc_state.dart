@@ -5,6 +5,8 @@ abstract class AppScreenLocaleScaffoldBlocState<T extends StatefulWidgetX,
   // ignore: non_constant_identifier_names
   AppLocalizations get Strings => AppLocalizations.of(context)!;
 
+  AppThemeData get theme => AppTheme.of(context);
+
   @override
   void onExceptionBloc(context, exception) {
     // TODO: Handle common exception here.
