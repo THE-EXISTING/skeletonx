@@ -35,6 +35,7 @@ class AppWidgetbookHotReload extends StatelessWidget {
           name: 'Inputs',
           children: [
             ButtonBook.createBook(),
+            ButtonGroupBook.createBook(),
           ],
         ),
         WidgetbookCategory(

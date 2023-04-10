@@ -8,6 +8,8 @@ class AppThemeData {
     required this.primaryColorOverlay,
     required this.secondaryColor,
     required this.secondaryColorOverlay,
+    required this.surfaceColor,
+    required this.surfaceColorStrong,
     required this.cornerRadius,
     required this.lineStrokeThickness,
     required this.lineStrokeColor,
@@ -18,6 +20,9 @@ class AppThemeData {
   final Color primaryColorOverlay;
   final Color secondaryColor;
   final Color secondaryColorOverlay;
+
+  final Color surfaceColor;
+  final Color surfaceColorStrong;
 
   final double cornerRadius;
 

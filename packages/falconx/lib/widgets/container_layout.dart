@@ -9,7 +9,11 @@ class ContainerLayout extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.max,
     this.padding,
-    required this.children,
+    this.cornerRadius,
+    this.strokeThickness,
+    this.strokeColor,
+    this.child,
+    this.children,
   }) : super(key: key);
 
   final Axis direction;
@@ -18,10 +22,25 @@ class ContainerLayout extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
   final EdgeInsets? padding;
-  final List<Widget> children;
+  final double? cornerRadius;
+  final double? strokeThickness;
+  final Color? strokeColor;
+  final Widget? child;
+  final List<Widget>? children;
 
   @override
   Widget build(BuildContext context) {
+    if (child != null) {
+      return _buildWidget(child!);
+    } else {
+      return _buildWidgetList(children!);
+    }
+  }
+
+  ///========================= PRIVATE METHOD =========================///
+  Widget _buildWidget(Widget child) => _buildContainer(child);
+
+  Widget _buildWidgetList(List<Widget> children) {
     List<Widget> modifyWidgetList = _modifyWidgetList(children);
     Widget layout;
     switch (direction) {
@@ -51,8 +70,24 @@ class ContainerLayout extends StatelessWidget {
         child: layout,
       );
     }
-    return layout;
+    return _buildContainer(layout);
   }
+
+  Widget _buildContainer(Widget child) =>
+      Container(
+        decoration: BoxDecoration(
+            border: Border.all(
+              strokeAlign: BorderSide.strokeAlignOutside,
+              color: strokeColor ?? Colors.transparent,
+              width: strokeThickness ?? 0.0,
+            ),
+            borderRadius: BorderRadius.circular(cornerRadius ?? 0.0)),
+        // child: child,
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(cornerRadius ?? 0.0)),
+          child: child,
+        ),
+      );
 
   List<Widget> _modifyWidgetList(List<Widget> list) {
     if (spacing == 0.0) return list;

@@ -16,6 +16,8 @@ export 'ghosts/ghost_gray_button.dart';
 export 'links/link_button.dart';
 export 'links/link_secondary_button.dart';
 export 'links/link_gray_button.dart';
+export 'groups/group_button_item.dart';
+export 'groups/base_group_button.dart';
 
 class AppButton extends AppComponentGroup {
   const AppButton({
@@ -40,6 +42,9 @@ class AppButton extends AppComponentGroup {
     this.size = AppWidgetSize.md,
     this.iconStart,
     this.iconEnd,
+    this.selectedBackgroundColor,
+    this.enableSelected = false,
+    this.selected = false,
     this.destructive = false,
     this.expanded = false,
     this.enabled = true,
@@ -69,6 +74,10 @@ class AppButton extends AppComponentGroup {
   final bool destructive;
   final bool enabled;
 
+  final Color? selectedBackgroundColor;
+  final bool enableSelected;
+  final bool selected;
+
   @override
   State<AppButton> createState() => _AppButtonState();
 }
@@ -87,6 +96,8 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
     final focusColor =
         widget.focusColor ?? widget.overlayColor?.withOpacity(0.1);
     final height = _calculateHeight(widget.size);
+    final Color? selectedColorBackground = widget.selectedBackgroundColor;
+    final selected = widget.enableSelected && widget.selected;
     return AppHoverSpreadShadow(
       childCorner: widget.cornerRadius ?? theme.cornerRadius,
       focused: focused,
@@ -112,7 +123,9 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
               ),
               backgroundColor: _createBackgroundStyle(
                 context,
-                backgroundColor,
+                backgroundColor: backgroundColor,
+                selectedColor: selectedColorBackground,
+                selected: selected,
               ),
               shape: _createShapeStyle(
                 context,
@@ -169,10 +182,14 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
   }
 
   MaterialStateProperty<Color?> _createBackgroundStyle(
-    BuildContext context,
-    Color backgroundColor,
-  ) =>
-      MaterialStateProperty.all<Color?>(backgroundColor);
+    BuildContext context, {
+    required Color backgroundColor,
+    required bool selected,
+    required Color? selectedColor,
+  }) =>
+      MaterialStateProperty.all<Color?>(selected
+          ? (selectedColor ?? backgroundColor.darken(10))
+          : backgroundColor);
 
   MaterialStateProperty<Color?> _createOverlayStateStyle(
     BuildContext context, {
@@ -222,10 +239,11 @@ class _AppButtonState extends AppComponentGroupLocaleState<AppButton> {
       }
       return RoundedRectangleBorder(
         side: BorderSide(
-            color: strokeColorTmp,
-            width: stroke,
-            style: BorderStyle.solid,
-            strokeAlign: BorderSide.strokeAlignInside),
+          color: strokeColorTmp,
+          width: stroke,
+          style: BorderStyle.solid,
+          strokeAlign: BorderSide.strokeAlignInside,
+        ),
         borderRadius: BorderRadius.circular(cornerRadius),
       );
     });

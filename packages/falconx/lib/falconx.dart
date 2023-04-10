@@ -26,6 +26,7 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:responsive_framework/responsive_framework.dart';
+export 'package:group_button/group_button.dart';
 
 export 'package:catcher/catcher.dart';
 export 'package:sentry_flutter/sentry_flutter.dart'

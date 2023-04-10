@@ -4,6 +4,7 @@ export 'solid_button.dart';
 export 'solid_light_button.dart';
 export 'ghost_button.dart';
 export 'link_button.dart';
+export 'groups/groups.dart';
 
 class ButtonBook {
   static WidgetbookComponent createBook() {
